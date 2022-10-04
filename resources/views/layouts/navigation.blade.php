@@ -73,21 +73,21 @@
         <nav id="main-menu" class="main-menu">
           <ul class="menu">
             <li class="menu-item dropdown active">
-              <a href="index.html">HOME</a>
+              <a href="{{url('homepage')}}">HOME</a>
             </li>
             <li class="menu-item dropdown">
-              <a href="rooms-list.html">ROOMS</a>
+              <a href="{{url('rooms')}}">ROOMS</a>
             </li>
             <li class="menu-item dropdown">
-              <a href="staff.html">TEAM</a>
+              <a href="{{url('teams')}}">TEAM</a>
             </li>
             <li class="menu-item dropdown">
-              <a href="gallery.html">GALLERY</a>
+              <a href="{{url('gallery')}}">GALLERY</a>
             </li>
             <li class="menu-item">
-              <a href="contact.html">CONTACT US</a>
+              <a href="{{url('contact')}}">CONTACT US</a>
             </li>
-            <li class="menu-item dropdown">
+            {{-- <li class="menu-item dropdown">
               <a href="#">ELEMENTS</a>
               <ul class="submenu">
                 <li class="menu-item">
@@ -100,12 +100,34 @@
                   <a href="icons.html">Icons</a>
                 </li>
               </ul>
-            </li>
-            <li class="menu-item menu-btn">
-              <a href="booking-form.html" class="btn">
+            </li> --}}
+
+            @if (Route::has('login'))
+                @auth
+                {{-- <a href="{{ url('/dashboard') }}" class="">Dashboard</a> --}}
+
+                <li class="menu-item menu-btn">
+                  <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <a :href="route('logout')"
+                        onclick="event.preventDefault();
+                                    this.closest('form').submit();" class="btn">
                 <i class="fa fa-user"></i>
-                LOG IN</a>
-            </li>
+                            {{ __('Log Out') }}
+                    </a>
+                </form>
+                </li>
+                  @else
+                  <li class="menu-item menu-btn">
+                      <a href="{{ route('login') }}" >Log in</a>
+                  </li>
+                    @if (Route::has('register'))
+                    <li class="menu-item">
+                        <a href="{{ route('register') }}" class="">Sign up</a>
+                    </li>
+                    @endif
+                @endauth
+        @endif
           </ul>
         </nav>
       </div>

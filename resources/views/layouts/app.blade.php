@@ -63,6 +63,11 @@
 
 
     </div>
+
+    <!-- ========== BACK TO TOP ========== -->
+    <div class="back-to-top">
+        <i class="fa fa-angle-up" aria-hidden="true"></i>
+      </div>
     {{-- Scripts --}}
     <!-- ========== JAVASCRIPT ========== -->
     <script src="js/jquery.min.js"></script>
