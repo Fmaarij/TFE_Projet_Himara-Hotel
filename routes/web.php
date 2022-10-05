@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ContactinformationController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoomController;
@@ -47,7 +48,23 @@ Route::get('/gallery',[GalleryController::class,'index'])->name('gallery');
 
 //CONTACT
 Route::get('/contact',[ContactController::class,'index'])->name('contact');
+Route::get('/messagerecieved',[ContactController::class,'messages'])->name('messagerecieved');
+Route::get('/createcontact',[ContactController::class,'create'])->name('createcontact');
+Route::post('/storecontact',[ContactController::class,'store']);
+Route::get('{id}/showmsg',[ContactController::class,'show']);
+Route::get('/editcontact',[ContactController::class,'edit'])->name('editcontact');
+Route::put('{id}/updatecontact',[ContactController::class,'update']);
+Route::delete('{id}/deletemsg',[ContactController::class,'destroy']);
 //End Of CONTACT
+
+//CONTACTINFORMATION
+Route::get('/contactinformation',[ContactinformationController::class,'index'])->name('contactinformation'); //not used here it is used in contactcontroller
+Route::get('/createcontactinformation',[ContactinformationController::class,'create'])->name('createcontactinformation');
+Route::post('/storecontactinformation',[ContactinformationController::class,'store']);
+Route::get('/editcontactinformation',[ContactinformationController::class,'edit'])->name('editcontactinformation');
+Route::put('{id}/updatecontactinformation',[ContactinformationController::class,'update']);
+Route::delete('{id}/deletecontactinformation',[ContactinformationController::class,'edit']);
+//End Of CONTACTINFORMATION
 
 //BOOKING
 Route::get('/booking',[BookingController::class,'create'])->name('booking');

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Contact;
 use App\Http\Requests\StoreContactRequest;
 use App\Http\Requests\UpdateContactRequest;
+use App\Models\Contactinformation;
+use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
@@ -16,7 +18,12 @@ class ContactController extends Controller
     public function index()
     {
         $contacts = Contact::all();
-        return view ('contact.index',compact('contacts'));
+        $contactinformation = Contactinformation::all();
+        return view ('contact.index',compact('contacts','contactinformation'));
+    }
+    public function messages(){
+        $contact=Contact::all();
+        return view ('contact.messages', compact('contact'));
     }
 
     /**
@@ -26,7 +33,8 @@ class ContactController extends Controller
      */
     public function create()
     {
-        //
+        $contact =Contact::all();
+        return view('contact.index', compact('contact'));
     }
 
     /**
@@ -35,9 +43,16 @@ class ContactController extends Controller
      * @param  \App\Http\Requests\StoreContactRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreContactRequest $request)
+    public function store(Request $request)
     {
-        //
+        $contact = new Contact;
+        $contact->name = $request->name;
+        $contact->email = $request->email;
+        $contact->phone = $request->phone;
+        $contact->subject = $request->subject;
+        $contact->message = $request->message;
+        $contact->save();
+        return redirect()->back();
     }
 
     /**
@@ -46,9 +61,10 @@ class ContactController extends Controller
      * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function show(Contact $contact)
+    public function show($id)
     {
-        //
+        $contacts=Contact::find($id);
+        return view('contact.show',compact('contacts'));
     }
 
     /**
@@ -80,8 +96,10 @@ class ContactController extends Controller
      * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Contact $contact)
+    public function destroy($id)
     {
-        //
+        $contact = Contact::find($id);
+        $contact->delete();
+        return redirect('messagerecieved');
     }
 }

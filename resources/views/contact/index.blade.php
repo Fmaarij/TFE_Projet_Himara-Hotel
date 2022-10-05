@@ -28,7 +28,9 @@
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus sit, fugiat at in assumenda
                         corrupti autem iste eveniet eaque vitae beatae tenetur, voluptatem eius. Numquam.</p>
                     <!-- CONTACT FORM -->
-                    <form id="contact-form" class="contact-form">
+                    <form action="/storecontact" method="post" enctype="multipart/form-data"
+                        class="contact-form">
+                        @csrf
                         <div class="form-group">
                             <input class="form-control" name="name" placeholder="Name" type="text">
                         </div>
@@ -36,7 +38,7 @@
                             <input class="form-control" name="email" placeholder="Email" type="email">
                         </div>
                         <div class="form-group">
-                            <input class="form-control" name="phone" placeholder="Phone" type="text">
+                            <input class="form-control" name="phone" placeholder="Phone" type="number">
                         </div>
                         <div class="form-group">
                             <input class="form-control" name="subject" placeholder="Subject" type="text">
@@ -59,29 +61,32 @@
                         </div>
                         <div class="contact-details mt75">
                             <div class="contact-info">
-                                <ul>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-map-marker"></i>Lorem ipsum dolor, 25, Himara</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-envelope"></i>contact@hotelhimara.com</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-phone"></i>+1 888 123 4567</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-fax"></i>+1 888 123 4567</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-globe"></i>www.hotelhimara.com</a>
-                                    </li>
-                                </ul>
+                                {{-- contactinformation --}}
+                                @foreach ($contactinformation as $info)
+                                    <ul>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-map-marker"></i>{{ $info->adress }}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-envelope"></i>{{ $info->email }}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-phone"></i>{{ $info->gsm }}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-fax"></i>{{ $info->phone }}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-globe"></i>{{ $info->website }}</a>
+                                        </li>
+                                    </ul>
                             </div>
+                            @endforeach
                             <div class="social-media mt50">
                                 <a class="facebook" data-original-title="Facebook" data-toggle="tooltip" href="#">
                                     <i class="fa fa-facebook"></i>

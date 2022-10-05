@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Contact>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Contactinformation>
  */
-class ContactFactory extends Factory
+class ContactinformationFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,11 +18,11 @@ class ContactFactory extends Factory
     {
         return [
 
-            'name'=>$this->faker->name,
+            'adress'=>$this->faker->address,
             'email'=>$this->faker->email,
+            'gsm'=>$this->faker->numerify('###-###-####'),
             'phone'=>$this->faker->numerify('###-###-####'),
-            'subject' => $this->faker->catchPhrase,
-            'message' => $this->faker->paragraph,
+            'website' => $this->faker->domainName,
         ];
     }
 }

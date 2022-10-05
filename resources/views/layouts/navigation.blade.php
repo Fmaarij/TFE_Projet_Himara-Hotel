@@ -84,8 +84,16 @@
             <li class="menu-item dropdown">
               <a href="{{url('gallery')}}">GALLERY</a>
             </li>
-            <li class="menu-item">
-              <a href="{{url('contact')}}">CONTACT US</a>
+            <li class="menu-item dropdown" >
+                <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Contact
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" >
+                      <a class="dropdown-item" href="{{url('contact')}}">CONTACT US</a>
+                      <a class="dropdown-item" href="{{url('messagerecieved')}}">Messages</a>
+                      <a class="dropdown-item" href="{{url('editcontactinformation')}}">Edit contact info</a>
+
+                  </ul>
             </li>
             {{-- <li class="menu-item dropdown">
               <a href="#">ELEMENTS</a>
