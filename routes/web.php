@@ -36,8 +36,16 @@ Route::get('/homepage',[HomeController::class,'index'])->name('homepage');
 
 //ROOM
 Route::get('/rooms',[RoomController::class,'index'])->name('rooms');
+Route::get('/showroom',[RoomController::class,'show'])->name('showroom');
+Route::get('/createroom',[RoomController::class,'create'])->name('createroom');
+Route::post('/storeroom',[RoomController::class,'store']);
 //End Of ROOM
-
+//ROOM & IMAGE CONTROLLER
+// Route::controller(RoomController::class)->group(function(){
+    // Route::get('image-upload', 'create');
+    // Route::post('storeroom', 'store');
+// });
+// End of Room & Image controller
 //TEAM
 Route::get('/teams',[TeamController::class,'index'])->name('teams');
 //End Of TEAM

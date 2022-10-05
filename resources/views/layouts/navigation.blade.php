@@ -76,7 +76,14 @@
               <a href="{{url('homepage')}}">HOME</a>
             </li>
             <li class="menu-item dropdown">
-              <a href="{{url('rooms')}}">ROOMS</a>
+                <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    ROOMS
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" >
+                      <a class="dropdown-item" href="{{url('rooms')}}">ROOMS </a>
+                      <a class="dropdown-item" href="{{url('createroom')}}">ADD A ROOM</a>
+                      {{-- <a class="dropdown-item" href="{{url('indexroom')}}">Show all Rooms</a> --}}
+                  </ul>
             </li>
             <li class="menu-item dropdown">
               <a href="{{url('teams')}}">TEAM</a>

@@ -57,7 +57,7 @@
                  <div class="col-lg-2">
                    <div class="room-price">
                      <span class="price">€89 / night</span>
-                     <a href="room.html" class="btn btn-sm">view <br> details</a>
+                     <a href="{{url('showroom')}}" class="btn btn-sm">view <br> details</a>
                    </div>
                  </div>
                </div>
