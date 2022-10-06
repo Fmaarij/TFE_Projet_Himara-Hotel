@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Roomreview extends Model
 {
     use HasFactory;
+
+
 }

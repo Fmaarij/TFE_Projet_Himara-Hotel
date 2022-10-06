@@ -20,7 +20,8 @@ return new class extends Migration
             $table->string('star')->nullable();
             $table->char('description')->nullable();
             $table->string('price')->nullable();
-            $table->string('service_id')->nullable();
+            // $table->string('service_id')->nullable();
+            $table->json('service')->nullable();
             $table->timestamps();
         });
     }

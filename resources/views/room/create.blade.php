@@ -1,44 +1,9 @@
 @extends('layouts.app')
 @section('content')
 
-{{--
-@if (count($errors) > 0)
-<div class="alert alert-danger">
-    <strong>Whoops!</strong> There were some problems with your input.<br><br>
-    <ul>
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-</div>
-@endif
-
-@if ($message = Session::get('success'))
-
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-<strong>{{ $message }}</strong>
-<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
-
-<div class="row">
-<div class="col-md-4">
-    <strong>Original Image:</strong>
-    <br/>
-    <img src="/images/{{ Session::get('imageName') }}" width="300px" />
-</div>
-<div class="col-md-4">
-    <strong>Thumbnail Image:</strong>
-    <br/>
-    <img src="/thumbnail/{{ Session::get('imageName') }}" />
-</div>
-</div>
-@endif --}}
-
-
-
 <div class="col-md-8">
     <div class="section-title">
-        <h4>Add A Room</h4>
+        <h4>Add A Room </h4>
         <p class="section-subtitle"></p>
     </div>
 
@@ -77,9 +42,7 @@
         <div class="form-group">
             <div class="form-control " >
                 @foreach ($roomservices as $service )
-                <input type="checkbox" id="subscribeNews" name="service_id" value="{{$service->id}}">
-                <label for="service_id">{{$service->service}}</label>
-
+                <label for="service">  <input type="checkbox" id="" name="service[]" value="{{$service->service}}">{{$service->service_name}}:<i class="{{$service->service}}"></i></label>
                 @endforeach
             </div>
         </div>
@@ -89,3 +52,6 @@
     </form>
 </div>
 @endsection
+
+
+

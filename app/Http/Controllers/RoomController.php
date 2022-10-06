@@ -65,13 +65,13 @@ class RoomController extends Controller {
             $filenametostore = $filename.'_'.time().'.'.$extension;
 
             //Upload File
-            $request->file('img')->storeAs('public/thumbnail_images', $filenametostore);
-            $request->file('img')->storeAs('public/profile_images/thumbnail', $filenametostore);
+            $request->file('img')->storeAs('public/room_images', $filenametostore);
+            $request->file('img')->storeAs('public/room_images/thumbnail', $filenametostore);
 
             //Resize image here
-            $thumbnailpath = public_path('storage/profile_images/thumbnail/'.$filenametostore);
+            $thumbnailpath = public_path('storage/room_images/thumbnail/'.$filenametostore);
             $img = Image::make($thumbnailpath)->resize(400, 150, function($constraint) {
-                $constraint->aspectRatio();
+                // $constraint->aspectRatio();
             });
             $img->save();
             $room->img = $filenametostore;
@@ -82,7 +82,8 @@ class RoomController extends Controller {
         $room->star= $request->star;
         $room->price = $request->price;
         $room->description = $request->description;
-        $room->service_id = $request->service_id;
+        // $room->service_id = $request->service_id;
+          $room->service=json_encode( $request->service);
         $room->save();
         return redirect()->back()->with('success', "Image uploaded successfully.");
     }
@@ -119,40 +120,6 @@ class RoomController extends Controller {
     */
 
     public function update( Request $request ) {
-        // $room_id = $request->id;
-
-        // if($request->file('img')){
-        //     $image = $request->file('img');
-        //     $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension(); //get's the extension of the file
-        //     Image::make($image)->resize(1920, 1200)->save('roomthumbnail/'.$name_gen);
-        //     // $save_url = 'roomthumbnail/'.$name_gen;
-
-        //     Room::findOrFail($room_id)->update([
-        //         'img' => $request->$image.$name_gen,
-        //         'city' => $request->city,
-        //         'description' => $request->description,
-        //         'price' => $request->price,
-        //         'service_id' => $request->service_id,
-        //     ]);
-        //     $notification = array(
-        //         'message' => 'Room added with thumbnail waiting to validate by the admin or moderator.',
-        //         'alert-type'=>'success'
-        //     );
-        //     return redirect()->back()->with($notification);
-        // }else{
-
-        //     Room::findOrFail($room_id)->update ([
-        //         'city' => $request->city,
-        //         'description' => $request->description,
-        //         'price' => $request->price,
-        //         'service_id' => $request->service_id,
-        //     ]);
-        //     $notification = array(
-        //         'message' => 'Room added without thumbnail waiting to validate by the admin or moderator.',
-        //         'alert-type'=>'success'
-        //     );
-        //     return redirect()->back()->with($notification);
-        // }// end else
 
     }//end condition
 

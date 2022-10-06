@@ -6,7 +6,9 @@ use App\Http\Controllers\ContactinformationController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoomController;
+use App\Http\Controllers\RoomserviceController;
 use App\Http\Controllers\TeamController;
+use App\Models\Roomservice;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,12 +43,11 @@ Route::get('/createroom',[RoomController::class,'create'])->name('createroom');
 Route::post('/storeroom',[RoomController::class,'store']);
 //End Of ROOM
 
-//ROOM & IMAGE CONTROLLER
-// Route::controller(RoomController::class)->group(function(){
-//     Route::get('/createroom', 'create')->name('createroom');
-//     Route::post('/stor/update', 'store')->name('update.room');
-// });
-// End of Room & Image controller
+//ROOMSERVICE
+Route::get('/roomservices',[RoomserviceController::class,'index'])->name('roomservice');
+Route::get('/createroomservices',[RoomserviceController::class,'create'])->name('createroomservices');
+Route::post('/storeroomservice',[RoomserviceController::class,'store']);
+// End of ROOMSERVICE
 
 //TEAM
 Route::get('/teams',[TeamController::class,'index'])->name('teams');

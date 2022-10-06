@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Roomservice;
 use App\Http\Requests\StoreRoomserviceRequest;
 use App\Http\Requests\UpdateRoomserviceRequest;
+use Illuminate\Http\Request;
 
 class RoomserviceController extends Controller
 {
@@ -15,7 +16,8 @@ class RoomserviceController extends Controller
      */
     public function index()
     {
-        //
+        $roomservices = Roomservice::all();
+        return view('roomservices.index',compact('roomservices'));
     }
 
     /**
@@ -25,7 +27,7 @@ class RoomserviceController extends Controller
      */
     public function create()
     {
-        //
+        return view('roomservices.create');
     }
 
     /**
@@ -34,9 +36,12 @@ class RoomserviceController extends Controller
      * @param  \App\Http\Requests\StoreRoomserviceRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreRoomserviceRequest $request)
+    public function store(Request $request)
     {
-        //
+        $roomservices = new Roomservice;
+        $roomservices ->service=json_encode($request->service);
+        $roomservices->save();
+        return redirect()->back()->with('success', "services uploaded successfully.");
     }
 
     /**

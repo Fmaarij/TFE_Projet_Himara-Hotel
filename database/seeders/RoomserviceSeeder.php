@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\DB;
 
 class RoomserviceSeeder extends Seeder
 {
+
+
     /**
      * Run the database seeds.
      *
@@ -16,61 +18,60 @@ class RoomserviceSeeder extends Seeder
     public function run()
     {
         DB::table( 'roomservices' )->insert( [ [
-            'service' => 'DOUBLE BED',
+            'service_name' =>"TV",
+            'service' =>  "fa fa-television",
             'created_at' =>now(),
             'updated_at' => now()
 
         ],
         [
-            'service' => 'FREE WI-FI',
+            'service_name'=>"Wifi",
+            'service' => 'fa fa-wifi',
             'created_at' =>now(),
             'updated_at' => now()
         ],
         [
-            'service' => 'FLAT SCREEN TV',
-            'created_at' =>now(),
-            'updated_at' => now()
-        ],
-        [
-            'service' => '80 SQ MT',
-            'created_at' =>now(),
-            'updated_at' => now()
-        ],
-        [
-            'service' => 'BREAKFAST',
+            'service_name'=>"Breakfast",
+            'service' => "fa fa-coffee",
             'created_at' =>now(),
             'updated_at' => now()
         ],
 
 
         [
-            'service' => 'FULL AC',
+            'service_name'=>"Full AC",
+            'service' => "fa fa-ge",
             'created_at' =>now(),
             'updated_at' => now()
         ],
         [
-            'service' => '3 PERSONS',
+            'service_name'=>'3 Persons',
+            'service' => ' fa fa-user-circle',
             'created_at' =>now(),
             'updated_at' => now()
         ],
         [
-            'service' => 'LUNCH',
+            'service_name'=>'Transport till airport included',
+            'service' => 'fa fa-automobile',
             'created_at' =>now(),
             'updated_at' => now()
         ],
 
         [
-            'service' => 'BEACH VIEW',
+            'service_name' => 'Battery charger',
+            'service' => 'fa fa-battery-4',
             'created_at' =>now(),
             'updated_at' => now()
         ],
         [
-            'service' => 'FREE INTERNET',
+            'service_name'=>"Private Bath",
+            'service' => 'fa fa-shower',
             'created_at' =>now(),
             'updated_at' => now()
         ],
         [
-            'service' => 'PRIVATE TOILETTE',
+            'service_name'=>"Bathroom",
+            'service' => 'fa fa-bath',
             'created_at' =>now(),
             'updated_at' => now()
         ],
