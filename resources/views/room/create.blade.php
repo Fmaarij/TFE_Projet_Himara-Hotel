@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-{{-- 
+{{--
 @if (count($errors) > 0)
 <div class="alert alert-danger">
     <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -43,25 +43,26 @@
     </div>
 
     <!-- add a room FORM -->
-    <form action="/storeroom" method="post" enctype="multipart/form-data"
-        class="contact-form">
+    <form action="/storeroom" method="POST" enctype="multipart/form-data"
+        class="contact-form" >
         @csrf
+        <input type="hidden" name="id" value="{{$room->id}}">
         <div class="form-group">
-            <label for="">Image</label>
-            <input class="form-control" name="img" placeholder="" type="file">
+            {{-- <label for="">Image</label> --}}
+            <input class="form-control" name="img"  type="file" id="image">
         </div>
         <div class="form-group">
-            <input class="form-control" name="city" placeholder="Paris" type="text">
+            <input class="form-control" name="city" placeholder="Paris" type="text" value="{{$room->city}}">
         </div>
         <div class="form-group">
-            <input class="form-control" name="star" placeholder="stars" type="number">
+            <input class="form-control" name="star" value="{{$room->star}}" placeholder="stars" type="number">
         </div>
 
         <div class="form-group">
-            <textarea class="form-control" name="description" placeholder="Best view ever...."></textarea>
+            <textarea class="form-control" name="description" placeholder="Best view ever...." value="{{$room->description}}"></textarea>
         </div>
         <div class="form-group">
-            <input class="form-control" name="price" placeholder="$87" type="text">
+            <input class="form-control" name="price" placeholder="$87" type="text" value="{{$room->price}}">
         </div>
         <div class="form-group">
             <div class="form-control" >

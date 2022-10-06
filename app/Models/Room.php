@@ -5,10 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Room extends Model
-{
+class Room extends Model {
     use HasFactory;
-    public function roomservices(){
-        return $this->belongsTo(Roomservice::class, 'id');
-    }
+
+    protected $guarded= []; //it makes all filed noneable
+
+    // protected $fillable = [
+    //     'img',
+    //     'city',
+    //     'star',
+    //     'description',
+    //     'price',
+    //     'service_id',
+    // ];
+    // public function roomservices() {
+    //     return $this->belongsTo( Roomservice::class, 'id' );
+    // }
 }

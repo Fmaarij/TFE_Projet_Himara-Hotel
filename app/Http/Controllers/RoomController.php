@@ -8,7 +8,10 @@ use App\Http\Requests\UpdateRoomRequest;
 use App\Models\Roomservice;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-
+use Intervention\Image\Facades\Image;
+// use Image;
+// use Nette\Utils\Image;
+// use League\CommonMark\Extension\CommonMark\Node\Inline\Image;
 class RoomController extends Controller {
     /**
     * Display a listing of the resource.
@@ -17,8 +20,9 @@ class RoomController extends Controller {
     */
 
     public function index() {
-        $rooms = Room::paginate(4);
-        return view ( 'room.index', compact( 'rooms' ) );
+        // $rooms = Room::paginate(4); //   {{-- pagination --}}
+        $room = Room::find(1);
+        return view ( 'room.index', compact( 'room' ) );
     }
 
     /**
@@ -28,9 +32,10 @@ class RoomController extends Controller {
     */
 
     public function create() {
-        $rooms = Room::all();
+        // $rooms = Room::all();
+        $room = Room::find(1);
         $roomservices = Roomservice::all();
-        return view( 'room.create', compact( 'rooms', 'roomservices' ) );
+        return view( 'room.create', compact( 'room', 'roomservices' ) );
     }
 
     /**
@@ -42,50 +47,40 @@ class RoomController extends Controller {
 
     public function store( Request $request ) {
 
-        // $this->validate( $request, [
-        //     'img' => 'required|img|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        // ] );
+        $room_id = $request->id;
 
-        // if ( $request->hasFile( 'img' ) ) {
-        //     $image = Room::make( $request->file( 'img' ) );
+        if($request->file('img')){
+            $image = $request->file('img');
+            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension(); //get's the extension of the file
+            Image::make($image)->resize(1920, 1200)->save('roomthumbnail/'.$name_gen);
+            $save_url = 'roomthumbnail/'.$name_gen;
 
-            /**
-            * Main Image Upload on Folder Code
-            */
-            // $imageName = time().'-'.$request->file( 'img' )->getClientOriginalName();
-            // $destinationPath = public_path( 'images/' );
-            // $image->save( $destinationPath.$imageName );
+            Room::findOrFail($room_id)->update([
+                'img' => $request->$image.$name_gen,
+                'city' => $request->city,
+                'description' => $request->description,
+                'price' => $request->price,
+                'service_id' => $request->service_id,
+            ]);
+            $notification = array(
+                'message' => 'Room added with thumbnail waiting to validate by the admin or moderator.',
+                'alert-type'=>'success'
+            );
+            return redirect()->back()->with($notification);
+        }else{
 
-            // /**
-            // * Generate Thumbnail Image Upload on Folder Code
-            // */
-            // $destinationPathThumbnail = public_path( 'images/thumbnail/' );
-            // $image->resize( 100, 100 );
-            // $image->save( $destinationPathThumbnail.$imageName );
-            $rooms = new Room;
-            Storage::put( 'public/room/', $request->file( 'img' ) );
-            $rooms->img = $request->file( 'img' )->hashName();
-            $rooms->city = $request->city;
-            $rooms->description = $request->description;
-            $rooms->price = $request->price;
-            $rooms->star = $request->star;
-            $rooms->service_id = $request->service_id;
-            $rooms->save();
-
-            /**
-            * Write Code for Image Upload Here,
-            *
-            * $upload = new Images();
-            * $upload->file = $imageName;
-            * $upload->save();
-            */
-
-            // return back()
-            // ->with( 'success', 'Image Upload successful' )
-            // ->with( 'imageName', $imageName );
-        // }
-
-        return redirect()->back();
+            Room::findOrFail($room_id)->update ([
+                'city' => $request->city,
+                'description' => $request->description,
+                'price' => $request->price,
+                'service_id' => $request->service_id,
+            ]);
+            $notification = array(
+                'message' => 'Room added without thumbnail waiting to validate by the admin or moderator.',
+                'alert-type'=>'success'
+            );
+            return redirect()->back()->with($notification);
+        }// end else
 
         // $rooms = new Room;
 
@@ -97,7 +92,8 @@ class RoomController extends Controller {
         // $rooms->service_id = $request->service_id;
         // $rooms->save();
         // return redirect()->back();
-    }
+
+    }//end condition
 
     /**
     * Display the specified resource.
