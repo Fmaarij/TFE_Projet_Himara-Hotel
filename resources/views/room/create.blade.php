@@ -42,33 +42,44 @@
         <p class="section-subtitle"></p>
     </div>
 
+    {{-- msg  --}}
+    @if (session('success'))
+    <strong>
+        {{ session('success') }}
+    </strong>
+@endif
     <!-- add a room FORM -->
-    <form action="/storeroom" method="POST" enctype="multipart/form-data"
+    <form action="/storeroom" method="post" enctype="multipart/form-data"
         class="contact-form" >
         @csrf
-        <input type="hidden" name="id" value="{{$room->id}}">
+        {{-- @foreach ($rooms as $room ) --}}
+
+
+        {{-- <input type="hidden" name="id" value="{{$room->id}}"> --}}
         <div class="form-group">
             {{-- <label for="">Image</label> --}}
             <input class="form-control" name="img"  type="file" id="image">
         </div>
         <div class="form-group">
-            <input class="form-control" name="city" placeholder="Paris" type="text" value="{{$room->city}}">
+            <input class="form-control" name="city" placeholder="Paris" type="text">
         </div>
         <div class="form-group">
-            <input class="form-control" name="star" value="{{$room->star}}" placeholder="stars" type="number">
+            <input class="form-control" name="star"  placeholder="stars" type="number">
         </div>
 
         <div class="form-group">
-            <textarea class="form-control" name="description" placeholder="Best view ever...." value="{{$room->description}}"></textarea>
+            <textarea class="form-control" name="description" placeholder="Best view ever...." ></textarea>
         </div>
         <div class="form-group">
-            <input class="form-control" name="price" placeholder="$87" type="text" value="{{$room->price}}">
+            <input class="form-control" name="price" placeholder="$87" type="text">
         </div>
+        {{-- @endforeach --}}
         <div class="form-group">
-            <div class="form-control" >
+            <div class="form-control " >
                 @foreach ($roomservices as $service )
                 <input type="checkbox" id="subscribeNews" name="service_id" value="{{$service->id}}">
                 <label for="service_id">{{$service->service}}</label>
+
                 @endforeach
             </div>
         </div>

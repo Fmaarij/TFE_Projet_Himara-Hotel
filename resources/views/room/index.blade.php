@@ -21,7 +21,7 @@
          <div class="row">
            <div class="col-lg-9 col-12">
              <!-- ITEM -->
-             {{-- @foreach ($rooms as $room ) --}}
+             @foreach ($rooms as $room )
              <div class="room-list-item">
                <div class="row">
 
@@ -29,7 +29,11 @@
                  <div class="col-lg-5">
                    <figure class="gradient-overlay-hover link-icon">
                      {{-- <a href="room.html"><img src="{{asset('storage/room/'.$room->img)}}" class="img-fluid" alt="Image"></a> --}}
-                     <a href="room.html"><img src="roomthumbnail/{{$room->img}}" class="img-fluid" alt="Image"></a>
+                     <a href="room.html">
+                        <img src="roomthumbnail/{{$room->img}}" class="img-fluid" alt="Image">
+                        {{-- <img src="{{(!empty($room->img))? url( $room->img):url('roomthumbnail/no_image.jpg')}}"
+                        class="img-fluid" alt="Image"> --}}
+                    </a>
                    </figure>
                  </div>
                  <div class="col-lg-5">
@@ -66,7 +70,7 @@
                  </div>
                </div>
              </div>
-             {{-- @endforeach --}}
+             @endforeach
              {{-- pagination --}}
              {{-- <div class="d-flex justify-center">
                 {{$rooms->links()}}
