@@ -16,41 +16,41 @@ class TypeofroomSeeder extends Seeder
     public function run()
     {
         DB::table( 'typeofrooms' )->insert( [ [
-            'type' =>"Single Room",
-            'max/5' =>  '5',
-            'reste'=>'5',
-            'bed'=>'1',
-            'maxguests'=>'1',
+            'type_name' =>"Single Room",
+            // 'max/5' =>  '5',
+            // 'reste'=>'5',
+            // 'bed'=>'1',
+            // 'maxguests'=>'1',
             'created_at' =>now(),
             'updated_at' => now()
 
         ],
         [
-            'type'=>"Double Room",
-            'max/5' => '5',
-            'reste'=>'5',
-            'bed'=>'2',
-            'maxguests'=>'2',
+            'type_name'=>"Double Room",
+            // 'max/5' => '5',
+            // 'reste'=>'5',
+            // 'bed'=>'2',
+            // 'maxguests'=>'2',
             'created_at' =>now(),
             'updated_at' => now()
         ],
         [
-            'type'=>"Family Room",
-            'max/5' => '5',
-            'reste'=>'5',
-            'bed'=>'3',
-            'maxguests'=>'3',
+            'type_name'=>"Family Room",
+            // 'max/5' => '5',
+            // 'reste'=>'5',
+            // 'bed'=>'3',
+            // 'maxguests'=>'3',
             'created_at' =>now(),
             'updated_at' => now()
         ],
 
 
         [
-            'type'=>"Delux Room",
-            'max/5' => '5',
-            'reste'=>'5',
-            'bed'=>'4',
-            'maxguests'=>'4',
+            'type_name'=>"Delux Room",
+            // 'max/5' => '5',
+            // 'reste'=>'5',
+            // 'bed'=>'4',
+            // 'maxguests'=>'4',
             'created_at' =>now(),
             'updated_at' => now()
         ],

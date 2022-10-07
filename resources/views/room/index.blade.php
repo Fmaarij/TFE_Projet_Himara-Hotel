@@ -46,7 +46,7 @@
                                             <a href="room.html">{{ $room->city }} </a>
                                         </h3>
                                         <span class="room-rates">
-                                            @switch($room->star )
+                                            @switch($room->star)
                                                 @case(1)
                                                     <i class="fa fa-star" aria-hidden="true"></i>
                                                 @break
@@ -80,25 +80,23 @@
                                                 @default
                                             @endswitch
 
-                                            <a href="room.html#room-reviews">{{$room->star}} Based on 5 Ratings</a>
+                                            <a href="room.html#room-reviews">{{ $room->star }} Based on 5 Ratings</a>
                                         </span>
-                                        <p>{{$room->description}}.</p>
+                                        <p>{{ $room->description }}.</p>
                                         <div class="room-services">
-                                            {{-- <i class="fa fa-coffee" data-toggle="popover" data-placement="top" data-trigger="hover"
-                         data-content="Breakfast Included" data-original-title="Breakfast"></i>
-                       <i class="fa fa-wifi" data-toggle="popover" data-placement="top" data-trigger="hover"
-                         data-content="Free WiFi" data-original-title="WiFi"></i>
-                       <i class="fa fa-television" data-toggle="popover" data-placement="top" data-trigger="hover"
-                         data-content="Plasma TV with cable channels" data-original-title="TV"></i> --}}
-
                                             <td>
                                                 @php $categories = $room->service ? json_decode($room->service, true) : []; @endphp
-                                                @foreach ($categories as $category)
-                                                   <i class="{{ $category }}",></i>
-                                                @endforeach
+
+                                                @if ($categories != null)
+                                                    @foreach ($categories as $category)
+                                                        <i class="{{ $category }}",></i>
+                                                        {{-- @else
+                                                        <p>nothing</p> --}}
+                                                    @endforeach
+                                                @endif
                                             </td>
-                                            <span>Beds: 1 King</span>
-                                            <span>Max Guests: 2</span>
+                                            <span>Bed : {{ $room->bed }}</span>
+                                            <span>Max Guests : {{ $room->maxguests }}</span>
                                         </div>
                                     </div>
                                 </div>

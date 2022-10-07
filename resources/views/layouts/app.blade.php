@@ -49,6 +49,16 @@
 
         <!-- Page Content -->
         <main>
+            @if(Session::has('error'))
+            <div class="p-5">
+            <div class="alert alert-success">
+                {{ Session::get('error') }}
+                @php
+                    Session::forget('error');
+                @endphp
+            </div>
+        </div>
+            @endif
             @yield('content')
         </main>
 

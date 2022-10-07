@@ -16,15 +16,19 @@ return new class extends Migration
         Schema::create('rooms', function (Blueprint $table) {
             $table->id();
             $table->string('img')->nullable();
+            $table->foreignId('typeofroom_id')->constrained()->onDelete('cascade');
+            $table->string('bed')->nullable();
+            $table->string('availablerooms')->default(8);
+            $table->string('maxguests')->nullable();
             $table->string('city')->nullable();
             $table->string('star')->nullable();
-            $table->char('description')->nullable();
+            $table->text('description')->nullable();
             $table->string('price')->nullable();
-            // $table->string('service_id')->nullable();
             $table->json('service')->nullable();
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.

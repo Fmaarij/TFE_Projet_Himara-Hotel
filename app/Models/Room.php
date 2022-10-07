@@ -12,6 +12,11 @@ class Room extends Model {
 
     protected $fillable = [
         'img',
+        'typeroom_id',
+        'availablerooms',
+        // 'maxrooms',
+        'bed',
+        'maxguests',
         'city',
         'star',
         'description',
@@ -21,4 +26,8 @@ class Room extends Model {
     // public function roomservices() {
     //     return $this->belongsTo( Roomservice::class, 'id' );
     // }
+
+    public function typeofroom() {
+        return $this->belongsToMany(Typeofroom::class);
+    }
 }

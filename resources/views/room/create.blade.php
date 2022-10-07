@@ -26,6 +26,22 @@
             <input class="form-control" name="img"  type="file" id="image">
         </div>
         <div class="form-group">
+            <select name="typeofroom_id" type="number">
+                @foreach ($roomtype as $type )
+                <option value="{{$type->id}}">{{$type->type_name}}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="bed" placeholder="Number of beds" type="number">
+        </div>
+        <div class="form-group " >
+            <input type="hidden" class="form-control" name="availablerooms" placeholder="Number of guests foor this room type" type="number" value="8">
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="maxguests" placeholder="Number of guests foor this room type" type="number">
+        </div>
+        <div class="form-group">
             <input class="form-control" name="city" placeholder="Paris" type="text">
         </div>
         <div class="form-group">

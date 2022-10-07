@@ -15,11 +15,14 @@ return new class extends Migration
     {
         Schema::create('typeofrooms', function (Blueprint $table) {
             $table->id();
-            $table->string('type')->nullable();
-            $table->string('max/5')->nullable();
-            $table->string('reste')->nullable();
-            $table->string('bed')->nullable();
-            $table->string('maxguests')->nullable();
+
+            // $table->foreignId('room_id')->constrained()->onDelete('cascade');
+            // $table->string('type')->nullable();
+            // $table->string('max/5')->nullable();
+            // $table->string('reste')->nullable();
+            // $table->string('bed')->nullable();
+            // $table->string('maxguests')->nullable();
+            $table->string('type_name')->nullable();
             $table->timestamps();
         });
     }

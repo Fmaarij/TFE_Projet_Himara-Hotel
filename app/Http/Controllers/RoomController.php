@@ -6,12 +6,17 @@ use App\Models\Room;
 use App\Http\Requests\StoreRoomRequest;
 use App\Http\Requests\UpdateRoomRequest;
 use App\Models\Roomservice;
+use App\Models\Typeofroom;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
+
+use function PHPSTORM_META\type;
+
 // use Image;
 // use Nette\Utils\Image;
 // use League\CommonMark\Extension\CommonMark\Node\Inline\Image;
+
 class RoomController extends Controller {
     /**
     * Display a listing of the resource.
@@ -20,8 +25,11 @@ class RoomController extends Controller {
     */
 
     public function index() {
-        // $rooms = Room::paginate(4); //   {{-- pagination --}}
-        // $room = Room::find(1);
+        // $rooms = Room::paginate( 4 );
+        // {
+
+        // $room = Room::find( 1 );
+
         $rooms = Room::all();
         return view ( 'room.index', compact( 'rooms' ) );
     }
@@ -34,9 +42,11 @@ class RoomController extends Controller {
 
     public function create() {
         // $rooms = Room::all();
-        // $room = Room::find(1);
+        // $room = Room::find( 1 );
+        $roomtype = Typeofroom::all();
+
         $roomservices = Roomservice::all();
-        return view( 'room.create', compact('roomservices' ) );
+        return view( 'room.create', compact( 'roomservices', 'roomtype' ) );
     }
 
     /**
@@ -47,46 +57,57 @@ class RoomController extends Controller {
     */
 
     public function store( Request $request ) {
+        $room = Room::where('typeofroom_id','=',$request->typeofroom_id)->get()->count();
+        // $rooms = Room::find($request->typeofroom_id)->count();
 
-        $room=new Room;
+        if( intval($room)===8){
+            return redirect()->back()->with('error','You can add only 2 rooms');
+        }else{
+            $room=new Room;
+            if($request->hasFile('img')) {
+                //get filename with extension
+                $filenamewithextension = $request->file('img')->getClientOriginalName();
 
+                //get filename without extension
+                $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
 
-        if($request->hasFile('img')) {
-            //get filename with extension
-            $filenamewithextension = $request->file('img')->getClientOriginalName();
+                //get file extension
+                $extension = $request->file('img')->getClientOriginalExtension();
 
-            //get filename without extension
-            $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
+                //filename to store
+                $filenametostore = $filename.'_'.time().'.'.$extension;
 
-            //get file extension
-            $extension = $request->file('img')->getClientOriginalExtension();
+                //Upload File
+                $request->file('img')->storeAs('public/room_images', $filenametostore);
+                $request->file('img')->storeAs('public/room_images/thumbnail', $filenametostore);
 
-            //filename to store
-            $filenametostore = $filename.'_'.time().'.'.$extension;
+                //Resize image here
+                $thumbnailpath = public_path('storage/room_images/thumbnail/'.$filenametostore);
+                $img = Image::make($thumbnailpath)->resize(400, 150, function($constraint) {
+                    // $constraint->aspectRatio();
+                });
+                $img->save();
+                $room->img = $filenametostore;
+            }
 
-            //Upload File
-            $request->file('img')->storeAs('public/room_images', $filenametostore);
-            $request->file('img')->storeAs('public/room_images/thumbnail', $filenametostore);
+            $room->typeofroom_id = $request->typeofroom_id;
+            $room->bed  = $request->bed;
+            $room->availablerooms  = $request->availablerooms;
+            $room->maxguests = $request->maxguests;
+            $room->city = $request->city;
+            $room->star= $request->star;
+            $room->price = $request->price;
+            $room->description = $request->description;
+            $room->service=json_encode( $request->service);
+            $room->save();
 
-            //Resize image here
-            $thumbnailpath = public_path('storage/room_images/thumbnail/'.$filenametostore);
-            $img = Image::make($thumbnailpath)->resize(400, 150, function($constraint) {
-                // $constraint->aspectRatio();
-            });
-            $img->save();
-            $room->img = $filenametostore;
-
+            return redirect()->back()->with('success', "room added successfully.");
+        }
 
         }
-        $room->city = $request->city;
-        $room->star= $request->star;
-        $room->price = $request->price;
-        $room->description = $request->description;
-        // $room->service_id = $request->service_id;
-          $room->service=json_encode( $request->service);
-        $room->save();
-        return redirect()->back()->with('success', "Image uploaded successfully.");
-    }
+
+
+
 
     /**
     * Display the specified resource.
@@ -98,39 +119,40 @@ class RoomController extends Controller {
     public function show() {
         $room = Room::all();
         return view( 'room.show', compact( 'room' ) );
-    }
+                }
 
-    /**
-    * Show the form for editing the specified resource.
-    *
-    * @param  \App\Models\Room  $room
-    * @return \Illuminate\Http\Response
-    */
+                /**
+                * Show the form for editing the specified resource.
+                *
+                * @param  \App\Models\Room  $room
+                * @return \Illuminate\Http\Response
+                */
 
-    public function edit( Room $room ) {
-        //
-    }
+                public function edit( Room $room ) {
+                    //
+                }
 
-    /**
-    * Update the specified resource in storage.
-    *
-    * @param  \App\Http\Requests\UpdateRoomRequest  $request
-    * @param  \App\Models\Room  $room
-    * @return \Illuminate\Http\Response
-    */
+                /**
+                * Update the specified resource in storage.
+                *
+                * @param  \App\Http\Requests\UpdateRoomRequest  $request
+                * @param  \App\Models\Room  $room
+                * @return \Illuminate\Http\Response
+                */
 
-    public function update( Request $request ) {
+                public function update( Request $request ) {
 
-    }//end condition
+                }
+                //end condition
 
-    /**
-    * Remove the specified resource from storage.
-    *
-    * @param  \App\Models\Room  $room
-    * @return \Illuminate\Http\Response
-    */
+                /**
+                * Remove the specified resource from storage.
+                *
+                * @param  \App\Models\Room  $room
+                * @return \Illuminate\Http\Response
+                */
 
-    public function destroy( Room $room ) {
-        //
-    }
-}
+                public function destroy( Room $room ) {
+                    //
+                }
+            }

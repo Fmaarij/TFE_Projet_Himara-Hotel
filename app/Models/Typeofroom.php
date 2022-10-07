@@ -10,10 +10,16 @@ class Typeofroom extends Model
     use HasFactory;
 
     protected $fillable = [
-        'type',
-        'max/5',
-        'reste',
-        'bed',
-        'maxguests',
+        // 'type',
+        'room_id'
+        // 'max/5',
+        // 'reste',
+        // 'bed',
+        // 'maxguests',
     ];
+
+
+    public function room() {
+        return $this->hasMany(Room::class);
+    }
 }
