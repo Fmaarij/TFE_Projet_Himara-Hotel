@@ -75,47 +75,38 @@
             <li class="menu-item dropdown active">
               <a href="{{url('homepage')}}">HOME</a>
             </li>
+
             <li class="menu-item dropdown">
-                <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    ROOMS
-                  </button>
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" >
-                      <a class="dropdown-item" href="{{url('rooms')}}">ROOMS </a>
-                      <a class="dropdown-item" href="{{url('createroom')}}">ADD A ROOM</a>
-                      {{-- <a class="dropdown-item" href="{{url('indexroom')}}">Show all Rooms</a> --}}
-                  </ul>
-            </li>
+                <a href="{{url('rooms')}}">Rooms</a>
+                <ul class="submenu">
+                  <li class="menu-item">
+                    <a href="{{url('createroom')}}">Add a room</a>
+                  </li>
+                  <li class="menu-item">
+                    <a href="{{url('createroomservices')}}">Add room services</a>
+                  </li>
+                  <li class="menu-item">
+                    <a href="#">Room service</a>
+                  </li>
+                </ul>
+              </li>
             <li class="menu-item dropdown">
               <a href="{{url('teams')}}">TEAM</a>
             </li>
             <li class="menu-item dropdown">
               <a href="{{url('gallery')}}">GALLERY</a>
             </li>
-            <li class="menu-item dropdown" >
-                <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Contact
-                  </button>
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" >
-                      <a class="dropdown-item" href="{{url('contact')}}">CONTACT US</a>
-                      <a class="dropdown-item" href="{{url('messagerecieved')}}">Messages</a>
-                      <a class="dropdown-item" href="{{url('editcontactinformation')}}">Edit contact info</a>
-
-                  </ul>
-            </li>
-            {{-- <li class="menu-item dropdown">
-              <a href="#">ELEMENTS</a>
-              <ul class="submenu">
-                <li class="menu-item">
-                  <a href="style-guide.html">Style Guide</a>
-                </li>
-                <li class="menu-item">
-                  <a href="buttons.html">Buttons</a>
-                </li>
-                <li class="menu-item">
-                  <a href="icons.html">Icons</a>
-                </li>
-              </ul>
-            </li> --}}
+            <li class="menu-item dropdown">
+                <a href="{{url('contact')}}">contact us</a>
+                <ul class="submenu">
+                  <li class="menu-item">
+                    <a href="{{url('messagerecieved')}}">Messages</a>
+                  </li>
+                  <li class="menu-item">
+                    <a href="{{url('editcontactinformation')}}">Edit contact info</a>
+                  </li>
+                </ul>
+              </li>
 
             @if (Route::has('login'))
                 @auth
