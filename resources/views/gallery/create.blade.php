@@ -37,12 +37,3 @@
     </form>
 </div>
 @endsection
-
-
-
-
-
-{{--
-'galurl' =>"staff1.jpg",
-'galcaption' =>  "Swimming pool",
-'category_id' =>2, --}}

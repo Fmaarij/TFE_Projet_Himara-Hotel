@@ -23,6 +23,11 @@ class GalleryController extends Controller
         return view ('gallery.index',compact('gallery'));
     }
 
+    public function allimg(){
+        $gallery = Gallery::all();
+        return view ('gallery.allimg',compact('gallery'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -100,7 +105,8 @@ class GalleryController extends Controller
     public function edit($id)
     {
         $gallery=Gallery::find($id);
-        return view('gallery.edit',compact('gallery'));
+        $category = Category::all();
+        return view('gallery.edit',compact('gallery','category'));
     }
 
     /**
@@ -112,10 +118,10 @@ class GalleryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $gallery=new Gallery;
+        $gallery=Gallery::find($id);
         if($request->hasFile('img')) {
-            Storage::delete('storage/gallery/thumbnail/'.$gallery->img);
-            Storage::delete('public/gallery/'.$gallery->img);
+            Storage::delete('public/gallery_images/thumbnail/'.$gallery->img);
+            Storage::delete('public/gallery_images/'.$gallery->img);
             //get filename with extension
             $filenamewithextension = $request->file('img')->getClientOriginalName();
 
@@ -138,7 +144,7 @@ class GalleryController extends Controller
                 // $constraint->aspectRatio();
             });
             $img->save();
-            $gallery->galurl = $filenametostore;
+            $gallery->img = $filenametostore;
         }
 
         $gallery ->galname=$request->galname;

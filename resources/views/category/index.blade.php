@@ -4,34 +4,22 @@
         <table class="table table-hover border ">
             <thead>
                 <tr>
-                    <th>Photo name </th>
                     <th>category</th>
-                    <th>image</th>
                     <th>Show</th>
                     <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($gallery as $gal )
+                @foreach ($category as $cat )
                     <tr>
-                        <td>{{ $gal->galname }}</td>
-                        <td>{{ $gal->category->catname }}</td>
-                        <td width="10%" class="rounded">
-                            {{-- <img class="w-100 rounded-circle" src="{{ $team->img }}" alt="memebrs picture"> --}}
-                            <img class="w-100 rounded-circle"
-                                src="{{ asset('storage/gallery_images/thumbnail/' . $gal->img) }}" class="img-fluid"
-                                alt="Image">
-                        </td>
+                        <td>{{ $cat->catname }}</td>
                         <td>
-                            <a href="/{{ $gal->id }}/showimg">
-
+                            <a href="/{{ $cat->id }}/showcat">
                                 <button class="btn">Show</button>
-
                             </a>
                         </td>
-
                         <td>
-                            <form action="/{{ $gal->id }}/deleteimg" method="post" enctype="multipart/form-data">
+                            <form action="/{{ $cat->id }}/deletecat" method="post" enctype="multipart/form-data">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn bg-danger">delete</button>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ContactinformationController;
 use App\Http\Controllers\GalleryController;
@@ -67,18 +68,25 @@ Route::delete('{id}/deletemember',[TeamController::class,'destroy'])->name('dele
 
 //GALLERY
 Route::get('/gallery',[GalleryController::class,'index'])->name('gallery');
-Route::get('/allimg',[TeamController::class,'allimg'])->name('allimg');
+Route::get('/allimg',[GalleryController::class,'allimg'])->name('allimg');
 Route::get('/createimg',[GalleryController::class,'create'])->name('createimg');
 Route::post('/storeimg',[GalleryController::class,'store'])->name('storeimg');
 Route::get('{id}/showimg',[GalleryController::class,'show']);
 Route::get('/{id}/editimg',[GalleryController::class,'edit'])->name('editimg');
 Route::Put('/{id}/updateimg',[GalleryController::class,'update'])->name('updateimg');
 Route::delete('{id}/deleteimg',[GalleryController::class,'destroy'])->name('deleteimg');
-
-
-
-// storeimage
 //End Of GALLERY
+
+//CATEGORY
+Route::get('/category',[CategoryController::class,'index'])->name('category');
+Route::get('/createcat',[CategoryController::class,'create'])->name('createcat');
+Route::post('/storecat',[CategoryController::class,'store'])->name('storecat');
+Route::get('{id}/showcat',[CategoryController::class,'show']);
+Route::get('/{id}/editcat',[CategoryController::class,'edit'])->name('editcat');
+Route::Put('/{id}/updatecat',[CategoryController::class,'update'])->name('updatecat');
+Route::delete('{id}/deletecat',[CategoryController::class,'destroy'])->name('deletecat');
+//End Of CATEGORY
+
 
 //CONTACT
 Route::get('/contact',[ContactController::class,'index'])->name('contact');

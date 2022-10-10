@@ -110,6 +110,12 @@
                 <li class="menu-item">
                   <a href="{{url('createimg')}}">Add un image</a>
                 </li>
+                <li class="menu-item">
+                    <a href="{{url('category')}}">Categories</a>
+                  </li>
+                  <li class="menu-item">
+                    <a href="{{url('createcat')}}">Add a category</a>
+                  </li>
               </ul>
             </li>
             <li class="menu-item dropdown">
