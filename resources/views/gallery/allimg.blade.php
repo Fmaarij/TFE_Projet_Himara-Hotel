@@ -1,21 +1,21 @@
 @extends('layouts.app')
 @section('content')
     <div class="p-5">
-        <table class="table table-hover border ">
+        <table class="table table-hover border table-responsive ">
             <thead>
                 <tr>
-                    <th>Photo name </th>
-                    <th>category</th>
-                    <th>image</th>
-                    <th>Show</th>
-                    <th>Delete</th>
+                    <th >Photo name </th>
+                    <th >category</th>
+                    <th >image</th>
+                    <th >Show</th>
+                    <th >Delete</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($gallery as $gal )
-                    <tr>
+                    <tr class="align-bottom">
                         <td>{{ $gal->galname }}</td>
-                        <td>{{ $gal->category->catname }}</td>
+                        <td class="align-top">{{ $gal->category->catname }}</td>
                         <td width="10%" class="rounded">
                             {{-- <img class="w-100 rounded-circle" src="{{ $team->img }}" alt="memebrs picture"> --}}
                             <img class="w-100 rounded-circle"

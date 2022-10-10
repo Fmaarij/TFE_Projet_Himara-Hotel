@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+{{-- <html lang="{{ str_replace('_', '-', app()->getLocale()) }}"> --}}
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
+    <title>Hotel Himara - Hotel HTML Template</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
     <meta content="" name="author">
@@ -31,9 +34,9 @@
     <link href="fonts/flaticon.css" rel="stylesheet">
     <!-- ========== GOOGLE FONTS ========== -->
     <link href="https://fonts.googleapis.com/css?family=Oswald:400,500,600,700%7CRoboto:100,300,400,400i,500,700"
-      rel="stylesheet">
+        rel="stylesheet">
     <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
 </head>
 
 <body class="font-sans antialiased">
@@ -42,28 +45,39 @@
         <!-- Page Heading -->
 
         <header class="bg-white shadow">
-                @include('layouts.navigation')
+            <!-- ========== PRELOADER ========== -->
+            <div class="loader loader3">
+                <div class="loader-inner">
+                    <div class="spin">
+                        <span></span>
+                        <img src="/images/logo.svg" alt="Hotel Himara">
+                    </div>
+                </div>
             </div>
-        </header>
+            <!-- ========== MOBILE MENU ========== -->
+            <nav id="mobile-menu"></nav>
+            @include('layouts.navigation')
+    </div>
+    </header>
 
 
-        <!-- Page Content -->
-        <main>
-            @if(Session::has('error'))
+    <!-- Page Content -->
+    <main>
+        @if (Session::has('error'))
             <div class="p-5">
-            <div class="alert alert-success">
-                {{ Session::get('error') }}
-                @php
-                    Session::forget('error');
-                @endphp
+                <div class="alert alert-success">
+                    {{ Session::get('error') }}
+                    @php
+                        Session::forget('error');
+                    @endphp
+                </div>
             </div>
-        </div>
-            @endif
-            @yield('content')
-        </main>
+        @endif
+        @yield('content')
+    </main>
 
-        {{-- Footer --}}
-        @include('layouts.footer')
+    {{-- Footer --}}
+    @include('layouts.footer')
 
 
 
@@ -72,7 +86,7 @@
     <!-- ========== BACK TO TOP ========== -->
     <div class="back-to-top">
         <i class="fa fa-angle-up" aria-hidden="true"></i>
-      </div>
+    </div>
     {{-- Scripts --}}
     <!-- ========== JAVASCRIPT ========== -->
     <script src="/js/jquery.min.js"></script>

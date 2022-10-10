@@ -1,12 +1,13 @@
  <!-- ========== PRELOADER ========== -->
- <div class="loader loader3">
+ {{-- <div class="loader loader3">
     <div class="loader-inner">
       <div class="spin">
         <span></span>
         <img src="/images/logo.svg" alt="Hotel Himara">
       </div>
     </div>
-  </div>
+  </div> --}}
+
   <!-- ========== MOBILE MENU ========== -->
   <nav id="mobile-menu"></nav>
   <!-- ========== WRAPPER ========== -->
@@ -74,6 +75,16 @@
           <ul class="menu">
             <li class="menu-item dropdown active">
               <a href="{{url('homepage')}}">HOME</a>
+              <ul class="submenu">
+                <li class="menu-item">
+                  <a href="{{url('welcomemsg')}}">Welcome Message</a>
+                </li>
+                {{-- <li class="menu-item">
+                    <a href="{{url('createwlcmsg')}}">Add a Welcome Message</a>
+                  </li> --}}
+
+
+              </ul>
             </li>
 
             <li class="menu-item dropdown">

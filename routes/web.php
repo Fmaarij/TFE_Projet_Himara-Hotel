@@ -9,6 +9,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\RoomserviceController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\WelcomemsgController;
 use App\Models\Roomservice;
 use Illuminate\Support\Facades\Route;
 
@@ -36,6 +37,17 @@ require __DIR__.'/auth.php';
 //HOME
 Route::get('/homepage',[HomeController::class,'index'])->name('homepage');
 //End Of HOME
+
+//Welcome message
+Route::get('/welcomemsg',[WelcomemsgController::class,'index'])->name('welcomemsg');
+Route::get('/createwlcmsg',[WelcomemsgController::class,'index'])->name('createwlcmsg');
+Route::post('/storewlcmsg',[WelcomemsgController::class,'store']);
+Route::get('/{id}/showwlcmsg',[WelcomemsgController::class,'show'])->name('wlcomemsg');
+Route::get('/{id}/editwlcmsg',[WelcomemsgController::class,'edit'])->name('editlcomemsg');
+Route::Put('/{id}/updatewlcmsg',[WelcomemsgController::class,'update']);
+Route::delete('/{id}/deletewlcemsg',[WelcomemsgController::class,'destroy']);
+
+//End Of Welcome message
 
 //ROOM
 Route::get('/rooms',[RoomController::class,'index'])->name('rooms');
