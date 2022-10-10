@@ -92,6 +92,14 @@
               </li>
             <li class="menu-item dropdown">
               <a href="{{url('teams')}}">TEAM</a>
+              <ul class="submenu">
+                <li class="menu-item">
+                  <a href="{{url('allmembers')}}">All Members</a>
+                </li>
+                <li class="menu-item">
+                  <a href="{{url('createmember')}}">Add a Member</a>
+                </li>
+              </ul>
             </li>
             <li class="menu-item dropdown">
               <a href="{{url('gallery')}}">GALLERY</a>

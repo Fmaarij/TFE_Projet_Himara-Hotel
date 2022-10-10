@@ -51,6 +51,15 @@ Route::post('/storeroomservice',[RoomserviceController::class,'store']);
 
 //TEAM
 Route::get('/teams',[TeamController::class,'index'])->name('teams');
+Route::get('/allmembers',[TeamController::class,'allmembers'])->name('allmembers');
+Route::get('/createmember',[TeamController::class,'create'])->name('createmember');
+Route::post('/storemember',[TeamController::class,'store']);
+Route::get('{id}/showmember',[TeamController::class,'show']);
+
+// à revoir le samed-07-10-2022
+// Route::get('/{id}/editmember',[TeamController::class,'edit'])->name('editmember');
+// Route::put('{id}/updatemember',[TeamController::class,'update']);
+// Route::delete('{id}/deletemember',[TeamController::class,'destroy']);
 //End Of TEAM
 
 //GALLERY
