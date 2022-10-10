@@ -3,7 +3,7 @@
     <div class="loader-inner">
       <div class="spin">
         <span></span>
-        <img src="images/logo.svg" alt="Hotel Himara">
+        <img src="/images/logo.svg" alt="Hotel Himara">
       </div>
     </div>
   </div>
@@ -29,22 +29,22 @@
                 <i class="fa fa-envelope-o "></i>contact@hotelhimara.com</a>
             </li>
             <li class="language-menu">
-              <a href="#" class="active-language"><img src="images/icons/flags/gb.png" alt="Image">English</a>
+              <a href="#" class="active-language"><img src="/images/icons/flags/gb.png" alt="Image">English</a>
               <ul class="languages">
                 <li class="language">
-                  <a href="#"><img src="images/icons/flags/it.png" alt="Image">Italiano</a>
+                  <a href="#"><img src="/images/icons/flags/it.png" alt="Image">Italiano</a>
                 </li>
                 <li class="language">
-                  <a href="#"><img src="images/icons/flags/gr.png" alt="Image">Ελληνικα</a>
+                  <a href="#"><img src="/images/icons/flags/gr.png" alt="Image">Ελληνικα</a>
                 </li>
                 <li class="language">
-                  <a href="#"><img src="images/icons/flags/al.png" alt="Image">Shqip</a>
+                  <a href="#"><img src="/images/icons/flags/al.png" alt="Image">Shqip</a>
                 </li>
                 <li class="language">
-                  <a href="#"><img src="images/icons/flags/fr.png" alt="Image">Français</a>
+                  <a href="#"><img src="/images/icons/flags/fr.png" alt="Image">Français</a>
                 </li>
                 <li class="language">
-                  <a href="#"><img src="images/icons/flags/es.png" alt="Image">Español</a>
+                  <a href="#"><img src="/images/icons/flags/es.png" alt="Image">Español</a>
                 </li>
               </ul>
             </li>
@@ -59,7 +59,7 @@
         <div class="brand">
           <div class="logo">
             <a href="index.html">
-              <img src="images/logo.svg" alt="Hotel Himara">
+              <img src="/images/logo.svg" alt="Hotel Himara">
             </a>
           </div>
         </div>

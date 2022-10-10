@@ -6,14 +6,14 @@
           <!-- WIDGET -->
           <div class="col-md-3">
             <div class="footer-widget">
-              <img src="images/logo.svg" class="footer-logo" alt="Hotel Himara">
+              <img src="/images/logo.svg" class="footer-logo" alt="Hotel Himara">
               <div class="inner">
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, velit placeat assumenda incidunt
                   dolorem aliquam!</p>
                 <a href="https://www.tripadvisor.com/" target="_blank">
                   <div class="tripadvisor-banner">
                     <span class="review">Recommended</span>
-                    <img src="images/icons/tripadvisor.png" alt="Image">
+                    <img src="/images/icons/tripadvisor.png" alt="Image">
                   </div>
                 </a>
               </div>
