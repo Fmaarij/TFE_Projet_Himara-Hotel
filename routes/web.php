@@ -55,6 +55,9 @@ Route::get('/allmembers',[TeamController::class,'allmembers'])->name('allmembers
 Route::get('/createmember',[TeamController::class,'create'])->name('createmember');
 Route::post('/storemember',[TeamController::class,'store']);
 Route::get('{id}/showmember',[TeamController::class,'show']);
+Route::get('/{id}/editmember',[TeamController::class,'edit'])->name('editmember');
+Route::Put('/{id}/updatemember',[TeamController::class,'update'])->name('updatemember');
+Route::delete('{id}/deletemember',[TeamController::class,'destroy'])->name('deletemember');
 
 // à revoir le samed-07-10-2022
 // Route::get('/{id}/editmember',[TeamController::class,'edit'])->name('editmember');
@@ -64,6 +67,17 @@ Route::get('{id}/showmember',[TeamController::class,'show']);
 
 //GALLERY
 Route::get('/gallery',[GalleryController::class,'index'])->name('gallery');
+Route::get('/allimg',[TeamController::class,'allimg'])->name('allimg');
+Route::get('/createimg',[GalleryController::class,'create'])->name('createimg');
+Route::post('/storeimg',[GalleryController::class,'store'])->name('storeimg');
+Route::get('{id}/showimg',[GalleryController::class,'show']);
+Route::get('/{id}/editimg',[GalleryController::class,'edit'])->name('editimg');
+Route::Put('/{id}/updateimg',[GalleryController::class,'update'])->name('updateimg');
+Route::delete('{id}/deleteimg',[GalleryController::class,'destroy'])->name('deleteimg');
+
+
+
+// storeimage
 //End Of GALLERY
 
 //CONTACT

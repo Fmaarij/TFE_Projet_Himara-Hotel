@@ -103,6 +103,14 @@
             </li>
             <li class="menu-item dropdown">
               <a href="{{url('gallery')}}">GALLERY</a>
+              <ul class="submenu">
+                <li class="menu-item">
+                  <a href="{{url('allimg')}}">All Gallery</a>
+                </li>
+                <li class="menu-item">
+                  <a href="{{url('createimg')}}">Add un image</a>
+                </li>
+              </ul>
             </li>
             <li class="menu-item dropdown">
                 <a href="{{url('contact')}}">contact us</a>

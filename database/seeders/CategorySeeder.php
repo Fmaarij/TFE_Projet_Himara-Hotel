@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class GallerySeeder extends Seeder
+class CategorySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,38 +15,29 @@ class GallerySeeder extends Seeder
      */
     public function run()
     {
-        DB::table( 'galleries' )->insert( [ [
+        DB::table( 'categories' )->insert( [ [
 
-            'img' =>"breakfast.jpg",
-            'galname' =>  "Pasta",
-            'category_id' =>1,
+            'catname' =>"Restaurant",
             'created_at' =>now(),
             'updated_at' => now()
 
         ],
         [
-            'img' =>"pool.jpg",
-            'galname' =>  "Bleu Water",
-            'category_id' =>2,
+            'catname' =>"Swimming pool",
             'created_at' =>now(),
             'updated_at' => now()
         ],
         [
-            'img' =>"drink.jpg",
-            'galname' =>  "Relax",
-            'category_id' =>3,
+            'catname' =>"Spa",
             'created_at' =>now(),
             'updated_at' => now()
         ],
         [
-            'img' =>"ocean.jpg",
-            'galname' =>  "Ocean",
-            'category_id' =>4,
+            'catname' =>"Room view",
             'created_at' =>now(),
             'updated_at' => now()
+
         ],
-
-
        ] );
     }
 }

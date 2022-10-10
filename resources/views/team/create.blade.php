@@ -18,7 +18,7 @@
         class="contact-form" >
         @csrf
         <div class="form-group " >
-            <input type="hidden" class="form-control" name="name" placeholder="Jeanette " type="text">
+            <input  class="form-control" name="name" placeholder="Jeanette " type="text">
         </div>
         <div class="form-group">
             <input class="form-control" name="lastname" placeholder="owens" type="text">

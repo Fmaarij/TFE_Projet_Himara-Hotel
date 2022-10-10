@@ -22,8 +22,8 @@
                     <td>{{ $team->post }}</td>
                     <td>{{ $team->details }}</td>
                     <td width="10%" class="rounded">
-                        <img class="w-100 rounded-circle" src="{{ $team->img }}" alt="memebrs picture">
-                       {{-- <img src="asset('storage/team_images/'.{{ $team->img }})" alt=""> --}}
+                        {{-- <img class="w-100 rounded-circle" src="{{ $team->img }}" alt="memebrs picture"> --}}
+                        <img class="w-100 rounded-circle"  src="{{asset('storage/team_images/thumbnail/'.$team->img)}}" class="img-fluid" alt="Image">
                     </td>
                     <td>
                         <a href="/{{$team->id}}/showmember">
@@ -41,7 +41,7 @@
                     </td> --}}
 
                     <td>
-                        <form action="/{{$team->id}}/deletemsg" method="post" enctype="multipart/form-data">
+                        <form action="/{{$team->id}}/deletemember" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('DELETE')
                         <button class="btn bg-danger">delete</button>

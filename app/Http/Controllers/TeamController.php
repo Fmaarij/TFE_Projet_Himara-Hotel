@@ -6,6 +6,7 @@ use App\Models\Team;
 use App\Http\Requests\StoreTeamRequest;
 use App\Http\Requests\UpdateTeamRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 class TeamController extends Controller
 {
@@ -70,7 +71,7 @@ class TeamController extends Controller
 
                 //Resize image here
                 $thumbnailpath = public_path('storage/team_images/thumbnail/'.$filenametostore);
-                $img = Image::make($thumbnailpath)->resize(400, 150, function($constraint) {
+                $img = Image::make($thumbnailpath)->resize(540, 540, function($constraint) {
                     // $constraint->aspectRatio();
                 });
                 $img->save();
@@ -119,9 +120,46 @@ class TeamController extends Controller
      * @param  \App\Models\Team  $team
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateTeamRequest $request, Team $team)
+    public function update(Request $request,$id)
     {
-        //
+            $teams=Team::find($id);
+            if($request->hasFile('img')) {
+                Storage::delete('storage/team_images/thumbnail/'.$teams->img);
+                Storage::delete('public/team_images/'.$teams->img);
+
+                //get filename with extension
+                $filenamewithextension = $request->file('img')->getClientOriginalName();
+
+                //get filename without extension
+                $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
+
+                //get file extension
+                $extension = $request->file('img')->getClientOriginalExtension();
+
+                //filename to store
+                $filenametostore = $filename.'_'.time().'.'.$extension;
+
+                //Upload File
+                $request->file('img')->storeAs('public/team_images', $filenametostore);
+                $request->file('img')->storeAs('public/team_images/thumbnail', $filenametostore);
+
+                //Resize image here
+                $thumbnailpath = public_path('storage/team_images/thumbnail/'.$filenametostore);
+                $img = Image::make($thumbnailpath)->resize(540, 540, function($constraint) {
+                    // $constraint->aspectRatio();
+                });
+                $img->save();
+                $teams->img = $filenametostore;
+            }
+
+            $teams->post = $request->post;
+            $teams->name = $request->name;
+            $teams->lastname = $request->lastname;
+            $teams->details = $request->details;
+            $teams->save();
+
+            return redirect()->back()->with('success', "Member updated successfully.");
+
     }
 
     /**
@@ -130,8 +168,10 @@ class TeamController extends Controller
      * @param  \App\Models\Team  $team
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Team $team)
+    public function destroy($id)
     {
-        //
+        $teams = Team::find($id);
+        $teams->delete();
+        return redirect('allmembers');
     }
 }
