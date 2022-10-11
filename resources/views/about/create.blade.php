@@ -46,10 +46,4 @@
     </form>
 </div>
 @endsection
-{{-- $table->string('title')->nullable();
-$table->string('year')->nullable();
-$table->string('subpara')->nullable();
-$table->string('para')->nullable();
-$table->string('img')->nullable();
-$table->string('imgtitle')->nullable();
-$table->string('imgpara')->nullable(); --}}
+

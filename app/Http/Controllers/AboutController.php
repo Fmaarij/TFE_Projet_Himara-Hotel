@@ -17,7 +17,7 @@ class AboutController extends Controller
      */
     public function index()
     {
-endforeach
+        $abouts=About::all();
         return view ('about.index',compact('abouts'));
     }
 

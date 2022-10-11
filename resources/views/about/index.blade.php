@@ -17,6 +17,7 @@
             </thead>
             <tbody>
                 @foreach ($abouts as $about )
+                    @if($about != null)
                     <tr class="align-bottom">
                         <td>{{ $about->title }}</td>
                         <td class="align-top">{{ $about->year }}</td>
@@ -45,6 +46,7 @@
                             </form>
                         </td>
                     </tr>
+                    @endif
                 @endforeach
             </tbody>
         </table>
