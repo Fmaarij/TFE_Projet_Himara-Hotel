@@ -32,6 +32,7 @@ class DatabaseSeeder extends Seeder
             TeamSeeder::class,
             CategorySeeder::class,
             GallerySeeder::class,
+            WelcomemsgSeeder::class,
         ]);
     }
 }

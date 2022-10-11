@@ -16,18 +16,23 @@
     <div class="topbar">
       <div class="container">
         <div class="welcome-mssg">
-          Welcome to Hotel Himara.
+            @foreach ($welcomemsg as $msg )
+            {{-- @if ( $msg != null) --}}
+            {{$msg->wlcmsg}}
+            {{-- @endif --}}
+            @endforeach
         </div>
         <div class="top-right-menu">
+            @foreach ($contactinfo as $info)
           <ul class="top-menu">
             <li class="d-none d-md-inline">
               <a href="tel:+18881234567">
-                <i class="fa fa-phone"></i>+1 888 123 4567
+                <i class="fa fa-phone"></i>{{$info->phone}}
               </a>
             </li>
             <li class="d-none d-md-inline">
               <a href="mailto:contact@hotelhimara.com">
-                <i class="fa fa-envelope-o "></i>contact@hotelhimara.com</a>
+                <i class="fa fa-envelope-o "></i>{{$info->email}}</a>
             </li>
             <li class="language-menu">
               <a href="#" class="active-language"><img src="/images/icons/flags/gb.png" alt="Image">English</a>
@@ -50,6 +55,7 @@
               </ul>
             </li>
           </ul>
+          @endforeach
         </div>
       </div>
     </div>

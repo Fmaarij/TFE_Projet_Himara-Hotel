@@ -74,29 +74,31 @@
             <div class="footer-widget">
               <h3>Contact Info</h3>
               <div class="inner">
+                @foreach ($contactinfo as $info )
                 <ul class="contact-details">
                   <li>
                     <i class="fa fa-map-marker" aria-hidden="true"></i>
-                    Lorem ipsum dolor, 25, Himara
+                   {{$info->adress}}
                   </li>
                   <li>
                     <i class="fa fa-phone" aria-hidden="true"></i>
-                    Phone: +1 888 123 4567
+                    Phone: {{$info->phone}}
                   </li>
                   <li>
                     <i class="fa fa-fax"></i>
-                    Fax: +1 888 123 4567
+                    Fax: {{$info->gsm}}
                   </li>
                   <li>
                     <i class="fa fa-globe"></i>
-                    Web: www.hotelhimara.com
+                    Web: {{$info->website}}
                   </li>
                   <li>
                     <i class="fa fa-envelope"></i>
                     Email:
-                    <a href="mailto:info@site.com">contact@hotelhimara.com</a>
+                    <a href="mailto:info@site.com">{{$info->email}}</a>
                   </li>
                 </ul>
+                @endforeach
               </div>
             </div>
           </div>
