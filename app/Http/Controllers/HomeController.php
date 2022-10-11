@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Home;
 use App\Http\Requests\StoreHomeRequest;
 use App\Http\Requests\UpdateHomeRequest;
+use App\Models\About;
 
 class HomeController extends Controller
 {
@@ -16,7 +17,9 @@ class HomeController extends Controller
     public function index()
     {
         $home = Home::all();
-        return view ('home.index',compact('home'));
+        $abouts = About::all();
+        
+        return view ('home.index',compact('home','abouts'));
     }
 
     /**

@@ -85,11 +85,12 @@
                 <li class="menu-item">
                   <a href="{{url('welcomemsg')}}">Welcome Message</a>
                 </li>
-                {{-- <li class="menu-item">
-                    <a href="{{url('createwlcmsg')}}">Add a Welcome Message</a>
-                  </li> --}}
-
-
+                <li class="menu-item">
+                    <a href="{{url('about')}}">About info</a>
+                  </li>
+                <li class="menu-item">
+                    <a href="{{url('createabout')}}">Add about info</a>
+                  </li>
               </ul>
             </li>
 

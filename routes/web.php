@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\RoomController;
 use App\Http\Controllers\RoomserviceController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\WelcomemsgController;
+use App\Models\About;
 use App\Models\Roomservice;
 use Illuminate\Support\Facades\Route;
 
@@ -46,8 +48,18 @@ Route::get('/{id}/showwlcmsg',[WelcomemsgController::class,'show'])->name('wlcom
 Route::get('/{id}/editwlcmsg',[WelcomemsgController::class,'edit'])->name('editlcomemsg');
 Route::Put('/{id}/updatewlcmsg',[WelcomemsgController::class,'update']);
 Route::delete('/{id}/deletewlcemsg',[WelcomemsgController::class,'destroy']);
-
 //End Of Welcome message
+
+
+//About Info
+Route::get('/about',[AboutController::class,'index'])->name('about');
+Route::get('/createabout',[AboutController::class,'create'])->name('createabout');
+Route::post('/storeabout',[AboutController::class,'store'])->name('storeabout');
+Route::get('{id}/showabout',[AboutController::class,'show']);
+Route::get('/{id}/editabout',[AboutController::class,'edit'])->name('editabout');
+Route::Put('/{id}/updateabout',[AboutController::class,'update'])->name('updateabout');
+Route::delete('{id}/deleteabout',[AboutController::class,'destroy'])->name('deleteabout');
+//End Of About Info
 
 //ROOM
 Route::get('/rooms',[RoomController::class,'index'])->name('rooms');
