@@ -14,6 +14,6 @@ class RoomSeeder extends Seeder
      */
     public function run()
     {
-        //
+        
     }
 }

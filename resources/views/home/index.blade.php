@@ -308,7 +308,7 @@
             <div class="section-title">
                 <h4>OUR <span class="text-himara">ROOMS</span></h4>
                 <p class="section-subtitle">Our favorite rooms</p>
-                <a href="rooms-list.html" class="view-all">View all rooms</a>
+                <a href="{{url('rooms')}}" class="view-all">View all rooms</a>
             </div>
             <div class="row">
                 <!-- ITEM -->

@@ -20,7 +20,14 @@ class GalleryController extends Controller
     public function index()
     {
         $gallery = Gallery::all();
-        return view ('gallery.index',compact('gallery'));
+        $galleryall = Gallery::paginate(8);
+        // dd($galleryall);
+
+        // $gallery = Gallery::all()->count();
+        // if((intval($gallery)!=8)){
+
+            return view ('gallery.index',compact('gallery','galleryall'));
+        // }
     }
 
     public function allimg(){

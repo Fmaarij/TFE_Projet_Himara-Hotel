@@ -32,41 +32,55 @@
         <div class="container">
             <div class="grid image-gallery row">
                 <!-- ITEM -->
-                @foreach ($gallery as $gal )
-                @if ($gal->category_id !== $gal->category->id )
-                <div class="gallery-item filter-all col-md-3">
-                    <figure class="gradient-overlay image-icon">
-                        <a href="{{asset('storage/gallery_images/thumbnail/'.$gal->img)}}">
-                            <img src="{{asset('storage/gallery_images/thumbnail/'.$gal->img)}}" class="img-fluid" alt="Image">
-                        </a>
-                        <figcaption>{{$gal->galname}}</figcaption>
-                    </figure>
-                </div>
+                {{-- galleryall --}}
+                {{-- @foreach ($gallery as $gal) --}}
+                {{-- @if ($gal->category_id !== $gal->category->id) --}}
+                @foreach ($galleryall as $all)
+                    <div class="gallery-item filter-all col-md-3">
+                        <figure class="gradient-overlay image-icon">
+                            <a href="{{ asset('storage/gallery_images/thumbnail/' . $all->img) }}">
+                                <img src="{{ asset('storage/gallery_images/thumbnail/' . $all->img) }}" class="img-fluid"
+                                    alt="Image">
+                            </a>
+                            <figcaption>{{ $all->galname }}</figcaption>
+                        </figure>
+                    </div>
+                @endforeach
+                {{-- Paginattion --}}
+                {{-- <div class="d-flex justify-center">
+                    {{ $galleryall->links() }}
+                </div> --}}
+                {{-- {{dd($galleryall->links()== true)}} --}}
+                {{-- @if (($galleryall->links() != true)) --}}
 
-                @elseif ($gal->category_id===2)
-                <div class="gallery-item filter-swimmingpool col-md-3">
-                    <figure class="gradient-overlay image-icon">
-                        <a href="{{asset('storage/gallery_images/thumbnail/'.$gal->img)}}">
-                            <img src="{{asset('storage/gallery_images/thumbnail/'.$gal->img)}}" class="img-fluid" alt="Image">
-                        </a>
-                        <figcaption>{{$gal->galname}}</figcaption>
-                    </figure>
-                </div>
+
+                @foreach ($gallery as $gal)
+                    @if ($gal->category_id === 2)
+                        <div class="gallery-item filter-swimmingpool col-md-3">
+                            <figure class="gradient-overlay image-icon">
+                                <a href="{{ asset('storage/gallery_images/thumbnail/' . $gal->img) }}">
+                                    <img src="{{ asset('storage/gallery_images/thumbnail/' . $gal->img) }}" class="img-fluid"
+                                        alt="Image">
+                                </a>
+                                <figcaption>{{ $gal->galname }}</figcaption>
+                            </figure>
+                        </div>
 
 
-                <!-- ITEM -->
-                @elseif ($gal->category_id === 4)
-                <div class="gallery-item filter-roomview col-md-3">
-                    <figure class="gradient-overlay image-icon">
-                        <a href="{{asset('storage/gallery_images/thumbnail/'.$gal->img)}}">
-                            <img src="{{asset('storage/gallery_images/thumbnail/'.$gal->img)}}" class="img-fluid" alt="Image">
-                        </a>
-                        <figcaption>{{$gal->galname}}</figcaption>
-                    </figure>
-                </div>
+                        <!-- ITEM -->
+                    @elseif ($gal->category_id === 4)
+                        <div class="gallery-item filter-roomview col-md-3">
+                            <figure class="gradient-overlay image-icon">
+                                <a href="{{ asset('storage/gallery_images/thumbnail/' . $gal->img) }}">
+                                    <img src="{{ asset('storage/gallery_images/thumbnail/' . $gal->img) }}" class="img-fluid"
+                                        alt="Image">
+                                </a>
+                                <figcaption>{{ $gal->galname }}</figcaption>
+                            </figure>
+                        </div>
 
-                <!-- ITEM -->
-                {{-- <div class="gallery-item col-md-3">
+                        <!-- ITEM -->
+                        {{-- <div class="gallery-item col-md-3">
                     <figure class="gradient-overlay image-icon">
                         <a href="images/gallery/gallery3.jpg">
                             <img src="images/gallery/gallery3.jpg" class="img-fluid" alt="Image">
@@ -74,8 +88,8 @@
                         <figcaption>Cocktail</figcaption>
                     </figure>
                 </div> --}}
-                <!-- ITEM -->
-                {{-- @if ($gal->category_id === 1)
+                        <!-- ITEM -->
+                        {{-- @if ($gal->category_id === 1)
                 <div class="gallery-item filter-restaurnat col-md-3">
                     <figure class="gradient-overlay image-icon">
                         <a href="{{asset('storage/gallery_images/thumbnail/'.$gal->img)}}">
@@ -86,8 +100,8 @@
                     </figure>
                 </div>
                 @endif --}}
-                <!-- ITEM -->
-                {{-- <div class="gallery-item col-md-3">
+                        <!-- ITEM -->
+                        {{-- <div class="gallery-item col-md-3">
                     <figure class="gradient-overlay image-icon">
                         <a href="images/gallery/gallery5.jpg">
                             <img src="images/gallery/gallery5.jpg" class="img-fluid" alt="Image">
@@ -95,19 +109,20 @@
                         <figcaption>Playground</figcaption>
                     </figure>
                 </div> --}}
-                <!-- ITEM -->
-                @elseif ($gal->category_id === 1)
-                <div class="gallery-item filter-restaurnat col-md-3">
-                    <figure class="gradient-overlay image-icon">
-                        <a href="{{asset('storage/gallery_images/thumbnail/'.$gal->img)}}">
-                            <img src="{{asset('storage/gallery_images/thumbnail/'.$gal->img)}}" class="img-fluid" alt="Image">
-                        </a>
-                        <figcaption>{{$gal->galname}}</figcaption>
-                    </figure>
-                </div>
+                        <!-- ITEM -->
+                    @elseif ($gal->category_id === 1)
+                        <div class="gallery-item filter-restaurnat col-md-3">
+                            <figure class="gradient-overlay image-icon">
+                                <a href="{{ asset('storage/gallery_images/thumbnail/' . $gal->img) }}">
+                                    <img src="{{ asset('storage/gallery_images/thumbnail/' . $gal->img) }}" class="img-fluid"
+                                        alt="Image">
+                                </a>
+                                <figcaption>{{ $gal->galname }}</figcaption>
+                            </figure>
+                        </div>
 
-                <!-- ITEM -->
-                {{-- <div class="gallery-item col-md-3">
+                        <!-- ITEM -->
+                        {{-- <div class="gallery-item col-md-3">
                     <figure class="gradient-overlay image-icon">
                         <a href="images/gallery/gallery7.jpg">
                             <img src="images/gallery/gallery7.jpg" class="img-fluid" alt="Image">
@@ -115,8 +130,8 @@
                         <figcaption>Wedding Ceremony</figcaption>
                     </figure>
                 </div> --}}
-                <!-- ITEM -->
-                {{-- <div class="gallery-item filter-roomview col-md-3">
+                        <!-- ITEM -->
+                        {{-- <div class="gallery-item filter-roomview col-md-3">
                     <figure class="gradient-overlay image-icon">
                         <a href="images/gallery/gallery8.jpg">
                             <img src="images/gallery/gallery8.jpg" class="img-fluid" alt="Image">
@@ -124,8 +139,8 @@
                         <figcaption>Beach</figcaption>
                     </figure>
                 </div> --}}
-                <!-- ITEM -->
-                {{-- <div class="gallery-item col-md-3">
+                        <!-- ITEM -->
+                        {{-- <div class="gallery-item col-md-3">
                     <figure class="gradient-overlay image-icon">
                         <a href="images/gallery/gallery9.jpg">
                             <img src="images/gallery/gallery9.jpg" class="img-fluid" alt="Image">
@@ -133,8 +148,8 @@
                         <figcaption>Honeymoon Room</figcaption>
                     </figure>
                 </div> --}}
-                <!-- ITEM -->
-                {{-- <div class="gallery-item filter-roomview col-md-3">
+                        <!-- ITEM -->
+                        {{-- <div class="gallery-item filter-roomview col-md-3">
                     <figure class="gradient-overlay image-icon">
                         <a href="images/gallery/gallery10.jpg">
                             <img src="images/gallery/gallery10.jpg" class="img-fluid" alt="Image">
@@ -142,19 +157,20 @@
                         <figcaption>Sea</figcaption>
                     </figure>
                 </div> --}}
-                <!-- ITEM -->
-                @elseif ($gal->category_id === 3)
-                <div class="gallery-item filter-spa col-md-3">
-                    <figure class="gradient-overlay image-icon">
-                        <a href="{{asset('storage/gallery_images/thumbnail/'.$gal->img)}}">
-                            <img src="{{asset('storage/gallery_images/thumbnail/'.$gal->img)}}" class="img-fluid" alt="Image">
-                        </a>
-                        <figcaption>{{$gal->galname}}</figcaption>
-                    </figure>
-                    </figure>
-                </div>
-                <!-- ITEM -->
-                {{-- <div class="gallery-item filter-restaurnat col-md-3">
+                        <!-- ITEM -->
+                    @elseif ($gal->category_id === 3)
+                        <div class="gallery-item filter-spa col-md-3">
+                            <figure class="gradient-overlay image-icon">
+                                <a href="{{ asset('storage/gallery_images/thumbnail/' . $gal->img) }}">
+                                    <img src="{{ asset('storage/gallery_images/thumbnail/' . $gal->img) }}" class="img-fluid"
+                                        alt="Image">
+                                </a>
+                                <figcaption>{{ $gal->galname }}</figcaption>
+                            </figure>
+                            </figure>
+                        </div>
+                        <!-- ITEM -->
+                        {{-- <div class="gallery-item filter-restaurnat col-md-3">
                     <figure class="gradient-overlay image-icon">
                         <a href="images/gallery/gallery12.jpg">
                             <img src="images/gallery/gallery12.jpg" class="img-fluid" alt="Image">
@@ -162,8 +178,8 @@
                         <figcaption>Restaurant</figcaption>
                     </figure>
                 </div> --}}
-                <!-- ITEM -->
-                {{-- <div class="gallery-item filter-roomview filter-restaurnat col-md-3">
+                        <!-- ITEM -->
+                        {{-- <div class="gallery-item filter-roomview filter-restaurnat col-md-3">
                     <figure class="gradient-overlay image-icon">
                         <a href="images/gallery/gallery13.jpg">
                             <img src="images/gallery/gallery13.jpg" class="img-fluid" alt="Image">
@@ -171,8 +187,8 @@
                         <figcaption>Restaurant</figcaption>
                     </figure>
                 </div> --}}
-                <!-- ITEM -->
-                {{-- <div class="gallery-item col-md-3">
+                        <!-- ITEM -->
+                        {{-- <div class="gallery-item col-md-3">
                     <figure class="gradient-overlay image-icon">
                         <a href="images/gallery/gallery14.jpg">
                             <img src="images/gallery/gallery14.jpg" class="img-fluid" alt="Image">
@@ -180,8 +196,8 @@
                         <figcaption>Sea</figcaption>
                     </figure>
                 </div> --}}
-                <!-- ITEM -->
-                {{-- <div class="gallery-item filter-restaurnat col-md-3">
+                        <!-- ITEM -->
+                        {{-- <div class="gallery-item filter-restaurnat col-md-3">
                     <figure class="gradient-overlay image-icon">
                         <a href="images/gallery/gallery15.jpg">
                             <img src="images/gallery/gallery15.jpg" class="img-fluid" alt="Image">
@@ -189,8 +205,8 @@
                         <figcaption>Restaurant</figcaption>
                     </figure>
                 </div> --}}
-                <!-- ITEM -->
-                {{-- <div class="gallery-item filter-roomview col-md-3">
+                        <!-- ITEM -->
+                        {{-- <div class="gallery-item filter-roomview col-md-3">
                     <figure class="gradient-overlay image-icon">
                         <a href="images/gallery/gallery16.jpg">
                             <img src="images/gallery/gallery16.jpg" class="img-fluid" alt="Image">
@@ -198,8 +214,9 @@
                         <figcaption>Room View</figcaption>
                     </figure>
                 </div> --}}
-                @endif
-                @endforeach
+                    @endif
+                    @endforeach
+                    {{-- @endif --}}
             </div>
         </div>
     </main>

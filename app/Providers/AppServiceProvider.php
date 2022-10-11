@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Contactinformation;
+use App\Models\Room;
 use App\Models\Welcomemsg;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Auth;
@@ -32,6 +33,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with('user', Auth::user());
             $view->with('welcomemsg', Welcomemsg::all());
             $view->with('contactinfo', Contactinformation::all());
+            $view->with('roomdispo',Room::orderBy('created_at','asc')->take(5)->get());
             // $view->with('hotelinfo', HotelInfo::all());
             // $view->with('news', Article::all()->take(4));
         });

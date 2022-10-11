@@ -22,7 +22,7 @@
             <div class="row">
                 <!-- ITEM -->
                 @foreach ($teams as $team )
-
+        {{-- @if($team->post == 'Housekeeper') --}}
                 <div class="col-lg-3 col-md-6">
                     <div class="staff-item">
                         <figure>
@@ -36,7 +36,7 @@
                         </div>
                     </div>
                 </div>
-
+                {{-- @endif --}}
                 @endforeach
             </div>
         </div>

@@ -45,6 +45,217 @@ class GallerySeeder extends Seeder
             'created_at' =>now(),
             'updated_at' => now()
         ],
+        [
+            'img' =>"pool.jpg",
+            'galname' =>  "Bleu Water",
+            'category_id' =>2,
+            'created_at' =>now(),
+            'updated_at' => now()
+        ],
+        [
+            'img' =>"drink.jpg",
+            'galname' =>  "Relax",
+            'category_id' =>3,
+            'created_at' =>now(),
+            'updated_at' => now()
+        ],
+        [
+            'img' =>"ocean.jpg",
+            'galname' =>  "Ocean",
+            'category_id' =>4,
+            'created_at' =>now(),
+            'updated_at' => now()
+        ],
+        [
+            'img' =>"pool.jpg",
+            'galname' =>  "Bleu Water",
+            'category_id' =>2,
+            'created_at' =>now(),
+            'updated_at' => now()
+        ],
+        [
+            'img' =>"drink.jpg",
+            'galname' =>  "Relax",
+            'category_id' =>3,
+            'created_at' =>now(),
+            'updated_at' => now()
+        ],
+        [
+            'img' =>"ocean.jpg",
+            'galname' =>  "Ocean",
+            'category_id' =>4,
+            'created_at' =>now(),
+            'updated_at' => now()
+        ],
+        [
+            'img' =>"ocean.jpg",
+            'galname' =>  "Ocean",
+            'category_id' =>4,
+            'created_at' =>now(),
+            'updated_at' => now()
+        ],
+        [
+            'img' =>"pool.jpg",
+            'galname' =>  "Bleu Water",
+            'category_id' =>2,
+            'created_at' =>now(),
+            'updated_at' => now()
+        ],
+        [
+            'img' =>"drink.jpg",
+            'galname' =>  "Relax",
+            'category_id' =>3,
+            'created_at' =>now(),
+            'updated_at' => now()
+        ],
+        [
+            'img' =>"ocean.jpg",
+            'galname' =>  "Ocean",
+            'category_id' =>4,
+            'created_at' =>now(),
+            'updated_at' => now()
+        ],
+        [
+            'img' =>"ocean.jpg",
+            'galname' =>  "Ocean",
+            'category_id' =>4,
+            'created_at' =>now(),
+            'updated_at' => now()
+        ],
+        [
+            'img' =>"pool.jpg",
+            'galname' =>  "Bleu Water",
+            'category_id' =>2,
+            'created_at' =>now(),
+            'updated_at' => now()
+        ],
+        [
+            'img' =>"drink.jpg",
+            'galname' =>  "Relax",
+            'category_id' =>3,
+            'created_at' =>now(),
+            'updated_at' => now()
+        ],
+        [
+            'img' =>"ocean.jpg",
+            'galname' =>  "Ocean",
+            'category_id' =>4,
+            'created_at' =>now(),
+            'updated_at' => now()
+        ],
+        [
+            'img' =>"ocean.jpg",
+            'galname' =>  "Ocean",
+            'category_id' =>4,
+            'created_at' =>now(),
+            'updated_at' => now()
+        ],
+        [
+            'img' =>"pool.jpg",
+            'galname' =>  "Bleu Water",
+            'category_id' =>2,
+            'created_at' =>now(),
+            'updated_at' => now()
+        ],
+        [
+            'img' =>"drink.jpg",
+            'galname' =>  "Relax",
+            'category_id' =>3,
+            'created_at' =>now(),
+            'updated_at' => now()
+        ],
+        [
+            'img' =>"ocean.jpg",
+            'galname' =>  "Ocean",
+            'category_id' =>4,
+            'created_at' =>now(),
+            'updated_at' => now()
+        ],
+        [
+            'img' =>"ocean.jpg",
+            'galname' =>  "Ocean",
+            'category_id' =>4,
+            'created_at' =>now(),
+            'updated_at' => now()
+        ],
+        [
+            'img' =>"pool.jpg",
+            'galname' =>  "Bleu Water",
+            'category_id' =>2,
+            'created_at' =>now(),
+            'updated_at' => now()
+        ],
+        [
+            'img' =>"drink.jpg",
+            'galname' =>  "Relax",
+            'category_id' =>3,
+            'created_at' =>now(),
+            'updated_at' => now()
+        ],
+        [
+            'img' =>"ocean.jpg",
+            'galname' =>  "Ocean",
+            'category_id' =>4,
+            'created_at' =>now(),
+            'updated_at' => now()
+        ],
+        [
+            'img' =>"ocean.jpg",
+            'galname' =>  "Ocean",
+            'category_id' =>4,
+            'created_at' =>now(),
+            'updated_at' => now()
+        ],
+        [
+            'img' =>"pool.jpg",
+            'galname' =>  "Bleu Water",
+            'category_id' =>2,
+            'created_at' =>now(),
+            'updated_at' => now()
+        ],
+        [
+            'img' =>"drink.jpg",
+            'galname' =>  "Relax",
+            'category_id' =>3,
+            'created_at' =>now(),
+            'updated_at' => now()
+        ],
+        [
+            'img' =>"ocean.jpg",
+            'galname' =>  "Ocean",
+            'category_id' =>4,
+            'created_at' =>now(),
+            'updated_at' => now()
+        ],
+        [
+            'img' =>"ocean.jpg",
+            'galname' =>  "Ocean",
+            'category_id' =>4,
+            'created_at' =>now(),
+            'updated_at' => now()
+        ],
+        [
+            'img' =>"pool.jpg",
+            'galname' =>  "Bleu Water",
+            'category_id' =>2,
+            'created_at' =>now(),
+            'updated_at' => now()
+        ],
+        [
+            'img' =>"drink.jpg",
+            'galname' =>  "Relax",
+            'category_id' =>3,
+            'created_at' =>now(),
+            'updated_at' => now()
+        ],
+        [
+            'img' =>"ocean.jpg",
+            'galname' =>  "Ocean",
+            'category_id' =>4,
+            'created_at' =>now(),
+            'updated_at' => now()
+        ],
+        
 
 
        ] );

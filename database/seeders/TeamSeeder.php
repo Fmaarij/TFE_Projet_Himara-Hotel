@@ -89,7 +89,42 @@ class TeamSeeder extends Seeder
             'created_at' =>now(),
             'updated_at' => now()
         ],
-
+        [
+            'img' =>"staff1.jpg",
+            'post' =>  "Reciptionist",
+            'name'=> 'Debora',
+            'lastname'=> 'Stijn',
+            'details'=>'From Germany, 34 years old, Bachelor degree in 2019',
+            'created_at' =>now(),
+            'updated_at' => now()
+        ],
+        [
+            'img' =>"staff1.jpg",
+            'post' =>  "Chef",
+            'name'=> 'Louis',
+            'lastname'=> 'Tychon',
+            'details'=>'From Belgium, 27 years old, Bachelor degree in 2019',
+            'created_at' =>now(),
+            'updated_at' => now()
+        ],
+        [
+            'img' =>"staff1.jpg",
+            'post' =>  "Reciptionist",
+            'name'=> 'Debora',
+            'lastname'=> 'Stijn',
+            'details'=>'From Germany, 34 years old, Bachelor degree in 2019',
+            'created_at' =>now(),
+            'updated_at' => now()
+        ],
+        [
+            'img' =>"staff1.jpg",
+            'post' =>  "Chef",
+            'name'=> 'Louis',
+            'lastname'=> 'Tychon',
+            'details'=>'From Belgium, 27 years old, Bachelor degree in 2019',
+            'created_at' =>now(),
+            'updated_at' => now()
+        ],
 
 
 
