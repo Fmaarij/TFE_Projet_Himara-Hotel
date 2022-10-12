@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\About;
 use App\Http\Requests\StoreAboutRequest;
 use App\Http\Requests\UpdateAboutRequest;
+use App\Models\Provider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
@@ -28,8 +29,8 @@ class AboutController extends Controller
      */
     public function create()
     {
-        // $abouts = About::all();
-        return view('about.create');
+        $providers = Provider::all();
+        return view('about.create',compact('providers'));
     }
 
     /**
@@ -71,6 +72,7 @@ class AboutController extends Controller
         $abouts->year=$request->year;
         $abouts->subpara=$request->subpara;
         $abouts->para=$request->para;
+        $abouts->provider=json_encode( $request->provider);
         $abouts->imgtitle=$request->imgtitle;
         $abouts->imgpara=$request->imgpara;
         $abouts->save();

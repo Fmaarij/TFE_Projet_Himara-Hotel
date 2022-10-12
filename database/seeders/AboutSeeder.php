@@ -23,6 +23,7 @@ class AboutSeeder extends Seeder
             'imgtitle' =>"Luxury Hotel",
             'imgpara' =>'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad dolorem iste suscipit voluptates architecto nemo.',
             'img'=>"logo-about.jpg",
+            // 'provider'=>"provider-1.jpg",
             'created_at' =>now(),
             'updated_at' => now()
 

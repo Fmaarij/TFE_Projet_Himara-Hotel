@@ -10,6 +10,7 @@
                     <th>Para</th>
                     <th>ImgTitle</th>
                     <th>ImgCaptiopn</th>
+                    <th>Providers</th>
                     <th>Image</th>
                     <th >Show</th>
                     <th >Delete</th>
@@ -17,7 +18,7 @@
             </thead>
             <tbody>
                 @foreach ($abouts as $about )
-                    @if($about != null)
+                    {{-- @if($about != null) --}}
                     <tr class="align-bottom">
                         <td>{{ $about->title }}</td>
                         <td class="align-top">{{ $about->year }}</td>
@@ -25,6 +26,19 @@
                         <td>{{ $about->para }}</td>
                         <td>{{ $about->imgtitle }}</td>
                         <td>{{ $about->imgpara }}</td>
+                        <td>
+                            @php $providers = $about->provider ? json_decode($about->provider, true) : []; @endphp
+
+
+                            @if ($providers != null)
+                                @foreach ($providers as $provid)
+                                {{-- {{dd($provid)}} --}}
+                                    <img  alt="pic" src="{{$provid}}"/>
+                                    {{-- @else
+                                    <p>nothing</p> --}}
+                                @endforeach
+                            @endif
+                        </td>
                         <td width="10%" class="rounded">
                             <img class="w-100 rounded-circle"
                                 src="{{ asset('storage/about_images/thumbnail/' . $about->img) }}" class="img-fluid"
@@ -46,7 +60,7 @@
                             </form>
                         </td>
                     </tr>
-                    @endif
+                    {{-- @endif --}}
                 @endforeach
             </tbody>
         </table>

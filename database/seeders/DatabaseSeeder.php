@@ -34,6 +34,7 @@ class DatabaseSeeder extends Seeder
             GallerySeeder::class,
             WelcomemsgSeeder::class,
             AboutSeeder::class,
+            ProviderSeeder::class,
         ]);
     }
 }
