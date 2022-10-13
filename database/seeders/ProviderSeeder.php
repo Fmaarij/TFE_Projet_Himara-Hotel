@@ -17,20 +17,20 @@ class ProviderSeeder extends Seeder
     {
         DB::table( 'providers' )->insert( [ [
             'provider_name' =>"Book Holidays",
-            'img' =>  "provider-1.jpg",
+            'img' =>  "provider-1.png",
             'created_at' =>now(),
             'updated_at' => now()
 
         ],
         [
             'provider_name'=>"Luxury Hotel",
-            'img' => 'provider-2.jpg',
+            'img' => 'provider-2.png',
             'created_at' =>now(),
             'updated_at' => now()
         ],
         [
             'provider_name'=>"Top Hotel",
-            'img' => "provider-3.jpg",
+            'img' => "provider-3.png",
             'created_at' =>now(),
             'updated_at' => now()
         ],
@@ -38,7 +38,7 @@ class ProviderSeeder extends Seeder
 
         [
             'provider_name'=>"E-travel",
-            'img' => "provider-4.jpg",
+            'img' => "provider-4.png",
             'created_at' =>now(),
             'updated_at' => now()
         ],

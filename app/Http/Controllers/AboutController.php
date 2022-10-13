@@ -41,6 +41,10 @@ class AboutController extends Controller
      */
     public function store(Request $request)
     {
+        $abouts = About::count();
+        if( intval($abouts)===1){
+            return redirect()->back()->with('error','You can add only once the information, please delete or edit the information which exits already.');
+        }else{
         $abouts=new About;
         if($request->hasFile('img')) {
             //get filename with extension
@@ -79,6 +83,7 @@ class AboutController extends Controller
 
         return redirect()->back()->with('success', "About info added successfully.");
     }
+    }
 
     /**
      * Display the specified resource.
@@ -100,8 +105,9 @@ class AboutController extends Controller
      */
     public function edit($id)
     {
+        $providerz=Provider::all();
         $abouts=About::find($id);
-        return view('about.edit',compact('abouts'));
+        return view('about.edit',compact('abouts','providerz'));
     }
 
     /**
@@ -145,6 +151,7 @@ class AboutController extends Controller
         $abouts->title=$request->title;
         $abouts->subpara=$request->subpara;
         $abouts->para=$request->para;
+        $abouts->provider=json_encode( $request->provider);
         $abouts->imgtitle=$request->imgtitle;
         $abouts->imgpara=$request->imgpara;
         $abouts->save();

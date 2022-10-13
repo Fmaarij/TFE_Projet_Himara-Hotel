@@ -33,7 +33,7 @@
                             @if ($providers != null)
                                 @foreach ($providers as $provid)
                                 {{-- {{dd($provid)}} --}}
-                                    <img  alt="pic" src="{{$provid}}"/>
+                                    <img  alt="pic" src="{{asset('storage/about_images/thumbnail/'.$provid)}}">
                                     {{-- @else
                                     <p>nothing</p> --}}
                                 @endforeach

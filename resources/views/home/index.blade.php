@@ -242,33 +242,19 @@
 
                     <div class="info-branding">
                         <p>{{$about->para}}</p>
+                        @php $providers = $about->provider ? json_decode($about->provider, true) : []; @endphp
                         <div class="providers">
                             <span>Recommended on:</span>
+                            @foreach ($providers as $provid)
                             <!-- ITEM -->
-                            <div class="item">
-                                <a href="#">
-                                    <img src="images/providers/provider-1.png" alt="Image">
-                                </a>
+                                <div class="item">
+                                    <a href="#">
+                                        <img alt="pic"
+                                            src="{{ asset('storage/about_images/thumbnail/' . $provid) }}">
+                                    </a>
+                                </div>
+                                @endforeach
                             </div>
-                            <!-- ITEM -->
-                            <div class="item">
-                                <a href="#">
-                                    <img src="images/providers/provider-2.png" alt="Image">
-                                </a>
-                            </div>
-                            <!-- ITEM -->
-                            <div class="item">
-                                <a href="#">
-                                    <img src="images/providers/provider-3.png" alt="Image">
-                                </a>
-                            </div>
-                            <!-- ITEM -->
-                            <div class="item">
-                                <a href="#">
-                                    <img src="images/providers/provider-4.png" alt="Image">
-                                </a>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="col-lg-4">

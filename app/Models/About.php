@@ -13,6 +13,7 @@ class About extends Model
         'year',
         'subpara',
         'para',
+        'provider',
         'img',
         'imgtitle',
         'imgpara',

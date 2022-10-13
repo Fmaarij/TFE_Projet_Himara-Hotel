@@ -14,6 +14,17 @@
                         <div class="card-body">
                             <p class="card-title">Subpara : {{ $abouts->subpara }}</p>
                             <p class="card-text">Para : {{ $abouts->para}}</p>
+                            <p class="card-text">Providers :
+                                @php $providers = $abouts->provider ? json_decode($abouts->provider, true) : []; @endphp
+                                @if ($providers != null)
+                                    @foreach ($providers as $provid)
+                                    {{-- {{dd($provid)}} --}}
+                                        <img  alt="pic" src="{{asset('storage/about_images/thumbnail/'.$provid)}}">
+                                        @endforeach
+                                        @else
+                                        <p>column provider needs to edited</p>
+                                @endif
+                            </p>
                             <p class="card-title">ImgTitle: {{ $abouts->imgtitle}}</p>
                             <p class="card-text">ImgTitle : {{ $abouts->imgpara}}</p>
                         </div>

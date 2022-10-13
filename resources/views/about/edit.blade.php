@@ -29,6 +29,27 @@
             <div class="form-group ">
                 <input class="form-control" name="para" value="{{ $abouts->para }}" type="text">
             </div>
+            <div class="form-group">Providers added already:
+                @php $providers = $abouts->provider ? json_decode($abouts->provider, true) : []; @endphp
+                @if ($providers != null)
+                    @foreach ($providers as $provid)
+                    {{-- {{dd($provid)}} --}}
+                        <img  alt="pic" src="{{asset('storage/about_images/thumbnail/'.$provid)}}">
+                        @endforeach
+                        @else
+                       <p>Chose the providers here</p>
+                @endif
+            </div>
+
+            <div class="form-group">
+                <div class="form-control ">
+                    @foreach ($providerz as $prov)
+                        <label for="provider"> <input type="checkbox" name="provider[]"
+                                value="{{ $prov->img }}">{{ $prov->provider_name }}:<img
+                                href="{{ $prov->provider }}"></label>
+                    @endforeach
+                </div>
+            </div>
             <div class="form-group">
                 <input class="form-control" name="imgtitle" value="{{ $abouts->imgtitle }}" type="text">
             </div>
