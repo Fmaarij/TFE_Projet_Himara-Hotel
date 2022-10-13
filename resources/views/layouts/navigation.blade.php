@@ -91,6 +91,12 @@
                 <li class="menu-item">
                     <a href="{{url('createabout')}}">Add about info</a>
                   </li>
+                  <li class="menu-item">
+                    <a href="{{url('himaraservices')}}">Himara Services</a>
+                  </li>
+                  <li class="menu-item">
+                    <a href="{{url('createHservice')}}">Add an Himara Service</a>
+                  </li>
               </ul>
             </li>
 

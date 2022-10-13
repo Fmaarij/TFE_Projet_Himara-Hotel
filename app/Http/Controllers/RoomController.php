@@ -83,7 +83,7 @@ class RoomController extends Controller {
 
                 //Resize image here
                 $thumbnailpath = public_path('storage/room_images/thumbnail/'.$filenametostore);
-                $img = Image::make($thumbnailpath)->resize(400, 150, function($constraint) {
+                $img = Image::make($thumbnailpath)->resize(1920, 1200, function($constraint) {
                     // $constraint->aspectRatio();
                 });
                 $img->save();

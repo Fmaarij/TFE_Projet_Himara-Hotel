@@ -35,6 +35,8 @@ class DatabaseSeeder extends Seeder
             WelcomemsgSeeder::class,
             AboutSeeder::class,
             ProviderSeeder::class,
+            RoomSeeder::class,
+            HimaraserviceSeeder::class,
         ]);
     }
 }

@@ -291,88 +291,37 @@
             </div>
             <div class="row">
                 <!-- ITEM -->
+                @foreach ($rooms as $room )
                 <div class="col-md-4">
                     <div class="room-grid-item">
                         <figure class="gradient-overlay-hover link-icon">
-                            <a href="room.html">
-                                <img src="images/rooms/single/single1.jpg" class="img-fluid" alt="Image">
+                            <a href="{{ asset('storage/room_images/' . $room->img) }}">
+                                 <img src="{{ asset('storage/room_images/thumbnail/' . $room->img) }}" class="img-fluid"
+                                                alt="Image">
                             </a>
                             <div class="room-services">
-                                <i class="fa fa-coffee" aria-hidden="true" data-toggle="popover" data-placement="right"
-                                    data-trigger="hover" data-content="Breakfast Included"
-                                    data-original-title="Breakfast"></i>
-                                <i class="fa fa-wifi" aria-hidden="true" data-toggle="popover" data-placement="right"
-                                    data-trigger="hover" data-content="Free WiFi" data-original-title="WiFi"></i>
-                                <i class="fa fa-television" data-toggle="popover" data-placement="right"
-                                    data-trigger="hover" data-content="Plasma TV with cable channels"
-                                    data-original-title="TV"></i>
+                                @php $categories = $room->service ? json_decode($room->service, true) : []; @endphp
+
+                                @if ($categories != null)
+                                    @foreach ($categories as $category)
+                                        <i class="{{ $category }}",  class="aria-hidden=true" data-toggle="popover" data-placement="right"   data-trigger="hover" ></i>
+                                        {{-- @else
+                                        <p>nothing</p> --}}
+                                    @endforeach
+                                @endif
                             </div>
-                            <div class="room-price">€89 / night</div>
+                            <div class="room-price">€{{$room->price}} / night</div>
                         </figure>
                         <div class="room-info">
                             <h2 class="room-title">
-                                <a href="room.html">Single Room</a>
+                                <a href="#">{{$room->typeofroom->type_name}}</a>
                             </h2>
-                            <p>Enjoy our single room</p>
+                            <p>Enjoy our {{$room->typeofroom->type_name}}</p>
                         </div>
+
                     </div>
                 </div>
-                <!-- ITEM -->
-                <div class="col-md-4">
-                    <div class="room-grid-item">
-                        <figure class="gradient-overlay-hover link-icon">
-                            <a href="room.html">
-                                <img src="images/rooms/double/double.jpg" class="img-fluid" alt="Image">
-                            </a>
-                            <div class="room-services">
-                                <i class="fa fa-coffee" aria-hidden="true" data-toggle="popover" data-placement="right"
-                                    data-trigger="hover" data-content="Breakfast Included"
-                                    data-original-title="Breakfast"></i>
-                                <i class="fa fa-wifi" aria-hidden="true" data-toggle="popover" data-placement="right"
-                                    data-trigger="hover" data-content="Free WiFi" data-original-title="WiFi"></i>
-                                <i class="fa fa-television" data-toggle="popover" data-placement="right"
-                                    data-trigger="hover" data-content="Plasma TV with cable channels"
-                                    data-original-title="TV"></i>
-                            </div>
-                            <div class="room-price">€129 / night</div>
-                        </figure>
-                        <div class="room-info">
-                            <h2 class="room-title">
-                                <a href="room.html">Double Room</a>
-                            </h2>
-                            <p>Enjoy our double room</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- ITEM -->
-                <div class="col-md-4">
-                    <div class="room-grid-item">
-                        <figure class="gradient-overlay-hover link-icon">
-                            <a href="room.html">
-                                <img src="images/rooms/deluxe/deluxe.jpg" class="img-fluid" alt="Image">
-                            </a>
-                            <div class="room-services">
-                                <i class="fa fa-coffee" aria-hidden="true" data-toggle="popover" data-placement="right"
-                                    data-trigger="hover" data-content="Breakfast Included"
-                                    data-original-title="Breakfast"></i>
-                                <i class="fa fa-bath" data-toggle="popover" data-placement="right" data-trigger="hover"
-                                    data-content="2 Bathrooms" data-original-title="Bathroom"></i>
-                                <i class="fa fa-wifi" aria-hidden="true" data-toggle="popover" data-placement="right"
-                                    data-trigger="hover" data-content="Free WiFi" data-original-title="WiFi"></i>
-                                <i class="fa fa-television" data-toggle="popover" data-placement="right"
-                                    data-trigger="hover" data-content="Plasma TV with cable channels"
-                                    data-original-title="TV"></i>
-                            </div>
-                            <div class="room-price">€189 / night</div>
-                        </figure>
-                        <div class="room-info">
-                            <h2 class="room-title">
-                                <a href="room.html">Deluxe Room</a>
-                            </h2>
-                            <p>Enjoy our delux room</p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -380,84 +329,35 @@
     <section class="services">
         <div class="container">
             <div class="section-title">
-                <h4>HIMARA. <span class="text-himara">SERVICES</span></h4>
-                <p class="section-subtitle">Check out our awesome services</p>
+                <h4>{{$himaraservices[0]->title}} <span class="text-himara">{{$himaraservices[0]->coloredpart}}</span></h4>
+                <p class="section-subtitle">{{$himaraservices[0]->subpara}}</p>
             </div>
             <div class="row">
                 <div class="col-lg-7 col-12">
                     <div data-slider-id="services" class="services-owl owl-carousel">
+                        @foreach ( $himaraservices as $serv )
                         <figure class="gradient-overlay">
-                            <img src="images/services/restaurant.jpg" class="img-fluid" alt="Image">
+                            <img src="{{asset('storage/himara_images/thumbnail/'.$serv->img)}}" class="img-fluid" alt="Image">
                             <figcaption>
-                                <h4>Restaurant</h4>
+                                <h4>{{$serv->imgtitle}}</h4>
                             </figcaption>
                         </figure>
-                        <figure class="gradient-overlay">
-                            <img src="images/services/spa.jpg" class="img-fluid" alt="Image">
-                            <figcaption>
-                                <h4>Spa</h4>
-                            </figcaption>
-                        </figure>
-                        <figure class="gradient-overlay">
-                            <img src="images/services/conference.jpg" class="img-fluid" alt="Image">
-                            <figcaption>
-                                <h4>Conference Room</h4>
-                            </figcaption>
-                        </figure>
-                        <figure class="gradient-overlay">
-                            <img src="images/services/swimming.jpg" class="img-fluid" alt="Image">
-                            <figcaption>
-                                <h4>Swimming Pool</h4>
-                            </figcaption>
-                        </figure>
+                        @endforeach
                     </div>
                 </div>
                 <div class="col-lg-5 col-12">
                     <div class="owl-thumbs" data-slider-id="services">
+                        @foreach ( $himaraservices as $serv )
                         <div class="owl-thumb-item">
                             <span class="media-left">
-                                <i class="flaticon-tray-1"></i>
+                                <i class="{{$serv->roomservice->service}}"></i>
                             </span>
                             <div class="media-body">
-                                <h5>Restaurant</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-                                    tincidunt
-                                    ut laoreet.</p>
+                                <h5>{{$serv->imgtitle}}</h5>
+                                <p>{{$serv->titlepara}}</p>
                             </div>
                         </div>
-                        <div class="owl-thumb-item">
-                            <span class="media-left">
-                                <i class="flaticon-nature"></i>
-                            </span>
-                            <div class="media-body">
-                                <h5>Spa - Beauty &amp; Health</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-                                    tincidunt
-                                    ut laoreet.</p>
-                            </div>
-                        </div>
-                        <div class="owl-thumb-item">
-                            <span class="media-left">
-                                <i class="flaticon-screen-1"></i>
-                            </span>
-                            <div class="media-body">
-                                <h5>Conference Room</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-                                    tincidunt
-                                    ut laoreet.</p>
-                            </div>
-                        </div>
-                        <div class="owl-thumb-item">
-                            <span class="media-left">
-                                <i class="flaticon-sports"></i>
-                            </span>
-                            <div class="media-body">
-                                <h5>Swimming Pool</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-                                    tincidunt
-                                    ut laoreet.</p>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

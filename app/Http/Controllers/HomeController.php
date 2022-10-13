@@ -6,6 +6,8 @@ use App\Models\Home;
 use App\Http\Requests\StoreHomeRequest;
 use App\Http\Requests\UpdateHomeRequest;
 use App\Models\About;
+use App\Models\Himaraservice;
+use App\Models\Room;
 
 class HomeController extends Controller
 {
@@ -18,8 +20,10 @@ class HomeController extends Controller
     {
         $home = Home::all();
         $abouts = About::all();
-        
-        return view ('home.index',compact('home','abouts'));
+        $rooms=Room::orderBy('id','desc')->take(3)->get();
+        $himaraservices = Himaraservice::all();
+
+        return view ('home.index',compact('home','abouts','rooms','himaraservices'));
     }
 
     /**

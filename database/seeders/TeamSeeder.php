@@ -131,9 +131,3 @@ class TeamSeeder extends Seeder
        ] );
     }
 }
-
-// 'img'=>"C:\laragon\www\ProjetSiteHimaraHotel\public\images\staff/staff1.jpg",
-// 'post'=>$this->faker->jobTitle,
-// 'name'=>$this->faker->name,
-// 'lastname'=>$this->faker->lastName,
-// 'details'=>$this->faker->paragraph(2),

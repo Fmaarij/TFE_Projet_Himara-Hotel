@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ContactinformationController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\HimaraserviceController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\RoomserviceController;
@@ -73,6 +74,19 @@ Route::get('/roomservices',[RoomserviceController::class,'index'])->name('roomse
 Route::get('/createroomservices',[RoomserviceController::class,'create'])->name('createroomservices');
 Route::post('/storeroomservice',[RoomserviceController::class,'store']);
 // End of ROOMSERVICE
+
+
+//Himara services
+Route::get('/himaraservices',[HimaraserviceController::class,'index'])->name('himaraservices');
+Route::get('/createHservice',[HimaraserviceController::class,'create'])->name('createHservice');
+Route::post('/storeHservice',[HimaraserviceController::class,'store'])->name('storeHservice');
+Route::get('{id}/showHservice',[HimaraserviceController::class,'show']);
+Route::get('/{id}/editHservice',[HimaraserviceController::class,'edit'])->name('editHservice');
+Route::Put('/{id}/updateHservice',[HimaraserviceController::class,'update'])->name('updateHservice');
+Route::delete('{id}/deleteHservice',[HimaraserviceController::class,'destroy'])->name('deleteHservice');
+//End Of Himara services
+
+
 
 //TEAM
 Route::get('/teams',[TeamController::class,'index'])->name('teams');

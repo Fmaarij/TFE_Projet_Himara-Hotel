@@ -28,6 +28,6 @@ class Room extends Model {
     // }
 
     public function typeofroom() {
-        return $this->hasMany(Typeofroom::class,'id');
+        return $this->belongsTo(Typeofroom::class,'typeofroom_id','id');
     }
 }

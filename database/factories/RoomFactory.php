@@ -27,7 +27,7 @@ class RoomFactory extends Factory
             'star'=>$this->faker->numberBetween(1,5),
             'description'=>$this->faker->paragraph(5),
             'price'=>$this->faker->numberBetween(47,200),
-            'service' => $this->faker->numberBetween(1,11),
+            // 'service' => $this->faker->numberBetween(1,11),
         ];
     }
 }

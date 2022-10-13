@@ -31,8 +31,8 @@
                                 <div class="col-lg-5">
                                     <figure class="gradient-overlay-hover link-icon">
                                         {{-- <a href="room.html"><img src="{{asset('storage/room/'.$room->img)}}" class="img-fluid" alt="Image"></a> --}}
-                                        <a href="room.html">
-                                            <img src="{{ asset('storage/room_images/' . $room->img) }}" class="img-fluid"
+                                        <a href="{{ asset('storage/room_images/' . $room->img) }}">
+                                            <img src="{{ asset('storage/room_images/thumbnail/' . $room->img) }}" class="img-fluid"
                                                 alt="Image">
                                             {{-- <img src="{{(!empty($room->img))? url( $room->img):url('roomthumbnail/no_image.jpg')}}"
                         class="img-fluid" alt="Image"> --}}

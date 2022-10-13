@@ -75,6 +75,30 @@ class RoomserviceSeeder extends Seeder
             'created_at' =>now(),
             'updated_at' => now()
         ],
+        [
+            'service_name'=>"Restaurant",
+            'service' => 'flaticon-tray-1',
+            'created_at' =>now(),
+            'updated_at' => now()
+        ],
+        [
+            'service_name'=>"Spa - Beauty & Health",
+            'service' => 'flaticon-screen-1',
+            'created_at' =>now(),
+            'updated_at' => now()
+        ],
+        [
+            'service_name'=>"Conference Room",
+            'service' => 'flaticon-screen-1',
+            'created_at' =>now(),
+            'updated_at' => now()
+        ],
+        [
+            'service_name'=>" Swimming Pool",
+            'service' => 'flaticon-sports',
+            'created_at' =>now(),
+            'updated_at' => now()
+        ],
        ] );
     }
 }

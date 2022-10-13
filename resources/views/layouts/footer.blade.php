@@ -36,10 +36,10 @@
 
                                      <li>
                                          <a href="blog-post.html">{{ $avail->availablerooms }}:
-                                            @foreach ($avail->typeofroom as $dispo)
+                                            {{-- @foreach ($avail->typeofroom as $dispo) --}}
                                             {{-- {{dd($dispo->type_name)}} --}}
-                                                 {{ $dispo->type_name }}
-                                             @endforeach
+                                                 {{ $avail->typeofroom->type_name }}
+                                             {{-- @endforeach --}}
                                          </a>
                                      </li>
                                      {{-- @endforeach --}}
