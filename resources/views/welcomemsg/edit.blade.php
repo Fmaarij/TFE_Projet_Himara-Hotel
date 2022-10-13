@@ -6,7 +6,6 @@
             <h4>Update the welcome message </h4>
             <p class="section-subtitle"></p>
         </div>
-
         {{-- msg  --}}
         @if (session('success'))
             <strong>

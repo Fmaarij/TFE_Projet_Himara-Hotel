@@ -13,14 +13,6 @@
         {{ session('success') }}
     </strong>
 @endif
-{{-- 'title',
-'coloredpart',
-'subpara',
-'img',
-'imgtitle',
-'icon_id',
-'titletitle',
-'titlepara', --}}
     <!-- add an himara service  FORM -->
     <form action="/storeHservice" method="post" enctype="multipart/form-data"
         class="contact-form" >
