@@ -65,7 +65,7 @@ class AboutController extends Controller
 
             //Resize image here
             $thumbnailpath = public_path('storage/about_images/thumbnail/'.$filenametostore);
-            $img = Image::make($thumbnailpath)->resize(600, 800, function($constraint) {
+            $img = Image::make($thumbnailpath)->resize(75, 103, function($constraint) {
                 // $constraint->aspectRatio();
             });
             $img->save();
@@ -141,7 +141,7 @@ class AboutController extends Controller
 
             //Resize image here
             $thumbnailpath = public_path('storage/about_images/thumbnail/'.$filenametostore);
-            $img = Image::make($thumbnailpath)->resize(600, 800, function($constraint) {
+            $img = Image::make($thumbnailpath)->resize(75, 103, function($constraint) {
                 // $constraint->aspectRatio();
             });
             $img->save();

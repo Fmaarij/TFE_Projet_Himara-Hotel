@@ -6,7 +6,10 @@ use App\Models\Home;
 use App\Http\Requests\StoreHomeRequest;
 use App\Http\Requests\UpdateHomeRequest;
 use App\Models\About;
+use App\Models\Gallery;
+use App\Models\Himaragallery;
 use App\Models\Himaraservice;
+use App\Models\Homepagephotovideo;
 use App\Models\Room;
 
 class HomeController extends Controller
@@ -22,8 +25,11 @@ class HomeController extends Controller
         $abouts = About::all();
         $rooms=Room::orderBy('id','desc')->take(3)->get();
         $himaraservices = Himaraservice::all();
+        $gallery = Gallery::all();
+        $himaragallery = Himaragallery::all();
+        $homepagephotovideos = Homepagephotovideo::all();
 
-        return view ('home.index',compact('home','abouts','rooms','himaraservices'));
+        return view ('home.index',compact('home','abouts','rooms','himaraservices','gallery','himaragallery','homepagephotovideos'));
     }
 
     /**

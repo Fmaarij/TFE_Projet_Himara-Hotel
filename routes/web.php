@@ -6,8 +6,10 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ContactinformationController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\HimaragalleryController;
 use App\Http\Controllers\HimaraserviceController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\HomepagephotovideoController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\RoomserviceController;
 use App\Http\Controllers\TeamController;
@@ -85,6 +87,26 @@ Route::get('/{id}/editHservice',[HimaraserviceController::class,'edit'])->name('
 Route::Put('/{id}/updateHservice',[HimaraserviceController::class,'update'])->name('updateHservice');
 Route::delete('{id}/deleteHservice',[HimaraserviceController::class,'destroy'])->name('deleteHservice');
 //End Of Himara services
+
+//Himara gallery
+Route::get('/himaragallery',[HimaragalleryController::class,'index'])->name('himaragallery');
+Route::get('/createHgal',[HimaragalleryController::class,'create'])->name('createHgal');
+Route::post('/storeHgal',[HimaragalleryController::class,'store'])->name('storeHgal');
+Route::get('{id}/showHgal',[HimaragalleryController::class,'show']);
+Route::get('/{id}/editHgal',[HimaragalleryController::class,'edit'])->name('editHgal');
+Route::Put('/{id}/updateHgal',[HimaragalleryController::class,'update'])->name('updateHgal');
+Route::delete('{id}/deleteHgal',[HimaragalleryController::class,'destroy'])->name('deleteHgal');
+//End Of Himara gallery
+
+//Himara homepagephotovideo
+Route::get('/himaraPV',[HomepagephotovideoController::class,'index'])->name('himaraPV');
+Route::get('/createPV',[HomepagephotovideoController::class,'create'])->name('createPV');
+Route::post('/storePV',[HomepagephotovideoController::class,'store'])->name('storePV');
+Route::get('{id}/showPV',[HomepagephotovideoController::class,'show']);
+Route::get('/{id}/editPV',[HomepagephotovideoController::class,'edit'])->name('editPV');
+Route::Put('/{id}/updatePV',[HomepagephotovideoController::class,'update'])->name('updatePV');
+Route::delete('{id}/deletePV',[HomepagephotovideoController::class,'destroy'])->name('deletePV');
+//End Of Himara homepagephotovideo
 
 
 

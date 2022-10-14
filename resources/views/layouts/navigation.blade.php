@@ -97,6 +97,20 @@
                   <li class="menu-item">
                     <a href="{{url('createHservice')}}">Add an Himara Service</a>
                   </li>
+
+                  <li class="menu-item">
+                    <a href="{{url('himaragallery')}}">Himara Gallery Head</a>
+                  </li>
+                  <li class="menu-item">
+                    <a href="{{url('createHgal')}}">Add an Himara Gallery Head</a>
+                  </li>
+
+                  <li class="menu-item">
+                    <a href="{{url('himaraPV')}}">Himara Photo & Video</a>
+                  </li>
+                  <li class="menu-item">
+                    <a href="{{url('createPV')}}">Add  Photo & Video</a>
+                  </li>
               </ul>
             </li>
 

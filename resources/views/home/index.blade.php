@@ -367,101 +367,27 @@
     <section class="gallery">
         <div class="container">
             <div class="section-title">
-                <h4>HIMARA. <span class="text-himara">GALLERY</span></h4>
+                {{-- {{dd($himaragallery)}} --}}
+                <h4>{{$himaragallery[0]->title}} <span class="text-himara">{{$himaragallery[0]->coloredpart}}</span></h4>
                 <p class="section-subtitle">Check out our image gallery</p>
-                <a href="gallery.html" class="view-all">View gallery images</a>
+                <a href="{{url('gallery')}}" class="view-all">{{$himaragallery[0]->direct}}</a>
             </div>
             <div class="gallery-owl owl-carousel image-gallery">
                 <!-- ITEM -->
+                @foreach ($gallery as $gal )
+
+                {{-- {{dd($gal->category->catname)}} --}}
                 <div class="gallery-item">
                     <figure class="gradient-overlay image-icon">
-                        <a href="images/gallery/gallery1.jpg">
-                            <img src="images/gallery/gallery1.jpg" alt="Image">
+                        <a href="{{asset('storage/gallery_images/thumbnail/'.$gal->img)}}">
+                            <img src="{{asset('storage/gallery_images/thumbnail/'.$gal->img)}}" alt="Image">
                         </a>
-                        <figcaption>Swimming Pool</figcaption>
+                        <figcaption> {{$gal->category->catname}}</figcaption>
                     </figure>
                 </div>
-                <!-- ITEM -->
-                <div class="gallery-item">
-                    <figure class="gradient-overlay image-icon">
-                        <a href="images/gallery/gallery2.jpg">
-                            <img src="images/gallery/gallery2.jpg" alt="Image">
-                        </a>
-                        <figcaption>Room View</figcaption>
-                    </figure>
-                </div>
-                <!-- ITEM -->
-                <div class="gallery-item">
-                    <figure class="gradient-overlay image-icon">
-                        <a href="images/gallery/gallery3.jpg">
-                            <img src="images/gallery/gallery3.jpg" alt="Image">
-                        </a>
-                        <figcaption>Cocktail</figcaption>
-                    </figure>
-                </div>
-                <!-- ITEM -->
-                <div class="gallery-item">
-                    <figure class="gradient-overlay image-icon">
-                        <a href="images/gallery/gallery4.jpg">
-                            <img src="images/gallery/gallery4.jpg" alt="Image">
-                        </a>
-                        <figcaption>Breakfast</figcaption>
-                    </figure>
-                </div>
-                <!-- ITEM -->
-                <div class="gallery-item">
-                    <figure class="gradient-overlay image-icon">
-                        <a href="images/gallery/gallery5.jpg">
-                            <img src="images/gallery/gallery5.jpg" alt="Image">
-                        </a>
-                        <figcaption>Playground</figcaption>
-                    </figure>
-                </div>
-                <!-- ITEM -->
-                <div class="gallery-item">
-                    <figure class="gradient-overlay image-icon">
-                        <a href="images/gallery/gallery6.jpg">
-                            <img src="images/gallery/gallery6.jpg" alt="Image">
-                        </a>
-                        <figcaption>Restaurant</figcaption>
-                    </figure>
-                </div>
-                <!-- ITEM -->
-                <div class="gallery-item">
-                    <figure class="gradient-overlay image-icon">
-                        <a href="images/gallery/gallery7.jpg">
-                            <img src="images/gallery/gallery7.jpg" alt="Image">
-                        </a>
-                        <figcaption>Wedding Ceremony</figcaption>
-                    </figure>
-                </div>
-                <!-- ITEM -->
-                <div class="gallery-item">
-                    <figure class="gradient-overlay image-icon">
-                        <a href="images/gallery/gallery8.jpg">
-                            <img src="images/gallery/gallery8.jpg" alt="Image">
-                        </a>
-                        <figcaption>Beach</figcaption>
-                    </figure>
-                </div>
-                <!-- ITEM -->
-                <div class="gallery-item">
-                    <figure class="gradient-overlay image-icon">
-                        <a href="images/gallery/gallery9.jpg">
-                            <img src="images/gallery/gallery9.jpg" alt="Image">
-                        </a>
-                        <figcaption>Honeymoon Room</figcaption>
-                    </figure>
-                </div>
-                <!-- ITEM -->
-                <div class="gallery-item">
-                    <figure class="gradient-overlay image-icon">
-                        <a href="images/gallery/gallery10.jpg">
-                            <img src="images/gallery/gallery10.jpg" alt="Image">
-                        </a>
-                        <figcaption>Sea</figcaption>
-                    </figure>
-                </div>
+
+                @endforeach
+
             </div>
         </div>
     </section>
@@ -680,7 +606,7 @@
                         <div class="row">
                             <div class="col-lg-4 col-12">
                                 <figure>
-                                    <img src="images/restaurant/restaurant1.jpg" class="img-fluid " alt="Image">
+                                    <img src="{{('storage/homepagephotovideo/thumbnail'.$homepagephotovideos[0]->img)}}" class="img-fluid " alt="Image">
                                 </figure>
                             </div>
                             <div class="col-lg-8 col-12">
@@ -835,12 +761,13 @@
         </div>
     </section>
     <!-- ========== VIDEO ========== -->
-    <section class="video np parallax gradient-overlay op6" data-src="images/video.jpg" data-parallax="scroll"
+    {{-- {{dd($homepagephotovideos[1]->img)}} --}}
+    <section class="video np parallax gradient-overlay op6" data-src="{{asset('storage/homepagephotovideo/thumbnail/'.$homepagephotovideos[1]->img)}}" data-parallax="scroll"
         data-speed="0.3" data-mirror-selector=".wrapper" data-z-index="0">
         <div class="inner gradient-overlay">
             <div class="container">
                 <div class="video-popup">
-                    <a class="popup-vimeo" href="https://www.youtube.com/watch?v=BDDfopejpwk">
+                    <a class="popup-vimeo" href="{{$homepagephotovideos[1]->videolink}}">
                         <i class="fa fa-play"></i>
                     </a>
                 </div>
