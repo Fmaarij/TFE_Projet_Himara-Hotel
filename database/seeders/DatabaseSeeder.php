@@ -39,6 +39,7 @@ class DatabaseSeeder extends Seeder
             HimaraserviceSeeder::class,
             HimaragallerySeeder::class,
             HomepagephotovideoSeeder::class,
+            HimararestaurantSeeder::class,
         ]);
     }
 }

@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-{{-- <html lang="{{ str_replace('_', '-', app()->getLocale()) }}"> --}}
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
+    <title>{{ config('app.name', 'Laravel') }}</title>
     <title>Hotel Himara - Hotel HTML Template</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
@@ -43,8 +43,8 @@
     <div class="min-h-screen bg-gray-100">
 
         <!-- Page Heading -->
-
-        <header class="bg-white shadow">
+{{--
+        <header class="bg-white shadow"> --}}
             <!-- ========== PRELOADER ========== -->
             <div class="loader loader3">
                 <div class="loader-inner">
@@ -54,11 +54,11 @@
                     </div>
                 </div>
             </div>
-            <!-- ========== MOBILE MENU ========== -->
-            <nav id="mobile-menu"></nav>
+
+
             @include('layouts.navigation')
     </div>
-    </header>
+    {{-- </header> --}}
 
 
     <!-- Page Content -->
@@ -78,11 +78,9 @@
 
     {{-- Footer --}}
     @include('layouts.footer')
-
-
-
     </div>
-
+  <!-- ========== CONTACT NOTIFICATION ========== -->
+  <div id="contact-notification" class="notification fixed"></div>
     <!-- ========== BACK TO TOP ========== -->
     <div class="back-to-top">
         <i class="fa fa-angle-up" aria-hidden="true"></i>

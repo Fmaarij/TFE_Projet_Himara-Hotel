@@ -1,4 +1,5 @@
- <!-- ========== FOOTER ========== -->
+
+<!-- ========== FOOTER ========== -->
  <footer>
      <div class="footer-widgets">
          <div class="container">

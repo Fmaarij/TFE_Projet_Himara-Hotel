@@ -7,6 +7,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ContactinformationController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HimaragalleryController;
+use App\Http\Controllers\HimararestaurantController;
 use App\Http\Controllers\HimaraserviceController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HomepagephotovideoController;
@@ -107,6 +108,16 @@ Route::get('/{id}/editPV',[HomepagephotovideoController::class,'edit'])->name('e
 Route::Put('/{id}/updatePV',[HomepagephotovideoController::class,'update'])->name('updatePV');
 Route::delete('{id}/deletePV',[HomepagephotovideoController::class,'destroy'])->name('deletePV');
 //End Of Himara homepagephotovideo
+
+//himara restaurent
+Route::get('/himarares',[HimararestaurantController::class,'index'])->name('himarares');
+Route::get('/createHres',[HimararestaurantController::class,'create'])->name('createHres');
+Route::post('/storeHres',[HimararestaurantController::class,'store'])->name('storeHres');
+Route::get('{id}/showHres',[HimararestaurantController::class,'show']);
+Route::get('/{id}/editHres',[HimararestaurantController::class,'edit'])->name('editHres');
+Route::Put('/{id}/updateHres',[HimararestaurantController::class,'update'])->name('updateHres');
+Route::delete('{id}/deleteHres',[HimararestaurantController::class,'destroy'])->name('deleteHres');
+//End Of himara restaurent
 
 
 

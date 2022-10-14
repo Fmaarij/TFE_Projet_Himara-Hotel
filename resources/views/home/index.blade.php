@@ -592,7 +592,7 @@
         </div>
     </section>
     <!-- ========== RESTAURANT ========== -->
-    <section class="restaurant image-bg parallax gradient-overlay op5" data-src="images/restaurant.jpg"
+    <section class="restaurant image-bg parallax gradient-overlay op5" data-src="{{('storage/homepagephotovideo/thumbnail/'.$homepagephotovideos[0]->img)}}"
         data-parallax="scroll" data-speed="0.3" data-mirror-selector=".wrapper" data-z-index="0">
         <div class="container">
             <div class="section-title">
