@@ -75,7 +75,7 @@ Route::delete('{id}/deleteabout',[AboutController::class,'destroy'])->name('dele
 
 //ROOM
 Route::get('/rooms',[RoomController::class,'index'])->name('rooms');
-Route::get('/showroom',[RoomController::class,'show'])->name('showroom');
+Route::get('/{id}/showroom',[RoomController::class,'show'])->name('showroom');
 Route::get('/createroom',[RoomController::class,'create'])->name('createroom');
 Route::post('/storeroom',[RoomController::class,'store']);
 //End Of ROOM

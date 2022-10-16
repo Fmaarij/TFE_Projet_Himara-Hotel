@@ -103,7 +103,7 @@
                                 <div class="col-lg-2">
                                     <div class="room-price">
                                         <span class="price">€{{ $room->price }} / night</span>
-                                        <a href="{{ url('showroom') }}" class="btn btn-sm">view <br> details</a>
+                                        <a href="/{{$room->id}}/showroom" class="btn btn-sm">view <br> details</a>
                                     </div>
                                 </div>
                             </div>

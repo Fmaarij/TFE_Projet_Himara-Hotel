@@ -9,13 +9,13 @@
                      <div class="footer-widget">
                          <img src="/images/logo.svg" class="footer-logo" alt="Hotel Himara">
                          <div class="inner">
-                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, velit placeat assumenda
-                                 incidunt
-                                 dolorem aliquam!</p>
+                             <p   style ="  height: 80px;
+                             width: auto;
+                             overflow-y: auto;" >{{$aboutuse[0]->para}}</p>
                              <a href="https://www.tripadvisor.com/" target="_blank">
                                  <div class="tripadvisor-banner">
                                      <span class="review">Recommended</span>
-                                     <img src="/images/icons/tripadvisor.png" alt="Image">
+                                     <img src="{{asset('storage/provider_images/thumnail/'.$providers[0]->img)}}" alt="Image">
                                  </div>
                              </a>
                          </div>

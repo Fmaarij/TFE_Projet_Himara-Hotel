@@ -23,6 +23,7 @@ return new class extends Migration
             // $table->string('bed')->nullable();
             // $table->string('maxguests')->nullable();
             $table->string('type_name')->nullable();
+            
             $table->timestamps();
         });
     }

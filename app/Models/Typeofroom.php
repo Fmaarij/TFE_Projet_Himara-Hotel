@@ -12,6 +12,7 @@ class Typeofroom extends Model
     protected $fillable = [
         // 'type',
         'room_id'
+
         // 'max/5',
         // 'reste',
         // 'bed',
@@ -22,4 +23,8 @@ class Typeofroom extends Model
     public function room() {
         return $this->hasMany(Room::class);
     }
+    public function roomsphoto() {
+        return $this->hasMany(Roomsphoto::class);
+    }
+
 }

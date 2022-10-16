@@ -4,26 +4,34 @@
         <table class="table table-hover border table-responsive ">
             <thead>
                 <tr>
-                    <th >Title </th>
-                    <th >Year</th>
-                    <th >Subpara</th>
+                    <th>Title </th>
+                    <th>Year</th>
+                    <th>Subpara</th>
                     <th>Para</th>
                     <th>ImgTitle</th>
                     <th>ImgCaptiopn</th>
                     <th>Providers</th>
                     <th>Image</th>
-                    <th >Show</th>
-                    <th >Delete</th>
+                    <th>Show</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($abouts as $about )
-                    {{-- @if($about != null) --}}
+                @foreach ($abouts as $about)
+                    {{-- @if ($about != null) --}}
                     <tr class="align-bottom">
                         <td>{{ $about->title }}</td>
                         <td class="align-top">{{ $about->year }}</td>
                         <td>{{ $about->subpara }}</td>
-                        <td>{{ $about->para }}</td>
+                        <td>
+                            <p
+                                style="  height: 140px;
+                            width: auto;
+                            overflow-y: scroll;">
+
+                                {{ $about->para }}
+                            </p>
+                        </td>
                         <td>{{ $about->imgtitle }}</td>
                         <td>{{ $about->imgpara }}</td>
                         <td>
@@ -32,8 +40,8 @@
 
                             @if ($providers != null)
                                 @foreach ($providers as $provid)
-                                {{-- {{dd($provid)}} --}}
-                                    <img  alt="pic" src="{{asset('storage/about_images/thumbnail/'.$provid)}}">
+                                    {{-- {{dd($provid)}} --}}
+                                    <img alt="pic" src="{{ asset('storage/about_images/thumbnail/' . $provid) }}">
                                     {{-- @else
                                     <p>nothing</p> --}}
                                 @endforeach

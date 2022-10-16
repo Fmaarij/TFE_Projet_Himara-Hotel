@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Room;
 use App\Http\Requests\StoreRoomRequest;
 use App\Http\Requests\UpdateRoomRequest;
+use App\Models\About;
 use App\Models\Roomservice;
+use App\Models\Roomsphoto;
 use App\Models\Typeofroom;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -29,9 +31,9 @@ class RoomController extends Controller {
         // {
 
         // $room = Room::find( 1 );
-
+        $roomsphotos = Roomsphoto::all();
         $rooms = Room::all();
-        return view ( 'room.index', compact( 'rooms' ) );
+        return view ( 'room.index', compact( 'rooms','roomsphotos' ) );
     }
 
     /**
@@ -116,9 +118,15 @@ class RoomController extends Controller {
     * @return \Illuminate\Http\Response
     */
 
-    public function show() {
-        $room = Room::all();
-        return view( 'room.show', compact( 'room' ) );
+    public function show($id) {
+
+        $room= Room::find($id);
+        $abouts = About::all();
+        $roomservices = Roomservice::all();
+        // $roomservices = Roomservice::where($room->service, '=','service')->get();
+
+        $roomsphotos = Roomsphoto::where('roomtype_id','=',$room->typeofroom->id)->get();
+        return view( 'room.show', compact( 'room','roomsphotos','abouts','roomservices' ) );
                 }
 
                 /**
