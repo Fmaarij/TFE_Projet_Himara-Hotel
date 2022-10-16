@@ -42,11 +42,18 @@ require __DIR__.'/auth.php';
 
 //HOME
 Route::get('/homepage',[HomeController::class,'index'])->name('homepage');
+Route::get('/allHtitles',[HomeController::class,'allHtitles'])->name('allHtitles');
+Route::get('/createHtitles',[HomeController::class,'create'])->name('createHtitles');
+Route::post('/storeHtitles',[HomeController::class,'store']);
+Route::get('/{id}/showHtitles',[HomeController::class,'show'])->name('wlcHtitles');
+Route::get('/{id}/editHtitles',[HomeController::class,'edit'])->name('editHtitles');
+Route::Put('/{id}/updateHtitles',[HomeController::class,'update']);
+Route::delete('/{id}/deleteHtitles',[HomeController::class,'destroy']);
 //End Of HOME
 
 //Welcome message
 Route::get('/welcomemsg',[WelcomemsgController::class,'index'])->name('welcomemsg');
-Route::get('/createwlcmsg',[WelcomemsgController::class,'index'])->name('createwlcmsg');
+// Route::get('/createwlcmsg',[WelcomemsgController::class,'create'])->name('createwlcmsg');
 Route::post('/storewlcmsg',[WelcomemsgController::class,'store']);
 Route::get('/{id}/showwlcmsg',[WelcomemsgController::class,'show'])->name('wlcomemsg');
 Route::get('/{id}/editwlcmsg',[WelcomemsgController::class,'edit'])->name('editlcomemsg');

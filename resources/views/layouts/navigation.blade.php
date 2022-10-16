@@ -83,6 +83,12 @@
                      <li class="menu-item dropdown active">
                          <a href="{{ url('homepage') }}">HOME</a>
                          <ul class="submenu">
+                            <li class="menu-item">
+                                <a href="{{ url('allHtitles') }}">All Titles</a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="{{ url('createHtitles') }}">Create title</a>
+                            </li>
                              <li class="menu-item">
                                  <a href="{{ url('welcomemsg') }}">Welcome Message</a>
                              </li>

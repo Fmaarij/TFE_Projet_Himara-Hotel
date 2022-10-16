@@ -40,6 +40,8 @@ class DatabaseSeeder extends Seeder
             HimaragallerySeeder::class,
             HomepagephotovideoSeeder::class,
             HimararestaurantSeeder::class,
+            HomeSeeder::class,
+            // LatestnewSeeder::class,
         ]);
     }
 }

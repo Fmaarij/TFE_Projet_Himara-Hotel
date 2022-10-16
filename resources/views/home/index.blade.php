@@ -596,37 +596,38 @@
         data-parallax="scroll" data-speed="0.3" data-mirror-selector=".wrapper" data-z-index="0">
         <div class="container">
             <div class="section-title">
-                <h4>HIMARA. RESTAURANT</h4>
-                <p class="section-subtitle">Live a gourmet dining experience</p>
+                <h4>{{$himararestaurants[0]->title}} {{$himararestaurants[0]->subtitle}}</h4>
+                <p class="section-subtitle">{{$himararestaurants[0]->subpara}}</p>
             </div>
             <div class="row">
                 <!-- ITEM -->
+                @foreach ($himararestaurants as $resitem )
                 <div class="col-md-6 col-sm-6 col-6">
                     <div class="restaurant-menu-item">
                         <div class="row">
                             <div class="col-lg-4 col-12">
                                 <figure>
-                                    <img src="{{('storage/homepagephotovideo/thumbnail'.$homepagephotovideos[0]->img)}}" class="img-fluid " alt="Image">
+                                    <img src="{{asset('storage/himararestaurent_images/thumbnail/'.$resitem->img)}}" class="img-fluid " alt="Image">
                                 </figure>
                             </div>
                             <div class="col-lg-8 col-12">
                                 <div class="info">
                                     <div class="title">
-                                        <span class="name">Salat</span>
+                                        <span class="name">{{$resitem->imgtitle}}</span>
                                         <span class="price">
-                                            <span class="amount">€16.99</span>
+                                            <span class="amount">€{{$resitem->price}}</span>
                                         </span>
                                     </div>
-                                    <p>Lorem ipsum dolor sit amet, elit, sed diam nonummy nibh euismod tincidunt ut
-                                        laoreet...
+                                    <p>{{$resitem->imgpara}}
                                     </p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                @endforeach
                 <!-- ITEM -->
-                <div class="col-md-6 col-sm-6 col-6">
+                {{-- <div class="col-md-6 col-sm-6 col-6">
                     <div class="restaurant-menu-item">
                         <div class="row">
                             <div class="col-lg-4 col-12">
@@ -649,7 +650,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>

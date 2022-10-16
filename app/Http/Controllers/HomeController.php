@@ -8,9 +8,12 @@ use App\Http\Requests\UpdateHomeRequest;
 use App\Models\About;
 use App\Models\Gallery;
 use App\Models\Himaragallery;
+use App\Models\Himararestaurant;
 use App\Models\Himaraservice;
 use App\Models\Homepagephotovideo;
+use App\Models\Latestnew;
 use App\Models\Room;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -21,15 +24,21 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $home = Home::all();
+        $homes = Home::all();
         $abouts = About::all();
         $rooms=Room::orderBy('id','desc')->take(3)->get();
         $himaraservices = Himaraservice::all();
         $gallery = Gallery::all();
         $himaragallery = Himaragallery::all();
         $homepagephotovideos = Homepagephotovideo::all();
+        $himararestaurants =Himararestaurant::all();
+        $latestnews = Latestnew::all();
 
-        return view ('home.index',compact('home','abouts','rooms','himaraservices','gallery','himaragallery','homepagephotovideos'));
+        return view ('home.index',compact('homes','abouts','rooms','himaraservices','gallery','himaragallery','homepagephotovideos','himararestaurants','Latestnew'));
+    }
+    public function allHtitles(){
+        $homes = Home::all();
+        return view ('home.allHtitles',compact('homes'));
     }
 
     /**
@@ -39,7 +48,7 @@ class HomeController extends Controller
      */
     public function create()
     {
-        //
+        return view('home.create');
     }
 
     /**
@@ -48,9 +57,13 @@ class HomeController extends Controller
      * @param  \App\Http\Requests\StoreHomeRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreHomeRequest $request)
+    public function store(Request $request)
     {
-        //
+        $homes = new Home;
+        $homes->title = $request->title;
+        $homes->subtitle = $request->subtitle;
+        $homes->save();
+        return redirect()->back()->with('message','Titles added successfull' );
     }
 
     /**
@@ -59,9 +72,10 @@ class HomeController extends Controller
      * @param  \App\Models\Home  $home
      * @return \Illuminate\Http\Response
      */
-    public function show(Home $home)
+    public function show($id)
     {
-        //
+        $homes = Home::find($id);
+        return view('home.show',compact('homes'));
     }
 
     /**
@@ -70,9 +84,10 @@ class HomeController extends Controller
      * @param  \App\Models\Home  $home
      * @return \Illuminate\Http\Response
      */
-    public function edit(Home $home)
+    public function edit($id)
     {
-        //
+        $homes = Home::find($id);
+        return view('home.edit',compact('homes'));
     }
 
     /**
@@ -82,9 +97,13 @@ class HomeController extends Controller
      * @param  \App\Models\Home  $home
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateHomeRequest $request, Home $home)
+    public function update(Request $request, $id)
     {
-        //
+        $homes =Home::find($id);
+        $homes->title = $request->title;
+        $homes->subtitle = $request->subtitle;
+        $homes->save();
+        return redirect()->back()->with('message','Titles updated successfull' );
     }
 
     /**
@@ -93,8 +112,10 @@ class HomeController extends Controller
      * @param  \App\Models\Home  $home
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Home $home)
+    public function destroy($id)
     {
-        //
+        $homes = Home::find($id);
+        $homes->delete();
+        return redirect('allHtitles');
     }
 }
