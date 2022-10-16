@@ -626,31 +626,6 @@
                     </div>
                 </div>
                 @endforeach
-                <!-- ITEM -->
-                {{-- <div class="col-md-6 col-sm-6 col-6">
-                    <div class="restaurant-menu-item">
-                        <div class="row">
-                            <div class="col-lg-4 col-12">
-                                <figure>
-                                    <img src="images/restaurant/restaurant2.jpg" class="img-fluid" alt="Image">
-                                </figure>
-                            </div>
-                            <div class="col-lg-8 col-12">
-                                <div class="info">
-                                    <div class="title">
-                                        <span class="name">Croquettes</span>
-                                        <span class="price">
-                                            <span class="amount">€9.99</span>
-                                        </span>
-                                    </div>
-                                    <p>Lorem ipsum dolor sit amet, elit, sed diam nonummy nibh euismod tincidunt ut
-                                        laoreet...
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
             </div>
         </div>
     </section>
@@ -662,21 +637,20 @@
                 <p class="section-subtitle">Check out our latest news</p>
             </div>
             <div class="row">
+                @foreach ($latestnews as $news )
                 <!-- ITEM -->
                 <div class="col-md-4">
                     <div class="news-grid-item">
                         <figure class="gradient-overlay-hover link-icon">
                             <a href="blog-post.html">
-                                <img src="images/blog/blog-post1.jpg" class="img-fluid" alt="Image">
+                                <img src="{{asset('storage/latestnews_images/thumbnail/'.$news->img)}}" class="img-fluid" alt="Image">
                             </a>
                         </figure>
                         <div class="news-info">
                             <h4 class="title">
-                                <a href="blog-post.html">10 Tips for Holiday Travel</a>
+                                <a href="blog-post.html">{{$news->title}}</a>
                             </h4>
-                            <p>An examination of how the current political and economical climate is affecting the mental
-                                healthcare
-                                industry...</p>
+                            <p>{{$news->para}}</p>
                             <div class="post-meta">
                                 <span class="author">
                                     <a href="#"><img src="images/users/admin.jpg" width="16" alt="Image">
@@ -694,70 +668,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- ITEM -->
-                <div class="col-md-4">
-                    <div class="news-grid-item">
-                        <figure class="gradient-overlay-hover link-icon">
-                            <a href="blog-post.html">
-                                <img src="images/blog/blog-post2.jpg" class="img-fluid" alt="Image">
-                            </a>
-                        </figure>
-                        <div class="news-info">
-                            <h4 class="title">
-                                <a href="blog-post.html">Enjoy your holidays</a>
-                            </h4>
-                            <p>An examination of how the current political and economical climate is affecting the mental
-                                healthcare
-                                industry...</p>
-                            <div class="post-meta">
-                                <span class="author">
-                                    <a href="#"><img src="images/users/admin.jpg" width="16" alt="Image">
-                                        JANE</a>
-                                </span>
-                                <span class="date">
-                                    <i class="fa fa-clock-o"></i>
-                                    August 16, 2017</span>
-                                <span class="comments">
-                                    <a href="#">
-                                        <i class="fa fa-commenting-o"></i>
-                                        5 Comments</a>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- ITEM -->
-                <div class="col-md-4">
-                    <div class="news-grid-item">
-                        <figure class="gradient-overlay-hover link-icon">
-                            <a href="blog-post.html">
-                                <img src="images/blog/blog-post3.jpg" class="img-fluid" alt="Image">
-                            </a>
-                        </figure>
-                        <div class="news-info">
-                            <h4 class="title">
-                                <a href="blog-post.html">Honeymoon at Hotel Himara</a>
-                            </h4>
-                            <p>An examination of how the current political and economical climate is affecting the mental
-                                healthcare
-                                industry...</p>
-                            <div class="post-meta">
-                                <span class="author">
-                                    <a href="#"><img src="images/users/admin.jpg" width="16" alt="Image">
-                                        JANE</a>
-                                </span>
-                                <span class="date">
-                                    <i class="fa fa-clock-o"></i>
-                                    January 11, 2018</span>
-                                <span class="comments">
-                                    <a href="#">
-                                        <i class="fa fa-commenting-o"></i>
-                                        3 Comments</a>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

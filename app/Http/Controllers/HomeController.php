@@ -34,7 +34,7 @@ class HomeController extends Controller
         $himararestaurants =Himararestaurant::all();
         $latestnews = Latestnew::all();
 
-        return view ('home.index',compact('homes','abouts','rooms','himaraservices','gallery','himaragallery','homepagephotovideos','himararestaurants','Latestnew'));
+        return view ('home.index',compact('homes','abouts','rooms','himaraservices','gallery','himaragallery','homepagephotovideos','himararestaurants','latestnews'));
     }
     public function allHtitles(){
         $homes = Home::all();

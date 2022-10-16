@@ -11,6 +11,7 @@ use App\Http\Controllers\HimararestaurantController;
 use App\Http\Controllers\HimaraserviceController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HomepagephotovideoController;
+use App\Http\Controllers\LatestnewController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\RoomserviceController;
 use App\Http\Controllers\TeamController;
@@ -126,6 +127,16 @@ Route::Put('/{id}/updateHres',[HimararestaurantController::class,'update'])->nam
 Route::delete('{id}/deleteHres',[HimararestaurantController::class,'destroy'])->name('deleteHres');
 //End Of himara restaurent
 
+
+//Latest News
+Route::get('/latestnews',[LatestnewController::class,'index'])->name('latestnews');
+Route::get('/createLnews',[LatestnewController::class,'create'])->name('createLnews');
+Route::post('/storeLnews',[LatestnewController::class,'store'])->name('storeLnews');
+Route::get('{id}/showLnews',[LatestnewController::class,'show']);
+Route::get('/{id}/editLnews',[LatestnewController::class,'edit'])->name('editLnews');
+Route::Put('/{id}/updateLnews',[LatestnewController::class,'update'])->name('updateLnews');
+Route::delete('{id}/deleteLnews',[LatestnewController::class,'destroy'])->name('deleteLnews');
+//End Of Latest News
 
 
 //TEAM

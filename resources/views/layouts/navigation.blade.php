@@ -102,14 +102,14 @@
                                  <a href="{{ url('himaraservices') }}">Himara Services</a>
                              </li>
                              <li class="menu-item">
-                                 <a href="{{ url('createHservice') }}">Add an Himara Service</a>
+                                 <a href="{{ url('createHservice') }}">Add H-Service</a>
                              </li>
 
                              <li class="menu-item">
-                                 <a href="{{ url('himaragallery') }}">Himara Gallery Head</a>
+                                 <a href="{{ url('himaragallery') }}">Himara G-Head</a>
                              </li>
                              <li class="menu-item">
-                                 <a href="{{ url('createHgal') }}">Add an Himara Gallery Head</a>
+                                 <a href="{{ url('createHgal') }}">Add an H-G Head</a>
                              </li>
 
                              <li class="menu-item">
@@ -125,6 +125,13 @@
                              <li class="menu-item">
                                  <a href="{{ url('createHres') }}">Add dishes</a>
                              </li>
+                             {{-- latestnews --}}
+                             <li class="menu-item">
+                                <a href="{{ url('latestnews') }}">Latestnews</a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="{{ url('createLnews') }}">Add news</a>
+                            </li>
                          </ul>
                      </li>
                      {{-- himarares --}}
@@ -133,10 +140,10 @@
                          <a href="{{ url('rooms') }}">Rooms</a>
                          <ul class="submenu">
                              <li class="menu-item">
-                                 <a href="{{ url('createroom') }}">Add a room</a>
+                                 <a href="{{ url('createroom') }}">Add room</a>
                              </li>
                              <li class="menu-item">
-                                 <a href="{{ url('createroomservices') }}">Add room services</a>
+                                 <a href="{{ url('createroomservices') }}">Add R-services</a>
                              </li>
                              <li class="menu-item">
                                  <a href="#">Room service</a>

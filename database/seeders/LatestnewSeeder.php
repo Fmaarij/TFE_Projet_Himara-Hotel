@@ -16,20 +16,25 @@ class LatestnewSeeder extends Seeder
     public function run()
     {
         // à revoir
-        DB::table( 'latesnews' )->insert( [[
-            'imgname' =>'Reatuant',
-            'img' =>  'restaurant.jpg',
-            'videoname' =>'',
-            'videolink'=>'',
+        DB::table( 'latestnews' )->insert( [[
+            'img' =>  'blog-post1.jpg',
+            'title' =>'10 TIPS FOR HOLIDAY TRAVEL',
+            'para' =>'An examination of how the current political and economical climate is affecting the mental healthcare industry...',
             'created_at' =>now(),
             'updated_at' =>now(),
 
         ],
         [
-            'imgname' =>'Video',
-            'img' =>  'video.jpg',
-            'videoname' =>'Himara Albania',
-            'videolink'=>'https://www.youtube.com/watch?v=_kTDkfo46KY',
+            'img' =>  'blog-post2.jpg',
+            'title' =>'ENJOY YOUR HOLIDAYS',
+            'para' =>'An examination of how the current political and economical climate is affecting the mental healthcare industry...',
+            'created_at' =>now(),
+            'updated_at' =>now(),
+        ],
+        [
+            'img' =>  'blog-post3.jpg',
+            'title' =>'HONEYMOON AT HOTEL HIMARA',
+            'para' =>'An examination of how the current political and economical climate is affecting the mental healthcare industry...',
             'created_at' =>now(),
             'updated_at' =>now(),
         ]
