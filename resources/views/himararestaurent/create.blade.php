@@ -2,7 +2,7 @@
 @section('content')
     <div class="col-md-8">
         <div class="section-title">
-            <h4>Update the dishes</h4>
+            <h4>Add the dishes</h4>
             <p class="section-subtitle"></p>
         </div>
 

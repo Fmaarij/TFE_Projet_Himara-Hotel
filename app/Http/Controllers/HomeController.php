@@ -13,6 +13,7 @@ use App\Models\Himaraservice;
 use App\Models\Homepagephotovideo;
 use App\Models\Latestnew;
 use App\Models\Room;
+use App\Models\Slider;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -33,8 +34,9 @@ class HomeController extends Controller
         $homepagephotovideos = Homepagephotovideo::all();
         $himararestaurants =Himararestaurant::all();
         $latestnews = Latestnew::all();
+        $sliders = Slider::all();
 
-        return view ('home.index',compact('homes','abouts','rooms','himaraservices','gallery','himaragallery','homepagephotovideos','himararestaurants','latestnews'));
+        return view ('home.index',compact('homes','abouts','rooms','himaraservices','gallery','himaragallery','homepagephotovideos','himararestaurants','latestnews','sliders'));
     }
     public function allHtitles(){
         $homes = Home::all();

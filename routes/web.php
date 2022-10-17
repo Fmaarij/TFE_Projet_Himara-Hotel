@@ -14,6 +14,7 @@ use App\Http\Controllers\HomepagephotovideoController;
 use App\Http\Controllers\LatestnewController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\RoomserviceController;
+use App\Http\Controllers\SliderController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\WelcomemsgController;
 use App\Models\About;
@@ -165,6 +166,16 @@ Route::get('/{id}/editimg',[GalleryController::class,'edit'])->name('editimg');
 Route::Put('/{id}/updateimg',[GalleryController::class,'update'])->name('updateimg');
 Route::delete('{id}/deleteimg',[GalleryController::class,'destroy'])->name('deleteimg');
 //End Of GALLERY
+
+//slider
+Route::get('/slider',[SliderController::class,'index'])->name('slider');
+Route::get('/createslider',[SliderController::class,'create'])->name('createslider');
+Route::post('/storeslider',[SliderController::class,'store'])->name('storeslider');
+Route::get('{id}/showslider',[SliderController::class,'show']);
+Route::get('/{id}/editslider',[SliderController::class,'edit'])->name('editslider');
+Route::Put('/{id}/updateslider',[SliderController::class,'update'])->name('updateslider');
+Route::delete('{id}/deleteslider',[SliderController::class,'destroy'])->name('deleteslider');
+//End Of slider
 
 //CATEGORY
 Route::get('/category',[CategoryController::class,'index'])->name('category');

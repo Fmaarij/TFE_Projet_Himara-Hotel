@@ -176,6 +176,13 @@
                              <li class="menu-item">
                                  <a href="{{ url('createcat') }}">Add a category</a>
                              </li>
+
+                             <li class="menu-item">
+                                <a href="{{ url('slider') }}">Sliders</a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="{{ url('createslider') }}">Add a slider</a>
+                            </li>
                          </ul>
                      </li>
                      <li class="menu-item dropdown">

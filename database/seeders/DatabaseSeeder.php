@@ -43,6 +43,7 @@ class DatabaseSeeder extends Seeder
             HomeSeeder::class,
             LatestnewSeeder::class,
             RoomsphotoSeeder::class,
+            SliderSeeder::class,
         ]);
     }
 }
