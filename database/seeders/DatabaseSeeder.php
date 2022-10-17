@@ -44,6 +44,8 @@ class DatabaseSeeder extends Seeder
             LatestnewSeeder::class,
             RoomsphotoSeeder::class,
             SliderSeeder::class,
+            RoleSeeder::class,
+            UserSeeder::class,
         ]);
     }
 }

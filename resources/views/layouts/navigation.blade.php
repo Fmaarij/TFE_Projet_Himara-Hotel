@@ -83,12 +83,12 @@
                      <li class="menu-item dropdown active">
                          <a href="{{ url('homepage') }}">HOME</a>
                          <ul class="submenu">
-                            <li class="menu-item">
-                                <a href="{{ url('allHtitles') }}">All Titles</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="{{ url('createHtitles') }}">Create title</a>
-                            </li>
+                             <li class="menu-item">
+                                 <a href="{{ url('allHtitles') }}">All Titles</a>
+                             </li>
+                             <li class="menu-item">
+                                 <a href="{{ url('createHtitles') }}">Create title</a>
+                             </li>
                              <li class="menu-item">
                                  <a href="{{ url('welcomemsg') }}">Welcome Message</a>
                              </li>
@@ -127,11 +127,11 @@
                              </li>
                              {{-- latestnews --}}
                              <li class="menu-item">
-                                <a href="{{ url('latestnews') }}">Latestnews</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="{{ url('createLnews') }}">Add news</a>
-                            </li>
+                                 <a href="{{ url('latestnews') }}">Latestnews</a>
+                             </li>
+                             <li class="menu-item">
+                                 <a href="{{ url('createLnews') }}">Add news</a>
+                             </li>
                          </ul>
                      </li>
                      {{-- himarares --}}
@@ -178,11 +178,11 @@
                              </li>
 
                              <li class="menu-item">
-                                <a href="{{ url('slider') }}">Sliders</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="{{ url('createslider') }}">Add a slider</a>
-                            </li>
+                                 <a href="{{ url('slider') }}">Sliders</a>
+                             </li>
+                             <li class="menu-item">
+                                 <a href="{{ url('createslider') }}">Add a slider</a>
+                             </li>
                          </ul>
                      </li>
                      <li class="menu-item dropdown">
@@ -196,6 +196,9 @@
                              </li>
                          </ul>
                      </li>
+                     <li class="menu-item dropdown">
+                        <a href="{{ url('users') }}">Users</a>
+                    </li>
 
                      @if (Route::has('login'))
                          @auth
@@ -219,7 +222,9 @@
                              </li>
                              @if (Route::has('register'))
                                  <li class="menu-item">
-                                     <a href="{{ route('register') }}" class="">Sign up</a>
+                                     {{-- <a href="{{ route('register') }}" class="">Sign up</a> --}}
+                                     <a href="{{ url('createuser') }}" class="">Sign up</a>
+
                                  </li>
                              @endif
                          @endauth

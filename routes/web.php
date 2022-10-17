@@ -16,6 +16,7 @@ use App\Http\Controllers\RoomController;
 use App\Http\Controllers\RoomserviceController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomemsgController;
 use App\Models\About;
 use App\Models\Roomservice;
@@ -41,6 +42,19 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+
+//USER
+Route::get('/users',[UserController::class,'index'])->name('users');
+// Route::get('/allHtitles',[HomeController::class,'allHtitles'])->name('allHtitles');
+Route::get('/createuser',[UserController::class,'create'])->name('createuser');
+Route::post('/storeuser',[UserController::class,'store']);
+Route::get('/{id}/showuser',[UserController::class,'show'])->name('showuser');
+Route::get('/{id}/edituser',[UserController::class,'edit'])->name('edituser');
+Route::Put('/{id}/updateuser',[UserController::class,'update']);
+Route::delete('/{id}/deleteuser',[UserController::class,'destroy']);
+//End Of USER
+
 
 //HOME
 Route::get('/homepage',[HomeController::class,'index'])->name('homepage');
@@ -76,6 +90,10 @@ Route::delete('{id}/deleteabout',[AboutController::class,'destroy'])->name('dele
 
 //ROOM
 Route::get('/rooms',[RoomController::class,'index'])->name('rooms');
+Route::get('/single',[RoomController::class,'single'])->name('single');
+Route::get('/double',[RoomController::class,'double'])->name('double');
+Route::get('/delux',[RoomController::class,'delux'])->name('delux');
+Route::get('/family',[RoomController::class,'family'])->name('family');
 Route::get('/{id}/showroom',[RoomController::class,'show'])->name('showroom');
 Route::get('/createroom',[RoomController::class,'create'])->name('createroom');
 Route::post('/storeroom',[RoomController::class,'store']);

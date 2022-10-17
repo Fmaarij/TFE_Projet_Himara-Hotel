@@ -2,20 +2,20 @@
 @section('content')
     <!-- ========== PAGE TITLE ========== -->
     <div class="page-title gradient-overlay op5"
-        style="background: url(images/breadcrumb.jpg); background-repeat: no-repeat;
+        style="background: url(/images/breadcrumb.jpg); background-repeat: no-repeat;
    background-size: cover;">
         <div class="container">
             <div class="inner">
                 <h1>{{ $room->city }}</h1>
                 <div class="room-details-price">
-                    €89{{ $room->price }} / NIGHT
+                    €{{ $room->price }} / NIGHT
                 </div>
                 <ol class="breadcrumb">
                     <li>
                         <a href="{{ url('homepage') }}">Home</a>
                     </li>
                     <li>
-                        <a href="index.html">Rooms</a>
+                        <a href="{{url('rooms')}}">Rooms</a>
                     </li>
                     <li>{{ $room->city }}</li>
                 </ol>

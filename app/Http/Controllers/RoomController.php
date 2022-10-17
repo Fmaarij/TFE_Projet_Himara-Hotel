@@ -35,6 +35,22 @@ class RoomController extends Controller {
         $rooms = Room::all();
         return view ( 'room.index', compact( 'rooms','roomsphotos' ) );
     }
+    public function single(){
+        $rooms = Room::where('typeofroom_id','=',1)->get();
+        return view ( 'room.single',compact( 'rooms'));
+    }
+    public function double(){
+        $rooms = Room::where('typeofroom_id','=',2)->get();
+        return view ( 'room.double',compact( 'rooms'));
+    }
+    public function delux(){
+        $rooms = Room::where('typeofroom_id','=',4)->get();
+        return view ( 'room.delux',compact( 'rooms'));
+    }
+    public function family(){
+        $rooms = Room::where('typeofroom_id','=',3)->get();
+        return view ( 'room.family',compact( 'rooms'));
+    }
 
     /**
     * Show the form for creating a new resource.

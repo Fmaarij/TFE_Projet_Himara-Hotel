@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('lastname');
             $table->integer('age');
-            // $table->foreignId('role_id')->constrained();
+            $table->string('img');
+            $table->foreignId('role_id')->references('id')->on('roles')->onDelete('cascade');
             // $table->foreignId('avatar_id')->constrained();
             // $table->foreignId('article_id')->constrained()->onDelete('cascade');
             $table->string('email')->unique();

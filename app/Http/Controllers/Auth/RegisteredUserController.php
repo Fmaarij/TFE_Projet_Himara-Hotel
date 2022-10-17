@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use Intervention\Image\Facades\Image;
 
 class RegisteredUserController extends Controller
 {
@@ -39,24 +40,57 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        $user = User::create([
-            'name' => $request->name,
-            'lastname' => $request->lastname,
-            'age' => $request->age,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        $users=new User;
+        if($request->hasFile('img')) {
+            //get filename with extension
+            $filenamewithextension = $request->file('img')->getClientOriginalName();
 
-        event(new Registered($user));
+            //get filename without extension
+            $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
 
-        Auth::login($user);
+            //get file extension
+            $extension = $request->file('img')->getClientOriginalExtension();
 
+            //filename to store
+            $filenametostore = $filename.'_'.time().'.'.$extension;
+
+            //Upload File
+            $request->file('img')->storeAs('public/user_images', $filenametostore);
+            $request->file('img')->storeAs('public/user_images/thumbnail', $filenametostore);
+
+            //Resize image here
+            $thumbnailpath = public_path('storage/user_images/thumbnail/'.$filenametostore);
+            $img = Image::make($thumbnailpath)->resize(600, 800, function($constraint) {
+                // $constraint->aspectRatio();
+            });
+            $img->save();
+            $users->img = $filenametostore;
+        }
+
+            $users->name = $request->name;
+            $users->lastname = $request->lastname;
+            $users->age = $request->age;
+            $users->role_id = $request->role_id;
+            $users->email = $request->email;
+            $users->password= Hash::make($request->password);
+        $users->save();
+
+        // event(new Registered($user));
+
+        // Auth::login($user);
         return redirect(RouteServiceProvider::HOME);
+
+
     }
+
+
+
+    
 }

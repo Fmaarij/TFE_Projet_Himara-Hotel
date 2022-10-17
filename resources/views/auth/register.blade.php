@@ -37,6 +37,15 @@
 
                         <x-input-error :messages="$errors->get('age')" class="mt-2" />
                     </div>
+        <!-- role_id -->
+        <div>
+            <x-input-label for="lastname" :value="__('ROLE_ID')" />
+
+            <x-text-input id="role_id" class="block mt-1 w-full" type="number" name="role_id" :value="old('role_id')"
+                required autofocus />
+
+            <x-input-error :messages="$errors->get('age')" class="mt-2" />
+        </div>
 
 
 
@@ -69,6 +78,16 @@
 
                 <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
             </div>
+
+                    <!-- image -->
+        <div>
+            <x-input-label for="lastname" :value="__('img')" />
+
+            <x-text-input id="img" class="block mt-1 w-full" type="file" name="img" :value="old('img')"
+                required autofocus />
+
+            <x-input-error :messages="$errors->get('age')" class="mt-2" />
+        </div>
 
             <div class="flex items-center justify-end mt-4">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
