@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-
+<div class="w-75 m-auto">
 <div class="col-md-8">
     <div class="section-title">
         <h4>Registration</h4>
@@ -47,5 +47,6 @@
             <button class="btn mt30">Add</button>
         </div>
     </form>
+</div>
 </div>
 @endsection

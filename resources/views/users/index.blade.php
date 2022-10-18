@@ -1,13 +1,15 @@
 @extends('layouts.app')
 @section('content')
-    <h1 class="text-center">All Users</h1>
-    <div class="p-5">
+<div class="w-75 m-auto">
+    <h1 class="text-center">Users</h1>
         <div class="row row-cols-1 row-cols-md-2 g-4">
             @foreach ($users as $user)
                 <div class="col">
                     <div class="card">
-                        <img src="{{ asset('storage/user_images/thumbnail/' . $user->img) }}" class="card-img-top"
+                        <div class="w-50 m-auto ">
+                        <img class="w-100 mt-2 rounded" src="{{ asset('storage/user_images/thumbnail/' . $user->img) }}" class="card-img-top"
                             alt="...">
+                        </div>
                         <div class="card-body text-center">
                             <h5 class="card-title">{{ $user->name }} {{ $user->lastname }}</h5>
                             <p class="card-text">{{ $user->age }}</p>
@@ -41,5 +43,6 @@
                 </div>
             @endforeach
         </div>
+    </div>
     </div>
 @endsection

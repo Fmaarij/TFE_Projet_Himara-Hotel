@@ -19,7 +19,11 @@ return new class extends Migration
             $table->string('lastname');
             $table->integer('age');
             $table->string('img');
+            $table->string('city');
+            $table->string('country');
             $table->foreignId('role_id')->references('id')->on('roles')->onDelete('cascade');
+            $table->foreignId('latestnews_id')->references('id')->on('latestnews')->onDelete('cascade');
+            $table->foreignId('room_id')->references('id')->on('rooms')->nullable()->onDelete('cascade');
             // $table->foreignId('avatar_id')->constrained();
             // $table->foreignId('article_id')->constrained()->onDelete('cascade');
             $table->string('email')->unique();

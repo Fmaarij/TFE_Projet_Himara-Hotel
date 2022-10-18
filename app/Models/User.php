@@ -22,6 +22,10 @@ class User extends Authenticatable
         'lastname',
         'age',
         'role_id',
+        'latestnews_id',
+        'room_id',
+        'city',
+        'country',
         'img',
         'email',
         'password',
@@ -48,5 +52,11 @@ class User extends Authenticatable
 
     public function role(){
         return $this->belongsTo(Role::class);
+    }
+    public function latestnews(){
+        return $this->belongsTo(Latestnews::class);
+    }
+    public function rooms(){
+        return $this->belongsTo(Room::class);
     }
 }

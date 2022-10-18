@@ -15,7 +15,10 @@ return new class extends Migration
     {
         Schema::create('roomreviews', function (Blueprint $table) {
             $table->id();
-            $table->json('service')->nullable();
+            $table->string('star');
+            $table->text('feedback');
+            $table->foreignId('room_id')->references('id')->on('rooms')->onDelete('cascade');
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -37,6 +37,20 @@ class LatestnewSeeder extends Seeder
             'para' =>'An examination of how the current political and economical climate is affecting the mental healthcare industry...',
             'created_at' =>now(),
             'updated_at' =>now(),
+        ],
+        [
+            'img' =>  'blog-post3.jpg',
+            'title' =>'bla babla',
+            'para' =>'An examination of how the current political and economical climate is affecting the mental healthcare industry...',
+            'created_at' =>now(),
+            'updated_at' =>now(),
+        ],
+        [
+            'img' =>  'blog-post3.jpg',
+            'title' =>'Bora Bora',
+            'para' =>'An examination of how the current political and economical climate is affecting the mental healthcare industry...',
+            'created_at' =>now(),
+            'updated_at' =>now(),
         ]
      ]);
     }

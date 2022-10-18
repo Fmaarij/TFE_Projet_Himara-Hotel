@@ -6,6 +6,7 @@ use App\Models\Room;
 use App\Http\Requests\StoreRoomRequest;
 use App\Http\Requests\UpdateRoomRequest;
 use App\Models\About;
+use App\Models\Roomreview;
 use App\Models\Roomservice;
 use App\Models\Roomsphoto;
 use App\Models\Typeofroom;
@@ -79,7 +80,7 @@ class RoomController extends Controller {
         // $rooms = Room::find($request->typeofroom_id)->count();
 
         if( intval($room)===8){
-            return redirect()->back()->with('error','You can add only 2 rooms');
+            return redirect()->back()->with('error','You can add only 8 rooms');
         }else{
             $room=new Room;
             if($request->hasFile('img')) {
@@ -140,9 +141,10 @@ class RoomController extends Controller {
         $abouts = About::all();
         $roomservices = Roomservice::all();
         // $roomservices = Roomservice::where($room->service, '=','service')->get();
+        $roomserviews = Roomreview::where('room_id','=',$room->id)->get();
 
         $roomsphotos = Roomsphoto::where('roomtype_id','=',$room->typeofroom->id)->get();
-        return view( 'room.show', compact( 'room','roomsphotos','abouts','roomservices' ) );
+        return view( 'room.show', compact( 'room','roomsphotos','abouts','roomservices','roomserviews' ) );
                 }
 
                 /**

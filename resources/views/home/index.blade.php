@@ -45,11 +45,11 @@
                         data-lineheight="['18','18','16','16']" data-whitespace="nowrap"
                         data-frames='[{"delay":1800,"speed":1500,"frame":"0","from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","to":"o:1;","ease":"Power2.easeInOut"},{"delay":"wait","speed":500,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
                         style="color: #fff">
-                        <i class="fa fa-star-o"></i>
-                        <i class="fa fa-star-o"></i>
-                        <i class="fa fa-star-o"></i>
-                        <i class="fa fa-star-o"></i>
-                        <i class="fa fa-star-o"></i>
+                        <i class="fa fa-star voted-o"></i>
+                        <i class="fa fa-star voted-o"></i>
+                        <i class="fa fa-star voted-o"></i>
+                        <i class="fa fa-star voted-o"></i>
+                        <i class="fa fa-star voted-o"></i>
                     </div>
                     <!-- LAYER NR. 6 -->
                     <div class="tp-caption tp_m_title tp-resizeme" data-x="center" data-hoffset="" data-y="240"
@@ -265,11 +265,11 @@
                             <div class="content">
                                 <img   src="{{ asset('storage/about_images/thumbnail/' . $about->img) }}" width="100" alt="Image">
                                 <div class="stars">
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star voted" aria-hidden="true"></i>
+                                    <i class="fa fa-star voted" aria-hidden="true"></i>
+                                    <i class="fa fa-star voted" aria-hidden="true"></i>
+                                    <i class="fa fa-star voted" aria-hidden="true"></i>
+                                    <i class="fa fa-star voted" aria-hidden="true"></i>
                                 </div>
                                 <h5 class="title">{{$about->imgtitle}}</h5>
                                 <p class="mt20">{{$about->imgpara}}</p>
@@ -402,194 +402,61 @@
             </div>
             <div class="owl-carousel testimonials-owl">
                 <!-- ITEM -->
+                @foreach ($roomreviews as $review)
+
                 <div class="item">
                     <div class="testimonial-item">
                         <div class="author-img">
-                            <img alt="Image" class="img-fluid" src="images/users/user1.jpg">
+                            <img alt="Image" class="img-fluid" src="{{asset('storage/user_images/thumbnail/'.$review->users->img)}}">
                         </div>
                         <div class="author">
-                            <h4 class="name">Marlene Simpson</h4>
-                            <div class="location">Madrid / Spain</div>
+                            <h4 class="name">{{$review->users->name}} {{$review->users->lastname}}</h4>
+                            <div class="location">{{$review->users->city}}/ {{$review->users->country}}</div>
                         </div>
                         <div class="rating">
-                            <i class="fa fa-star voted" aria-hidden="true"></i>
-                            <i class="fa fa-star voted" aria-hidden="true"></i>
-                            <i class="fa fa-star voted" aria-hidden="true"></i>
-                            <i class="fa fa-star voted" aria-hidden="true"></i>
-                            <i class="fa fa-star voted" aria-hidden="true"></i>
+                            @switch($review->star)
+                                                @case(1)
+                                                    <i class="fa fa-star voted" aria-hidden="true"></i>
+                                                @break
+
+                                                @case(2)
+                                                    <i class="fa fa-star voted" aria-hidden="true"></i>
+                                                    <i class="fa fa-star voted" aria-hidden="true"></i>
+                                                @break
+
+                                                @case(3)
+                                                    <i class="fa fa-star voted" aria-hidden="true"></i>
+                                                    <i class="fa fa-star voted" aria-hidden="true"></i>
+                                                    <i class="fa fa-star voted" aria-hidden="true"></i>
+                                                @break
+
+                                                @case(4)
+                                                    <i class="fa fa-star voted" aria-hidden="true"></i>
+                                                    <i class="fa fa-star voted" aria-hidden="true"></i>
+                                                    <i class="fa fa-star voted" aria-hidden="true"></i>
+                                                    <i class="fa fa-star voted" aria-hidden="true"></i>
+                                                @break
+
+                                                @case(5)
+                                                    <i class="fa fa-star voted" aria-hidden="true"></i>
+                                                    <i class="fa fa-star voted" aria-hidden="true"></i>
+                                                    <i class="fa fa-star voted" aria-hidden="true"></i>
+                                                    <i class="fa fa-star voted" aria-hidden="true"></i>
+                                                    <i class="fa fa-star voted" aria-hidden="true"></i>
+                                                @break
+
+                                                @default
+                                            @endswitch
+                            {{-- <i class="fa fa-star voted voted" aria-hidden="true"></i>
+                            <i class="fa fa-star voted voted" aria-hidden="true"></i>
+                            <i class="fa fa-star voted voted" aria-hidden="true"></i>
+                            <i class="fa fa-star voted voted" aria-hidden="true"></i>
+                            <i class="fa fa-star voted voted" aria-hidden="true"></i> --}}
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec turpis a nunc convallis
-                            condimentum. Sed odio nisl, mattis eget interdum non, pretium et lacus.</p>
+                        <p>{{$review->feedback}}</p>
                     </div>
                 </div>
-                <!-- ITEM -->
-                <div class="item">
-                    <div class="testimonial-item">
-                        <div class="author-img">
-                            <img alt="Image" class="img-fluid" src="images/users/user2.jpg">
-                        </div>
-                        <div class="author">
-                            <h4 class="name">Brad Knight</h4>
-                            <div class="location">Athens / Greece</div>
-                            <div class="rating">
-                                <i class="fa fa-star voted" aria-hidden="true"></i>
-                                <i class="fa fa-star voted" aria-hidden="true"></i>
-                                <i class="fa fa-star voted" aria-hidden="true"></i>
-                                <i class="fa fa-star voted" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                            </div>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec turpis a nunc convallis
-                            condimentum. Sed odio nisl, mattis eget interdum non, pretium et lacus.</p>
-                    </div>
-                </div>
-                <!-- ITEM -->
-                <div class="item">
-                    <div class="testimonial-item">
-                        <div class="author-img">
-                            <img alt="Image" class="img-fluid" src="images/users/user3.jpg">
-                        </div>
-                        <div class="author">
-                            <h4 class="name">Daryl Phillips</h4>
-                            <div class="location">Lisbon / Portugal</div>
-                            <div class="rating">
-                                <i class="fa fa-star voted" aria-hidden="true"></i>
-                                <i class="fa fa-star voted" aria-hidden="true"></i>
-                                <i class="fa fa-star voted" aria-hidden="true"></i>
-                                <i class="fa fa-star voted" aria-hidden="true"></i>
-                                <i class="fa fa-star voted" aria-hidden="true"></i>
-                            </div>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec turpis a nunc convallis
-                            condimentum. Sed odio nisl, mattis eget interdum non, pretium et lacus.</p>
-                    </div>
-                </div>
-                <!-- ITEM -->
-                <div class="item">
-                    <div class="testimonial-item">
-                        <div class="author-img">
-                            <img alt="Image" class="img-fluid" src="images/users/user4.jpg">
-                        </div>
-                        <div class="author">
-                            <h4 class="name">Felecia Lawson</h4>
-                            <div class="location">Paris / France</div>
-                            <div class="rating">
-                                <i class="fa fa-star voted" aria-hidden="true"></i>
-                                <i class="fa fa-star voted" aria-hidden="true"></i>
-                                <i class="fa fa-star voted" aria-hidden="true"></i>
-                                <i class="fa fa-star voted" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                            </div>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec turpis a nunc convallis
-                            condimentum. Sed odio nisl, mattis eget interdum non, pretium et lacus.</p>
-                    </div>
-                </div>
-                <!-- ITEM -->
-                <div class="item">
-                    <div class="testimonial-item">
-                        <div class="author-img">
-                            <img alt="Image" class="img-fluid" src="images/users/user5.jpg">
-                        </div>
-                        <div class="author">
-                            <h4 class="name">Joanne Robinson</h4>
-                            <div class="location">New York / USA</div>
-                            <div class="rating">
-                                <i class="fa fa-star voted" aria-hidden="true"></i>
-                                <i class="fa fa-star voted" aria-hidden="true"></i>
-                                <i class="fa fa-star voted" aria-hidden="true"></i>
-                                <i class="fa fa-star voted" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                            </div>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec turpis a nunc convallis
-                            condimentum. Sed odio nisl, mattis eget interdum non, pretium et lacus.</p>
-                    </div>
-                </div>
-                <!-- ITEM -->
-                <div class="item">
-                    <div class="testimonial-item">
-                        <div class="author-img">
-                            <img alt="Image" class="img-fluid" src="images/users/user6.jpg">
-                        </div>
-                        <div class="author">
-                            <h4 class="name">Emily Hill</h4>
-                            <div class="location">Rome / Italy</div>
-                            <div class="rating">
-                                <i class="fa fa-star voted" aria-hidden="true"></i>
-                                <i class="fa fa-star voted" aria-hidden="true"></i>
-                                <i class="fa fa-star voted" aria-hidden="true"></i>
-                                <i class="fa fa-star voted" aria-hidden="true"></i>
-                                <i class="fa fa-star voted" aria-hidden="true"></i>
-                            </div>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec turpis a nunc convallis
-                            condimentum. Sed odio nisl, mattis eget interdum non, pretium et lacus.</p>
-                    </div>
-                </div>
-                <!-- ITEM -->
-                <div class="item">
-                    <div class="testimonial-item">
-                        <div class="author-img">
-                            <img alt="Image" class="img-fluid" src="images/users/user7.jpg">
-                        </div>
-                        <div class="author">
-                            <h4 class="name">Mabel Hicks</h4>
-                            <div class="location">Moscow / Russia</div>
-                            <div class="rating">
-                                <i class="fa fa-star voted" aria-hidden="true"></i>
-                                <i class="fa fa-star voted" aria-hidden="true"></i>
-                                <i class="fa fa-star voted" aria-hidden="true"></i>
-                                <i class="fa fa-star voted" aria-hidden="true"></i>
-                                <i class="fa fa-star voted" aria-hidden="true"></i>
-                            </div>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec turpis a nunc convallis
-                            condimentum. Sed odio nisl, mattis eget interdum non, pretium et lacus.</p>
-                    </div>
-                </div>
-                <!-- ITEM -->
-                <div class="item">
-                    <div class="testimonial-item">
-                        <div class="author-img">
-                            <img alt="Image" class="img-fluid" src="images/users/user8.jpg">
-                        </div>
-                        <div class="author">
-                            <h4 class="name">Kent Lambert</h4>
-                            <div class="location">Berlin / Germany</div>
-                            <div class="rating">
-                                <i class="fa fa-star voted" aria-hidden="true"></i>
-                                <i class="fa fa-star voted" aria-hidden="true"></i>
-                                <i class="fa fa-star voted" aria-hidden="true"></i>
-                                <i class="fa fa-star voted" aria-hidden="true"></i>
-                                <i class="fa fa-star voted" aria-hidden="true"></i>
-                            </div>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec turpis a nunc convallis
-                            condimentum. Sed odio nisl, mattis eget interdum non, pretium et lacus.</p>
-                    </div>
-                </div>
-                <!-- ITEM -->
-                <div class="item">
-                    <div class="testimonial-item">
-                        <div class="author-img">
-                            <img alt="Image" class="img-fluid" src="images/users/user9.jpg">
-                        </div>
-                        <div class="author">
-                            <h4 class="name">Gerald Schmidt</h4>
-                            <div class="location">Zagreb / Croatia</div>
-                            <div class="rating">
-                                <i class="fa fa-star voted" aria-hidden="true"></i>
-                                <i class="fa fa-star voted" aria-hidden="true"></i>
-                                <i class="fa fa-star voted" aria-hidden="true"></i>
-                                <i class="fa fa-star voted" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                            </div>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec turpis a nunc convallis
-                            condimentum. Sed odio nisl, mattis eget interdum non, pretium et lacus.</p>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

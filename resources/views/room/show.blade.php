@@ -15,7 +15,7 @@
                         <a href="{{ url('homepage') }}">Home</a>
                     </li>
                     <li>
-                        <a href="{{url('rooms')}}">Rooms</a>
+                        <a href="{{ url('rooms') }}">Rooms</a>
                     </li>
                     <li>{{ $room->city }}</li>
                 </ol>
@@ -73,36 +73,56 @@
                             @foreach ($roomservices as $service)
                                 <div class="col-sm-4">
                                     <ul class="list-unstyled">
+                                        {{-- {{ dd($room->service) }} --}}
+                                        @if ($room->service != null)
+                                            {{-- à revoir cet partie  --}}
 
-                                            <li>
+                                            @if ($room->service == $service->service)
+                                                <li>
+                                                    {{-- <i class="fa fa-check"></i> --}}
+
+                                                    <p class="bg-success">thick</p>
+                                                    {{ $service->service_name }}
+                                                </li>
+                                            @else
+                                                <li>
+                                                    <p class="bg-danger">croix</p>
+                                                    {{-- <i class="fa fa-times"></i> --}}
+                                                    {{ $service->service_name }}
+                                                </li>
+                                            @endif
+                                        @else
+                                            <p>room service est null</p>
+                                        @endif
+                                        {{-- <li>
                                                 <i class="fa fa-check"></i> {{$service->service_name}}
-                                            </li>
+                                            </li> --}}
 
                                         {{-- @endforeach --}}
                                         {{-- <li>
                                             <i class="fa fa-check"></i> {{$service->service_name}}
                                         </li> --}}
 
-                                         {{-- @php $categories = $room->service ? json_decode($room->service, true) : []; @endphp --}}
+                                        {{-- @php $categories = $room->service ? json_decode($room->service, true) : []; @endphp --}}
                                         {{-- {{ dd($categories) }} --}}
                                         {{-- @if ($categories != null)
                                             @foreach ($categories as $category)
                                                 <li class="fa fa-check">
                                                     <i class="{{ $category }}",></i>
                                                 </li> --}}
-                                                 {{-- @else --}}
-                                                {{-- <p>no service included</p> --}}
-                                            {{-- @endforeach
+                                        {{-- @else --}}
+                                        {{-- <p>no service included</p> --}}
+                                        {{-- @endforeach
                                         @endif --}}
                                     </ul>
                                 </div>
                             @endforeach
                         </div>
                     </div>
-                    <p>{{$abouts[0]->para}}
+                    <p>{{ $abouts[0]->para }}
 
                     </p>
-                    <p>{{$abouts[0]->para}}
+                    <p>{{ $abouts[0]->para }}
 
                     </p>
                     <!-- ROOM REVIEWS -->
@@ -115,14 +135,55 @@
                             <div class="row">
                                 <div class="col-lg-3">
                                     <div class="review-summary">
+
+                                        {{-- {{dd($review->star)}} --}}
+
+                                        {{-- {{dd($roomserviews)}} --}}
+
                                         <div class="average">4.9</div>
+                                        @foreach ( $roomserviews as $review )
                                         <div class="rating">
+{{-- $revoir********************************************************************************* --}}
+                                            @switch($review->star)
+                                            @case(1)
+                                                <i class="fa fa-star voted" aria-hidden="true"></i>
+                                            @break
+
+                                            @case(2)
+                                                <i class="fa fa-star voted" aria-hidden="true"></i>
+                                                <i class="fa fa-star voted" aria-hidden="true"></i>
+                                            @break
+
+                                            @case(3)
+                                                <i class="fa fa-star voted" aria-hidden="true"></i>
+                                                <i class="fa fa-star voted" aria-hidden="true"></i>
+                                                <i class="fa fa-star voted" aria-hidden="true"></i>
+                                            @break
+
+                                            @case(4)
+                                                <i class="fa fa-star voted" aria-hidden="true"></i>
+                                                <i class="fa fa-star voted" aria-hidden="true"></i>
+                                                <i class="fa fa-star voted" aria-hidden="true"></i>
+                                                <i class="fa fa-star voted" aria-hidden="true"></i>
+                                            @break
+
+                                            @case(5)
+                                                <i class="fa fa-star voted" aria-hidden="true"></i>
+                                                <i class="fa fa-star voted" aria-hidden="true"></i>
+                                                <i class="fa fa-star voted" aria-hidden="true"></i>
+                                                <i class="fa fa-star voted" aria-hidden="true"></i>
+                                                <i class="fa fa-star voted" aria-hidden="true"></i>
+                                            @break
+
+                                            @default
+                                        @endswitch
+                                            {{-- <i class="fa fa-star voted" aria-hidden="true"></i>
                                             <i class="fa fa-star voted" aria-hidden="true"></i>
                                             <i class="fa fa-star voted" aria-hidden="true"></i>
                                             <i class="fa fa-star voted" aria-hidden="true"></i>
-                                            <i class="fa fa-star voted" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i> --}}
                                         </div>
+                                        @endforeach
                                         <small>Based on 3 ratings</small>
                                     </div>
                                 </div>

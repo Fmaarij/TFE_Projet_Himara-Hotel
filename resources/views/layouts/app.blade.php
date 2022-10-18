@@ -17,7 +17,7 @@
     <link rel="apple-touch-icon-precomposed" href="images/favicon-apple.png" />
     <link rel="icon" href="images/favicon.png">
     <!-- ========== STYLESHEETS ========== -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    {{-- <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/bootstrap-select.min.css">
     <link rel="stylesheet" href="/css/jquery.mmenu.css">
     <link rel="stylesheet" href="/revolution/css/layers.css">
@@ -28,7 +28,19 @@
     <link rel="stylesheet" href="/css/daterangepicker.css">
     <link rel="stylesheet" href="/css/magnific-popup.css">
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="/css/responsive.css"> --}}
+    <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href=" {{ asset('css/bootstrap-select.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/jquery.mmenu.css') }}">
+    <link rel="stylesheet" href="{{ asset('/revolution/css/layers.css') }}">
+    <link rel="stylesheet" href="{{ asset('/revolution/css/settings.css') }}">
+    <link rel="stylesheet" href="{{ asset('/revolution/css/navigation.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/animate.min.css') }}">
+    <link rel="stylesheet" href=" {{ asset('/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href=" {{ asset('/css/daterangepicker.css') }}">
+    <link rel="stylesheet" href=" {{ asset('/css/magnific-popup.css') }}">
+    <link rel="stylesheet" href=" {{ asset('/css/style.css') }}">
+    <link rel="stylesheet" href=" {{ asset('/css/responsive.css') }}">
     <!-- ========== ICON FONTS ========== -->
     <link href="fonts/font-awesome.min.css" rel="stylesheet">
     <link href="fonts/flaticon.css" rel="stylesheet">
@@ -43,20 +55,20 @@
     <div class="min-h-screen bg-gray-100">
 
         <!-- Page Heading -->
-{{--
+        {{--
         <header class="bg-white shadow"> --}}
-            <!-- ========== PRELOADER ========== -->
-            <div class="loader loader3">
-                <div class="loader-inner">
-                    <div class="spin">
-                        <span></span>
-                        <img src="/images/logo.svg" alt="Hotel Himara">
-                    </div>
+        <!-- ========== PRELOADER ========== -->
+        <div class="loader loader3">
+            <div class="loader-inner">
+                <div class="spin">
+                    <span></span>
+                    <img src="/images/logo.svg" alt="Hotel Himara">
                 </div>
             </div>
+        </div>
 
 
-            @include('layouts.navigation')
+        @include('layouts.navigation')
     </div>
     {{-- </header> --}}
 
@@ -79,8 +91,8 @@
     {{-- Footer --}}
     @include('layouts.footer')
     </div>
-  <!-- ========== CONTACT NOTIFICATION ========== -->
-  <div id="contact-notification" class="notification fixed"></div>
+    <!-- ========== CONTACT NOTIFICATION ========== -->
+    <div id="contact-notification" class="notification fixed"></div>
     <!-- ========== BACK TO TOP ========== -->
     <div class="back-to-top">
         <i class="fa fa-angle-up" aria-hidden="true"></i>

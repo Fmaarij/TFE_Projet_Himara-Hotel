@@ -1,5 +1,8 @@
 @extends('layouts.app')
 @section('content')
+<div class="w-75 m-auto">
+
+
     <div class="col-md-8">
         <div class="section-title">
             <h4>Update the user</h4>
@@ -13,6 +16,7 @@
             </strong>
         @endif
         <!-- update userFORM -->
+
         <form action="/{{ $users->id }}/updateuser" method="post" enctype="multipart/form-data" class="contact-form">
             @csrf
             @method('PUT')
@@ -40,11 +44,10 @@
                 <input class="form-control" name="password" placeholder="************" type="text">
             </div>
             {{-- <div class="" width="10%"> --}}
-            <img src="{{ asset('storage/user_images/thumbnail/' . $users->img) }}" class="w-25">
+            <img src="{{ asset('storage/user_images/thumbnail/' . $users->img) }}" class="mb-2">
             {{-- alt="..."> --}}
-    </div>
+    {{-- </div> --}}
     <div class="form-group ">
-
         <input class="form-control" name="img" type="file">
     </div>
     <div class="form-group">
@@ -52,4 +55,5 @@
     </div>
     </form>
     </div>
+</div>
 @endsection
