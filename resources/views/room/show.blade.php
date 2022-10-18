@@ -141,10 +141,11 @@
                                         {{-- {{dd($roomserviews)}} --}}
 
                                         <div class="average">4.9</div>
-                                        @foreach ( $roomserviews as $review )
+                                        {{-- @foreach ( $roomserviews as $review ) --}}
                                         <div class="rating">
 {{-- $revoir********************************************************************************* --}}
-                                            @switch($review->star)
+
+                                            {{-- @switch($review->star)
                                             @case(1)
                                                 <i class="fa fa-star voted" aria-hidden="true"></i>
                                             @break
@@ -176,14 +177,14 @@
                                             @break
 
                                             @default
-                                        @endswitch
+                                        @endswitch --}}
                                             {{-- <i class="fa fa-star voted" aria-hidden="true"></i>
                                             <i class="fa fa-star voted" aria-hidden="true"></i>
                                             <i class="fa fa-star voted" aria-hidden="true"></i>
                                             <i class="fa fa-star voted" aria-hidden="true"></i>
                                             <i class="fa fa-star" aria-hidden="true"></i> --}}
                                         </div>
-                                        @endforeach
+                                        {{-- @endforeach --}}
                                         <small>Based on 3 ratings</small>
                                     </div>
                                 </div>
@@ -191,22 +192,85 @@
                                     <!-- ITEM -->
                                     <div class="progress-item">
                                         <div class="row">
+                                            @foreach ( $roomserviews as $review )
                                             <div class="col-lg-2 col-sm-2 col-3">
-                                                <div class="progress-stars">5 star</div>
+                                                <div class="progress-stars">{{$review->star}} star</div>
                                             </div>
                                             <div class="col-lg-9 col-sm-9 col-8">
+                                                @switch($review->star)
+                                                @case(1)
                                                 <div class="progress">
-                                                    <div class="progress-bar" role="progressbar" style="width: 91%"
+                                                    <div class="progress-bar" role="progressbar" style="width: 20%"
                                                         aria-valuenow="91" aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
+                                                @break
+
+                                                @case(2)
+                                                <div class="progress">
+                                                    <div class="progress-bar" role="progressbar" style="width: 40%"
+                                                        aria-valuenow="91" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                @break
+
+                                                @case(3)
+                                                <div class="progress">
+                                                    <div class="progress-bar" role="progressbar" style="width: 60%"
+                                                        aria-valuenow="91" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                @break
+
+                                                @case(4)
+                                                <div class="progress">
+                                                    <div class="progress-bar" role="progressbar" style="width: 80%"
+                                                        aria-valuenow="91" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                @break
+
+                                                @case(5)
+                                                <div class="progress">
+                                                    <div class="progress-bar" role="progressbar" style="width: 100%"
+                                                        aria-valuenow="91" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                @break
+
+                                                @default
+                                            @endswitch
+                                                {{-- <div class="progress">
+                                                    <div class="progress-bar" role="progressbar" style="width: 91%"
+                                                        aria-valuenow="91" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div> --}}
                                             </div>
                                             <div class="col-lg-1 col-sm-1 col-1">
-                                                <div class="progress-value">91%</div>
+                                                @switch($review->star)
+                                                @case(1)
+                                                <div class="progress-value">20%</div>
+                                                @break
+
+                                                @case(2)
+                                                <div class="progress-value">40%</div>
+                                                @break
+
+                                                @case(3)
+                                                <div class="progress-value">60%</div>
+                                                @break
+
+                                                @case(4)
+                                                <div class="progress-value">80%</div>
+                                                @break
+
+                                                @case(5)
+                                                <div class="progress-value">100%</div>
+                                                @break
+
+                                                @default
+                                            @endswitch
+                                                {{-- <div class="progress-value">91%</div> --}}
                                             </div>
+                                            @endforeach
                                         </div>
                                     </div>
                                     <!-- ITEM -->
-                                    <div class="progress-item">
+                                    {{-- <div class="progress-item">
                                         <div class="row">
                                             <div class="col-lg-2 col-sm-2 col-3">
                                                 <div class="progress-stars">4 star</div>
@@ -221,9 +285,9 @@
                                                 <div class="progress-value">0%</div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <!-- ITEM -->
-                                    <div class="progress-item">
+                                    {{-- <div class="progress-item">
                                         <div class="row">
                                             <div class="col-lg-2 col-sm-2 col-3">
                                                 <div class="progress-stars">3 star</div>
@@ -238,9 +302,9 @@
                                                 <div class="progress-value">8%</div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <!-- ITEM -->
-                                    <div class="progress-item">
+                                    {{-- <div class="progress-item">
                                         <div class="row">
                                             <div class="col-lg-2 col-sm-2 col-3">
                                                 <div class="progress-stars">2 star</div>
@@ -255,9 +319,9 @@
                                                 <div class="progress-value">0%</div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <!-- ITEM -->
-                                    <div class="progress-item">
+                                    {{-- <div class="progress-item">
                                         <div class="row">
                                             <div class="col-lg-2 col-sm-2 col-3">
                                                 <div class="progress-stars">1 star</div>
@@ -272,7 +336,7 @@
                                                 <div class="progress-value">0%</div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>

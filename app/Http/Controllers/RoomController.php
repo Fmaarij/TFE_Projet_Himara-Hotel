@@ -141,6 +141,7 @@ class RoomController extends Controller {
         $abouts = About::all();
         $roomservices = Roomservice::all();
         // $roomservices = Roomservice::where($room->service, '=','service')->get();
+        // $roomserviews = Roomreview::where('room_id','=',$room->id)->get();//first try
         $roomserviews = Roomreview::where('room_id','=',$room->id)->get();
 
         $roomsphotos = Roomsphoto::where('roomtype_id','=',$room->typeofroom->id)->get();
