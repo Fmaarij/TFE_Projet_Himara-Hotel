@@ -10,6 +10,8 @@
     <div class="card-body text-center">
       <p class="card-text">{{$users->name}} {{$users->lastname}}</p>
       <p class="card-text">{{$users->age}}</p>
+      <p class="card-text">{{$users->city}}</p>
+      <p class="card-text">{{$users->country}}</p>
       <p class="card-text">{{$users->email}}</p>
       <p class="card-text">{{$users->role->role}}</p>
       <p class="card-text">{{$users->created_at}}</p>

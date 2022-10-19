@@ -11,7 +11,7 @@
  <!-- ========== MOBILE MENU ========== -->
  <nav id="mobile-menu"></nav>
  <!-- ========== WRAPPER ========== -->
- <div class="wrapper">
+ {{-- <div class="wrapper"> --}}
      <!-- ========== TOP MENU ========== -->
      <div class="topbar">
          <div class="container">
@@ -233,4 +233,4 @@
              </nav>
          </div>
      </header>
- </div>
+ {{-- </div> --}}

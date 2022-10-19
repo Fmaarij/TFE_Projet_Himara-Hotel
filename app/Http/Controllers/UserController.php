@@ -22,7 +22,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::paginate(3);
         return view('users.index', compact('users' ));
     }
 
@@ -80,6 +80,8 @@ class UserController extends Controller
         }
             $users->name = $request->name;
             $users->lastname = $request->lastname;
+            $users->city = $request->city;
+            $users->country = $request->country;
             $users->age = $request->age;
             $users->role_id = $request->role_id;
             $users->email = $request->email;

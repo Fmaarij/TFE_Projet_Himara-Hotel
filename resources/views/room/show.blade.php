@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('content')
+@section('content' )
     <!-- ========== PAGE TITLE ========== -->
     <div class="page-title gradient-overlay op5"
         style="background: url(/images/breadcrumb.jpg); background-repeat: no-repeat;
@@ -70,24 +70,27 @@
                     </div>
                     <div class="room-services-list">
                         <div class="row">
+                            {{-- {{dd($roomservices)}} --}}
                             @foreach ($roomservices as $service)
                                 <div class="col-sm-4">
                                     <ul class="list-unstyled">
-                                        {{-- {{ dd($room->service) }} --}}
+                                        {{-- {{ dd($service->service_name) }} --}}
+                                        {{-- {{dd($room->service)}} --}}
+                                        {{-- {{dd(Str::contains($room->service, $service->service),$room->service,$service->service)}} --}}
                                         @if ($room->service != null)
                                             {{-- à revoir cet partie  --}}
-
-                                            @if ($room->service == $service->service)
+                                            @if (Str::contains($room->service, $service->service))
+                                            {{-- @if ($service->service == $room->service>) --}}
                                                 <li>
-                                                    {{-- <i class="fa fa-check"></i> --}}
+                                                    <i class="text-success fa fa-check"></i>
 
-                                                    <p class="bg-success">thick</p>
+                                                    {{-- <p class="bg-success">thick</p> --}}
                                                     {{ $service->service_name }}
                                                 </li>
                                             @else
                                                 <li>
-                                                    <p class="bg-danger">croix</p>
-                                                    {{-- <i class="fa fa-times"></i> --}}
+                                                    {{-- <p class="bg-danger">croix</p> --}}
+                                                    <i class="text-danger fa fa-times"></i>
                                                     {{ $service->service_name }}
                                                 </li>
                                             @endif
@@ -185,7 +188,8 @@
                                             <i class="fa fa-star" aria-hidden="true"></i> --}}
                                         </div>
                                         {{-- @endforeach --}}
-                                        <small>Based on 3 ratings</small>
+
+                                        <small>Based on 5 ratings</small>
                                     </div>
                                 </div>
                                 <div class="col-lg-9">
@@ -347,7 +351,7 @@
 
                         {{-- @foreach ($roomsreviews as $reviews) --}}
                         {{-- {{dd($reviews->users)}} --}}
-                        @foreach ($roomsreviewall as $all )
+                        @foreach ($roomsreviews as $all )
                         {{-- {{dd($all)}} --}}
                         <div class="review-box">
                             <figure class="review-author">
@@ -362,13 +366,11 @@
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                 </div>
                                 <div class="review-info">
-                                    Marlene Simpson – February 03, 2018
+                                   {{$all->name}} {{$all->lastname}}  {{$all->created_at}}
                                 </div>
                                 <div class="review-text">
                                     <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quis rem esse
-                                        quaerat eius labore repellendus, odit officia, quas provident reprehenderit magnam
-                                        adipisci inventore quibusdam est architecto nisi.
+                                        {{$all->feedback}}
                                     </p>
                                 </div>
                             </div>
@@ -432,15 +434,29 @@
                             <p class="section-subtitle">Leave your review</p>
                         </div>
                         <div class="row">
+                            {{-- {{dd($similarrooms)}} --}}
+                            @foreach ($similarrooms as $sim )
+                                {{-- {{dd($sim->rooms->img)}} --}}
+
                             <!-- ITEM -->
                             <div class="col-lg-4">
                                 <div class="room-grid-item">
                                     <figure class="gradient-overlay-hover link-icon">
-                                        <a href="room.html">
-                                            <img src="images/rooms/single/single1.jpg" class="img-fluid" alt="Image">
+                                        <a href="{{asset('storage/room_images/thumbnail/'.$sim->img)}}">
+                                            <img src="{{asset('storage/room_images/thumbnail/'.$sim->img)}}" class="img-fluid" alt="Image">
                                         </a>
                                         <div class="room-services">
-                                            <i class="fa fa-coffee" aria-hidden="true" data-toggle="popover"
+                                            @php $categories = $sim->service ? json_decode($sim->service, true) : []; @endphp
+
+                                                @if ($categories != null)
+                                                    @foreach ($categories as $category)
+                                                        <i aria-hidden="true" data-toggle="popover"
+                                                        data-placement="right" data-trigger="hover" class="{{ $category }}",></i>
+                                                        {{-- @else
+                                                        <p>nothing</p> --}}
+                                                    @endforeach
+                                                @endif
+                                            {{-- <i class="fa fa-coffee" aria-hidden="true" data-toggle="popover"
                                                 data-placement="right" data-trigger="hover"
                                                 data-content="Breakfast Included" data-original-title="Breakfast"></i>
                                             <i class="fa fa-wifi" aria-hidden="true" data-toggle="popover"
@@ -448,20 +464,21 @@
                                                 data-original-title="WiFi"></i>
                                             <i class="fa fa-television" data-toggle="popover" data-placement="right"
                                                 data-trigger="hover" data-content="Plasma TV with cable channels"
-                                                data-original-title="TV"></i>
+                                                data-original-title="TV"></i> --}}
                                         </div>
-                                        <div class="room-price">€89 / night</div>
+                                        <div class="room-price">€{{$sim->price}} / night</div>
                                     </figure>
                                     <div class="room-info">
                                         <h2 class="room-title">
-                                            <a href="room.html">Tanger</a>
+                                            <a href="room.html">{{$sim->city}}</a>
                                         </h2>
-                                        <p>Enjoy our single room</p>
+                                        <p>Enjoy our {{$sim->typeofroom->type_name}} room</p>
                                     </div>
                                 </div>
                             </div>
+                            @endforeach
                             <!-- ITEM -->
-                            <div class="col-lg-4">
+                            {{-- <div class="col-lg-4">
                                 <div class="room-grid-item">
                                     <figure class="gradient-overlay-hover link-icon">
                                         <a href="room.html">
@@ -487,9 +504,9 @@
                                         <p>Enjoy our double room</p>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <!-- ITEM -->
-                            <div class="col-lg-4">
+                            {{-- <div class="col-lg-4">
                                 <div class="room-grid-item">
                                     <figure class="gradient-overlay-hover link-icon">
                                         <a href="room.html">
@@ -518,7 +535,7 @@
                                         <p>Enjoy our delux room</p>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

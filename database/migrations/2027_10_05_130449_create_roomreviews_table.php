@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('feedback');
             $table->foreignId('room_id')->references('id')->on('rooms')->onDelete('cascade');
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('typeofroom_id')->references('id')->on('typeofrooms')->onDelete('cascade');
             $table->timestamps();
         });
     }

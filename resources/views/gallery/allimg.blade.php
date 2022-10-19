@@ -18,7 +18,7 @@
                         <td class="align-top">{{ $gal->category->catname }}</td>
                         <td width="10%" class="rounded">
                             {{-- <img class="w-100 rounded-circle" src="{{ $team->img }}" alt="memebrs picture"> --}}
-                            <img class="w-100 rounded-circle"
+                            <img class="w-25 rounded-circle"
                                 src="{{ asset('storage/gallery_images/thumbnail/' . $gal->img) }}" class="img-fluid"
                                 alt="Image">
                         </td>
@@ -41,5 +41,11 @@
                 @endforeach
             </tbody>
         </table>
+                {{-- Paginattion --}}
+                <div class="d-flex justify-center">
+                    <div class="w-50 m-auto">
+                    {{$gallery->links()}}
+                    </div>
+                </div>
     </div>
 @endsection

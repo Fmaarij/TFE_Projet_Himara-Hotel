@@ -32,8 +32,8 @@
                                     <figure class="gradient-overlay-hover link-icon">
                                         {{-- <a href="room.html"><img src="{{asset('storage/room/'.$room->img)}}" class="img-fluid" alt="Image"></a> --}}
                                         <a href="{{ asset('storage/room_images/thumbnail/' . $room->img) }}">
-                                            <img src="{{ asset('storage/room_images/thumbnail/' . $room->img) }}" class="img-fluid"
-                                                alt="Image">
+                                            <img src="{{ asset('storage/room_images/thumbnail/' . $room->img) }}"
+                                                class="img-fluid" alt="Image">
                                             {{-- <img src="{{(!empty($room->img))? url( $room->img):url('roomthumbnail/no_image.jpg')}}"
                         class="img-fluid" alt="Image"> --}}
                                         </a>
@@ -46,39 +46,47 @@
                                             <a href="room.html">{{ $room->city }} </a>
                                         </h3>
                                         <span class="room-rates">
-                                            @switch($room->star)
-                                                @case(1)
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                @break
+                                            {{-- {{dd($room->typeofroom_id === $room->roomreview->typeofroom_id)}} --}}
+                                            {{-- @if ($room->typeofroom_id == $room->roomreview->typeofroom_id) --}}
 
-                                                @case(2)
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                @break
 
-                                                @case(3)
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                @break
+{{dd($roomsreviews)}}
+                                            {{-- {{dd($item->star)}} --}}
+                                            @foreach ($roomsreviews as $item)
+                                                @switch($item->star)
+                                                    @case(1)
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                    @break
 
-                                                @case(4)
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                @break
+                                                    @case(2)
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                    @break
 
-                                                @case(5)
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                @break
+                                                    @case(3)
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                    @break
 
-                                                @default
-                                            @endswitch
+                                                    @case(4)
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                    @break
+
+                                                    @case(5)
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                    @break
+
+                                                    @default
+                                                @endswitch
+                                            @endforeach
 
                                             <a href="room.html#room-reviews">{{ $room->star }} Based on 5 Ratings</a>
                                         </span>
@@ -103,16 +111,18 @@
                                 <div class="col-lg-2">
                                     <div class="room-price">
                                         <span class="price">€{{ $room->price }} / night</span>
-                                        <a href="/{{$room->id}}/showroom" class="btn btn-sm">view <br> details</a>
+                                        <a href="/{{ $room->id }}/showroom" class="btn btn-sm">view <br> details</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     @endforeach
-                    {{-- pagination --}}
-                    {{-- <div class="d-flex justify-center">
-                {{$rooms->links()}}
-            </div> --}}
+                    {{-- Paginattion --}}
+                    <div class="d-flex justify-center">
+                        <div class="w-50 m-auto">
+                            {{ $rooms->links() }}
+                        </div>
+                    </div>
 
                 </div>
                 <div class="col-lg-3 col-12">
@@ -132,17 +142,17 @@
                             <h4 class="widget-title">CATEGORIES</h4>
                             <ul class="categories">
                                 <li>
-                                    <a href="{{url('single')}}">Single Room<span class="posts-num">51</span></a>
+                                    <a href="{{ url('single') }}">Single Room<span class="posts-num">51</span></a>
                                 </li>
                                 <li>
-                                    <a href="{{url('double')}}">Double Room<span class="posts-num">24</span></a>
+                                    <a href="{{ url('double') }}">Double Room<span class="posts-num">24</span></a>
                                 </li>
                                 <li>
-                                    <a href="{{url('family')}}">Family Room
+                                    <a href="{{ url('family') }}">Family Room
                                         <span class="posts-num">9</span></a>
                                 </li>
                                 <li>
-                                    <a href="{{url('delux')}}">Deluxe Room<span class="posts-num">12</span></a>
+                                    <a href="{{ url('delux') }}">Deluxe Room<span class="posts-num">12</span></a>
                                 </li>
                             </ul>
                         </aside>

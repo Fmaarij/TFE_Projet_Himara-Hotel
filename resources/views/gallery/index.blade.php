@@ -105,6 +105,13 @@
                     @endif
                     @endforeach
             </div>
+
         </div>
+                 {{-- Paginattion
+                 <div class="d-flex justify-center">
+                    <div class="w-50 m-auto">
+                    {{$galleryall->links()}}
+                    </div>
+                </div> --}}
     </main>
 @endsection

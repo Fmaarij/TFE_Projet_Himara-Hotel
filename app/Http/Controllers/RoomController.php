@@ -33,9 +33,10 @@ class RoomController extends Controller {
         // {
 
         // $room = Room::find( 1 );
+        $roomsreviews = Roomreview::all();
         $roomsphotos = Roomsphoto::all();
-        $rooms = Room::all();
-        return view ( 'room.index', compact( 'rooms','roomsphotos' ) );
+        $rooms = Room::paginate(5);
+        return view ( 'room.index', compact( 'rooms','roomsphotos','roomsreviews' ) );
     }
     public function single(){
         $rooms = Room::where('typeofroom_id','=',1)->get();
@@ -143,13 +144,14 @@ class RoomController extends Controller {
         $roomservices = Roomservice::all();
         $users = User::find($id);
         // $roomservices = Roomservice::where($room->service, '=','service')->get();
-        // $roomserviews = Roomreview::where('room_id','=',$room->id)->get();//first try
-        $roomsreviews = Roomreview::where('room_id','=',$room->id)->get();
-        $roomsreviewall = Roomreview::where('user_id','=',$users->id)->get();
+        $roomsreviews = Roomreview::where('room_id','=',$id)->get();
         $avgstar =Roomreview::avg('star');
-
+        // $roomstars = Roomreview::where('room_id','=',$id)->get()->count();
+        // $roomforrev = Room::all();
+        $similarrooms = Room::where('typeofroom_id','=',$room->typeofroom_id)->take(3)->get();
+        // $view->with('roomdispo',Room::orderBy('created_at','asc')->take(5)->get());
         $roomsphotos = Roomsphoto::where('roomtype_id','=',$room->typeofroom->id)->get();
-        return view( 'room.show', compact( 'room','roomsphotos','abouts','roomservices','roomsreviews','avgstar','roomsreviewall','users' ) );
+        return view( 'room.show', compact( 'room','roomsphotos','abouts','roomservices','roomsreviews','avgstar','users','similarrooms') );
                 }
 
                 /**

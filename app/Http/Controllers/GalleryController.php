@@ -31,7 +31,7 @@ class GalleryController extends Controller
     }
 
     public function allimg(){
-        $gallery = Gallery::all();
+        $gallery = Gallery::paginate(6);
         return view ('gallery.allimg',compact('gallery'));
     }
 

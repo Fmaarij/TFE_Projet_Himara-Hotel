@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/responsive.css"> --}}
     <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href=" {{ asset('css/bootstrap-select.min.css') }}">
+    <link rel="stylesheet" href=" {{ asset('/css/bootstrap-select.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/jquery.mmenu.css') }}">
     <link rel="stylesheet" href="{{ asset('/revolution/css/layers.css') }}">
     <link rel="stylesheet" href="{{ asset('/revolution/css/settings.css') }}">
@@ -42,10 +42,10 @@
     <link rel="stylesheet" href=" {{ asset('/css/style.css') }}">
     <link rel="stylesheet" href=" {{ asset('/css/responsive.css') }}">
     <!-- ========== ICON FONTS ========== -->
-    <link href="fonts/font-awesome.min.css" rel="stylesheet">
-    <link href="fonts/flaticon.css" rel="stylesheet">
+    <link href="/fonts/font-awesome.min.css" rel="stylesheet">
+    <link href="/fonts/flaticon.css" rel="stylesheet">
     <!-- ========== GOOGLE FONTS ========== -->
-    <link href="https://fonts.googleapis.com/css?family=Oswald:400,500,600,700%7CRoboto:100,300,400,400i,500,700"
+    <link href="/https://fonts.googleapis.com/css?family=Oswald:400,500,600,700%7CRoboto:100,300,400,400i,500,700"
         rel="stylesheet">
     <!-- Scripts -->
     {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
@@ -66,7 +66,7 @@
                 </div>
             </div>
         </div>
-
+        <div class="wrapper">
 
         @include('layouts.navigation')
     </div>
@@ -89,6 +89,7 @@
     </main>
 
     {{-- Footer --}}
+</div>
     @include('layouts.footer')
     </div>
     <!-- ========== CONTACT NOTIFICATION ========== -->

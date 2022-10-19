@@ -24,6 +24,12 @@
             <input class="form-control" name="lastname" placeholder="James" type="text" >
         </div>
         <div class="form-group">
+            <input class="form-control" name="city" placeholder="Brussels" type="text" >
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="country" placeholder="Belgium" type="text" >
+        </div>
+        <div class="form-group">
             <input class="form-control" name="age" placeholder="23" type="number" >
         </div>
         <div class="form-group">

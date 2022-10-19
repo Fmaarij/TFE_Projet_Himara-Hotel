@@ -17,6 +17,7 @@ class RoomreviewSeeder extends Seeder {
         DB::table( 'roomreviews' )->insert( [
             [
                 'room_id'=>1,
+                'typeofroom_id' =>1,
                 'user_id'=>1,
                 'star'=>3,
                 'feedback'=>'Best service ever, every thing was clean, the workers are awesome ',
@@ -25,6 +26,7 @@ class RoomreviewSeeder extends Seeder {
             ],
             [
                 'room_id'=>1,
+                'typeofroom_id' =>1,
                 'user_id'=>2,
                 'star'=>5,
                 'feedback'=>'Best service ever, every thing was clean, the workers are awesome ',
@@ -33,6 +35,7 @@ class RoomreviewSeeder extends Seeder {
             ],
             [
                 'room_id'=>1,
+                'typeofroom_id' =>1,
                 'user_id'=>3,
                 'star'=>4,
                 'feedback'=>'Best service ever, every thing was clean, the workers are awesome ',
@@ -41,6 +44,7 @@ class RoomreviewSeeder extends Seeder {
             ],
             [
                 'room_id'=>1,
+                'typeofroom_id' =>1,
                 'user_id'=>4,
                 'star'=>3,
                 'feedback'=>'Best service ever, every thing was clean, the workers are awesome ',
@@ -49,6 +53,7 @@ class RoomreviewSeeder extends Seeder {
             ],
             [
                 'room_id'=>3,
+                'typeofroom_id' =>3,
                 'user_id'=>5,
                 'star'=>3,
                 'feedback'=>'Best service ever, every thing was clean, the workers are awesome ',
@@ -57,6 +62,7 @@ class RoomreviewSeeder extends Seeder {
             ],
             [
                 'room_id'=>4,
+                'typeofroom_id' =>4,
                 'user_id'=>6,
                 'star'=>3,
                 'feedback'=>'Best service ever, every thing was clean, the workers are awesome ',
@@ -65,6 +71,7 @@ class RoomreviewSeeder extends Seeder {
             ],
             [
                 'room_id'=>1,
+                'typeofroom_id' =>1,
                 'user_id'=>7,
                 'star'=>5,
                 'feedback'=>'Best service ever, every thing was clean, the workers are awesome ',
@@ -73,6 +80,7 @@ class RoomreviewSeeder extends Seeder {
             ],
             [
                 'room_id'=>2,
+                'typeofroom_id' =>2,
                 'user_id'=>8,
                 'star'=>5,
                 'feedback'=>'Best service ever, every thing was clean, the workers are awesome ',
@@ -81,6 +89,7 @@ class RoomreviewSeeder extends Seeder {
             ],
             [
                 'room_id'=>3,
+                'typeofroom_id' =>3,
                 'user_id'=>9,
                 'star'=>5,
                 'feedback'=>'Best service ever, every thing was clean, the workers are awesome ',

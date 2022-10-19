@@ -27,6 +27,12 @@
                 <input class="form-control" name="lastname" value="{{ $users->lastname }}" type="text">
             </div>
             <div class="form-group">
+                <input class="form-control" name="city" value="{{ $users->city }}" type="text">
+            </div>
+            <div class="form-group">
+                <input class="form-control" name="country" value="{{ $users->country }}" type="text">
+            </div>
+            <div class="form-group">
                 <input class="form-control" name="age" value="{{ $users->age }}" type="number">
             </div>
             <div class="form-group">

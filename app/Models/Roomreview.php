@@ -11,11 +11,16 @@ class Roomreview extends Model
     protected $fillable = [
         'room_id',
         'user_id',
+        'typeofroom_id',
         'star',
         'feedback',
+
     ];
     public function rooms(){
-        return $this->belongsTo(Rooms::class);
+        return $this->belongsTo(Room::class,'room_id','id');
+    }
+    public function typeofrooms(){
+        return $this->belongsTo(typeofrooms::class,'typeofroom_id','id');
     }
     public function users(){
         return $this->belongsTo(User::class,'user_id','id');
