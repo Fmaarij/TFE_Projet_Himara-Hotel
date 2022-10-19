@@ -10,6 +10,7 @@ use App\Models\Roomreview;
 use App\Models\Roomservice;
 use App\Models\Roomsphoto;
 use App\Models\Typeofroom;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
@@ -140,12 +141,15 @@ class RoomController extends Controller {
         $room= Room::find($id);
         $abouts = About::all();
         $roomservices = Roomservice::all();
+        $users = User::find($id);
         // $roomservices = Roomservice::where($room->service, '=','service')->get();
         // $roomserviews = Roomreview::where('room_id','=',$room->id)->get();//first try
-        $roomserviews = Roomreview::where('room_id','=',$room->id)->get();
+        $roomsreviews = Roomreview::where('room_id','=',$room->id)->get();
+        $roomsreviewall = Roomreview::where('user_id','=',$users->id)->get();
+        $avgstar =Roomreview::avg('star');
 
         $roomsphotos = Roomsphoto::where('roomtype_id','=',$room->typeofroom->id)->get();
-        return view( 'room.show', compact( 'room','roomsphotos','abouts','roomservices','roomserviews' ) );
+        return view( 'room.show', compact( 'room','roomsphotos','abouts','roomservices','roomsreviews','avgstar','roomsreviewall','users' ) );
                 }
 
                 /**

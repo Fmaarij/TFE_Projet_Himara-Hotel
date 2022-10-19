@@ -140,7 +140,7 @@
 
                                         {{-- {{dd($roomserviews)}} --}}
 
-                                        <div class="average">4.9</div>
+                                        <div class="average"> {{$avgstar}}</div>
                                         {{-- @foreach ( $roomserviews as $review ) --}}
                                         <div class="rating">
 {{-- $revoir********************************************************************************* --}}
@@ -192,7 +192,8 @@
                                     <!-- ITEM -->
                                     <div class="progress-item">
                                         <div class="row">
-                                            @foreach ( $roomserviews as $review )
+
+                                            @foreach ( $roomsreviews as $review )
                                             <div class="col-lg-2 col-sm-2 col-3">
                                                 <div class="progress-stars">{{$review->star}} star</div>
                                             </div>
@@ -340,9 +341,17 @@
                                 </div>
                             </div>
                         </div>
+
+
+
+
+                        {{-- @foreach ($roomsreviews as $reviews) --}}
+                        {{-- {{dd($reviews->users)}} --}}
+                        @foreach ($roomsreviewall as $all )
+                        {{-- {{dd($all)}} --}}
                         <div class="review-box">
                             <figure class="review-author">
-                                <img src="images/users/user1.jpg" alt="Image">
+                                <img src="{{asset('storage/user_images/thumbnail/'.$all->users->img)}}" alt="Image">
                             </figure>
                             <div class="review-contentt">
                                 <div class="rating">
@@ -364,8 +373,10 @@
                                 </div>
                             </div>
                         </div>
+                        @endforeach
+                        {{-- @endforeach --}}
                         <!-- End review-box -->
-                        <div class="review-box clearfix">
+                        {{-- <div class="review-box clearfix">
                             <figure class="review-author">
                                 <img src="images/users/user2.jpg" alt="Image">
                             </figure>
@@ -388,9 +399,9 @@
                                     </p>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <!-- End review-box -->
-                        <div class="review-box clearfix">
+                        {{-- <div class="review-box clearfix">
                             <figure class="review-author">
                                 <img src="images/users/user3.jpg" alt="Image">
                             </figure>
@@ -413,7 +424,7 @@
                                     </p>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="similar-rooms">
                         <div class="section-title sm">
