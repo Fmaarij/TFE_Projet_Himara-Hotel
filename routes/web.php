@@ -90,13 +90,25 @@ Route::delete('{id}/deleteabout',[AboutController::class,'destroy'])->name('dele
 
 //ROOM
 Route::get('/rooms',[RoomController::class,'index'])->name('rooms');
+Route::get('/allrooms',[RoomController::class,'allrooms'])->name('allrooms');
+Route::get('/{id}/showroomz',[RoomController::class,'showroom']);
+// roomstovalide
+Route::get('/roomsnotvalide',[RoomController::class,'roomsnotvalide'])->name('roomsnotvalide');
+Route::PUT('/{id}/valideroomz',[RoomController::class,'roomstovalide']);
+
+Route::get('/{id}/editroomz',[RoomController::class,'edit']);
+Route::Put('/{id}/updateroomz',[RoomController::class,'update']);
+Route::delete('/{id}/deleteroomz',[RoomController::class,'destroy']);
 Route::get('/single',[RoomController::class,'single'])->name('single');
 Route::get('/double',[RoomController::class,'double'])->name('double');
 Route::get('/delux',[RoomController::class,'delux'])->name('delux');
 Route::get('/family',[RoomController::class,'family'])->name('family');
-Route::get('/{id}/showroom',[RoomController::class,'show'])->name('showroom');
+Route::get('/{id}/showroom',[RoomController::class,'show']);
 Route::get('/createroom',[RoomController::class,'create'])->name('createroom');
 Route::post('/storeroom',[RoomController::class,'store']);
+
+Route::put('/{id}/updateroom',[RoomController::class,'updated']);
+Route::delete('/{id}/deleteroom',[RoomController::class,'destroy']);
 //End Of ROOM
 
 //ROOMSERVICE

@@ -23,6 +23,10 @@ return new class extends Migration
             $table->string('city')->nullable();
             $table->string('star')->nullable();
             $table->text('description')->nullable();
+            $table->boolean('Ptoshow')->default(0);
+            $table->string('promo')->default('0');
+            $table->string('checkin')->default('0');
+            $table->string('checkout')->default('0');
             $table->string('price')->nullable();
             $table->json('service')->nullable();
             $table->timestamps();

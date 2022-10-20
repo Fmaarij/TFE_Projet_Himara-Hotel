@@ -145,9 +145,15 @@
                              <li class="menu-item">
                                  <a href="{{ url('createroomservices') }}">Add R-services</a>
                              </li>
-                             <li class="menu-item">
+                             {{-- <li class="menu-item">
                                  <a href="#">Room service</a>
-                             </li>
+                             </li> --}}
+                             <li class="menu-item">
+                                <a href="{{ url('allrooms') }}">All Rooms</a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="{{url('roomsnotvalide')}}">Rooms Not Valided</a>
+                            </li>
                          </ul>
                      </li>
                      <li class="menu-item dropdown">

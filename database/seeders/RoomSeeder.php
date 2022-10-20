@@ -30,7 +30,7 @@ class RoomSeeder extends Seeder
                 "fa fa-automobile",
                 "fa fa-shower",
                 "fa fa-coffee"
-            ]',
+            ]','Ptoshow'=>1,
             'created_at' =>now(),
             'updated_at' => now()
 
@@ -50,7 +50,7 @@ class RoomSeeder extends Seeder
                 "fa fa-automobile",
                 "fa fa-shower",
                 "fa fa-coffee"
-            ]',
+            ]','Ptoshow'=>1,
             'created_at' =>now(),
             'updated_at' => now()
         ],
@@ -69,7 +69,7 @@ class RoomSeeder extends Seeder
                 "fa fa-automobile",
                 "fa fa-shower",
                 "fa fa-coffee"
-            ]',
+            ]','Ptoshow'=>1,
             'created_at' =>now(),
             'updated_at' => now()
         ],
@@ -89,6 +89,7 @@ class RoomSeeder extends Seeder
             "fa fa-shower",
             "fa fa-coffee"
         ]',
+        'Ptoshow'=>1,
         'created_at' =>now(),
         'updated_at' => now()
         ],
@@ -107,7 +108,7 @@ class RoomSeeder extends Seeder
                 "fa fa-automobile",
                 "fa fa-shower",
                 "fa fa-coffee"
-            ]',
+            ]','Ptoshow'=>1,
             'created_at' =>now(),
             'updated_at' => now()
             ],
@@ -127,6 +128,7 @@ class RoomSeeder extends Seeder
                     "fa fa-shower",
                     "fa fa-coffee"
                 ]',
+                'Ptoshow'=>1,
                 'created_at' =>now(),
                 'updated_at' => now()
                 ],
@@ -146,6 +148,7 @@ class RoomSeeder extends Seeder
             "fa fa-shower",
             "fa fa-coffee"
         ]',
+        'Ptoshow'=>1,
         'created_at' =>now(),
         'updated_at' => now()
         ],
@@ -164,7 +167,7 @@ class RoomSeeder extends Seeder
                 "fa fa-automobile",
                 "fa fa-shower",
                 "fa fa-coffee"
-            ]',
+            ]','Ptoshow'=>1,
             'created_at' =>now(),
             'updated_at' => now()
             ],
@@ -184,6 +187,7 @@ class RoomSeeder extends Seeder
                     "fa fa-shower",
                     "fa fa-coffee"
                 ]',
+                'Ptoshow'=>1,
                 'created_at' =>now(),
                 'updated_at' => now()
                 ],
@@ -202,7 +206,7 @@ class RoomSeeder extends Seeder
                 "fa fa-automobile",
                 "fa fa-shower",
                 "fa fa-coffee"
-            ]',
+            ]','Ptoshow'=>1,
             'created_at' =>now(),
             'updated_at' => now()
             ],
@@ -222,6 +226,7 @@ class RoomSeeder extends Seeder
                     "fa fa-shower",
                     "fa fa-coffee"
                 ]',
+                'Ptoshow'=>1,
                 'created_at' =>now(),
                 'updated_at' => now()
                 ],
@@ -241,6 +246,7 @@ class RoomSeeder extends Seeder
                         "fa fa-shower",
                         "fa fa-coffee"
                     ]',
+                    'Ptoshow'=>1,
                     'created_at' =>now(),
                     'updated_at' => now()
                     ],

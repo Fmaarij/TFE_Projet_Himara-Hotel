@@ -54,6 +54,18 @@
         <div class="form-group">
             <input class="form-control" name="price" placeholder="$87" type="text">
         </div>
+        <div class="form-group">
+            <select class="form-control" type='number'  name="promo" id="">
+                <option value="10">10%</option>
+                <option value="20">20%</option>
+                <option value="30">30%</option>
+                <option value="40">40%</option>
+                <option value="50">50%</option>
+                <option value="60">60%</option>
+                <option value="70">70%</option>
+            </select>
+        </div>
+
         {{-- @endforeach --}}
         <div class="form-group">
             <div class="form-control " >

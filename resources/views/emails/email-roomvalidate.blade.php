@@ -17,21 +17,30 @@
     <div class="p-5">
 <table  class="table table-hover border">
     <tr>
+
         <thead>
-            <th>Name</th>
-            <th>Last Name</th>
-            <th>Age</th>
-            <Th>Email</Th>
+            <th>Type of Room</th>
+            <th>City</th>
+            <th>price</th>
+            <Th>promo</Th>
+            <Th>description</Th>
+            <th>Message</th>
+
         </thead>
     </tr>
 
     <tbody>
         <tr>
-            <td class="bg-danger">{{ $data['name'] }}</td>
-            <td>{{ $data['lastname'] }}</td>
-            <td>{{ $data['email'] }}</td>
-            <td>{{ $data['age'] }}</td>
-
+            <td class="bg-danger">{{ $data['email'] }}</td>
+            <td>{{ $data['typeofroom'] }}</td>
+            <td>{{ $data['city'] }}</td>
+            <td>{{ $data['price'] }}</td>
+            <td>{{ $data['promo'] }}</td>
+            <td>{{ $data['description'] }}</td>
+            <td>
+                Hello,
+                    Can you please validate this room to be shown on the website please?
+            </td>
         </tr>
     </tbody>
 </table>

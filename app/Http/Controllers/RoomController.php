@@ -5,12 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\Room;
 use App\Http\Requests\StoreRoomRequest;
 use App\Http\Requests\UpdateRoomRequest;
+use App\Mail\MailNotify;
+use App\Mail\Mailroomvalidate;
 use App\Models\About;
 use App\Models\Roomreview;
 use App\Models\Roomservice;
 use App\Models\Roomsphoto;
 use App\Models\Typeofroom;
 use App\Models\User;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
@@ -35,7 +38,7 @@ class RoomController extends Controller {
         // $room = Room::find( 1 );
         $roomsreviews = Roomreview::all();
         $roomsphotos = Roomsphoto::all();
-        $rooms = Room::paginate(5);
+        $rooms = Room::all();
         return view ( 'room.index', compact( 'rooms','roomsphotos','roomsreviews' ) );
     }
     public function single(){
@@ -60,6 +63,12 @@ class RoomController extends Controller {
     *
     * @return \Illuminate\Http\Response
     */
+public function allrooms(){
+    $rooms = Room::all();
+    return view ( 'room.allrooms',compact('rooms') );
+}
+
+
 
     public function create() {
         // $rooms = Room::all();
@@ -118,10 +127,23 @@ class RoomController extends Controller {
             $room->city = $request->city;
             $room->star= $request->star;
             $room->price = $request->price;
+            $room->promo= $request->promo;
             $room->description = $request->description;
             $room->service=json_encode( $request->service);
             $room->save();
+            $data = [
+                // 'recipient' => 'member@test.com',
+                'email' => $request->email,
+                'typeofroom' => $request->typeofroom_id,
+                'city'=>$request->city,
+                'price'=>$request->price,
+                'promo'=>$request->promo,
+                'description'=>$request->description,
+                'subject'=>"New room added",
+                // 'body'=>$request->message,
 
+            ];
+            Mail::to( 'himarahotel@gmail.com' )->send( new Mailroomvalidate($data));
             return redirect()->back()->with('success', "room added successfully.");
         }
 
@@ -161,8 +183,47 @@ class RoomController extends Controller {
                 * @return \Illuminate\Http\Response
                 */
 
-                public function edit( Room $room ) {
-                    //
+                public function showroom($id) {
+                    $room = Room::find($id);
+                    return view('room.roomshow',compact('room'));
+                }
+
+                public function roomsnotvalide(){
+                    $rooms = Room::where('Ptoshow','=',0)->get();
+                    return view('room.roomsnotvalide',compact('rooms'));
+
+                }
+
+
+                public function roomstovalide(Request $request,$id){
+                   $roomsi = Room::find($id);
+
+                   $roomsi->Ptoshow= 1;
+
+                   $roomsi->save();
+                   $data = [
+                       // 'recipient' => 'member@test.com',
+                       'email' => $request->email,
+                       'typeofroom' => $request->typeofroom_id,
+                       'city'=>$request->city,
+                       'price'=>$request->price,
+                       'promo'=>$request->promo,
+                       'description'=>$request->description,
+                       'subject'=>"room Validated successfully ",
+                       // 'body'=>$request->message,
+
+                   ];
+                   Mail::to( 'himarahotel@gmail.com' )->send( new Mailroomvalidate($data));
+                   return redirect()->back()->with('success', "room has been validated successfully.");
+
+                }
+
+
+                public function edit( $id ) {
+                    $room = Room::find($id);
+                    $roomtype=Typeofroom::all();
+                    $roomervices = Roomservice::all();
+                    return view('room.edit',compact('room','roomtype','roomervices'));
                 }
 
                 /**
@@ -173,9 +234,65 @@ class RoomController extends Controller {
                 * @return \Illuminate\Http\Response
                 */
 
-                public function update( Request $request ) {
+                public function update( Request $request,$id ) {
+                    $room=Room::find($id);
+                    if($request->hasFile('img')) {
+                        Storage::delete('public/room_images/thumbnail/'.$room->img);
+                        Storage::delete('public/room_images/'.$room->img);
+                        //get filename with extension
+                        $filenamewithextension = $request->file('img')->getClientOriginalName();
 
+                        //get filename without extension
+                        $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
+
+                        //get file extension
+                        $extension = $request->file('img')->getClientOriginalExtension();
+
+                        //filename to store
+                        $filenametostore = $filename.'_'.time().'.'.$extension;
+
+                        //Upload File
+                        $request->file('img')->storeAs('public/room_images', $filenametostore);
+                        $request->file('img')->storeAs('public/room_images/thumbnail', $filenametostore);
+
+                        //Resize image here
+                        $thumbnailpath = public_path('storage/room_images/thumbnail/'.$filenametostore);
+                        $img = Image::make($thumbnailpath)->resize(1920, 1200, function($constraint) {
+                            // $constraint->aspectRatio();
+                        });
+                        $img->save();
+                        $room->img = $filenametostore;
+                    }
+
+                    $room->typeofroom_id = $request->typeofroom_id;
+                    $room->bed  = $request->bed;
+                    $room->availablerooms  = $request->availablerooms;
+                    $room->maxguests = $request->maxguests;
+                    $room->city = $request->city;
+                    $room->star= $request->star;
+                    $room->price = $request->price;
+                    $room->promo= $request->promo;
+                    $room->Ptoshow= $request->Ptoshow;
+                    $room->description = $request->description;
+                    $room->service=json_encode( $request->service);
+                    $room->save();
+                    $data = [
+                        // 'recipient' => 'member@test.com',
+                        'email' => $request->email,
+                        'typeofroom' => $request->typeofroom_id,
+                        'city'=>$request->city,
+                        'price'=>$request->price,
+                        'promo'=>$request->promo,
+                        'description'=>$request->description,
+                        'subject'=>"room updated ",
+                        // 'body'=>$request->message,
+
+                    ];
+                    Mail::to( 'himarahotel@gmail.com' )->send( new Mailroomvalidate($data));
+                    return redirect()->back()->with('success', "room updated successfully.");
                 }
+
+
                 //end condition
 
                 /**
@@ -185,7 +302,25 @@ class RoomController extends Controller {
                 * @return \Illuminate\Http\Response
                 */
 
-                public function destroy( Room $room ) {
-                    //
+                public function destroy( $id ) {
+                    $room = Room::find($id);
+                    if($room->Ptoshow ==1){
+                        $room->delete();
+                    }return redirect()->back()->with('error','Impossible to delete cause the room has been not validated by admin');
+                    $data = [
+                        // 'recipient' => 'member@test.com',
+                        'email' => $room->email,
+                        'typeofroom' => $room->typeofroom_id,
+                        'city'=>$room->city,
+                        'price'=>$room->price,
+                        'promo'=>$room->promo,
+                        'description'=>$room->description,
+                        'subject'=>"A Room Has Been Deleted",
+                        // 'body'=>$request->message,
+
+                    ];
+                    Mail::to( 'himarahotel@gmail.com' )->send( new Mailroomvalidate($data));
+                    return redirect('allrooms');
                 }
+
             }

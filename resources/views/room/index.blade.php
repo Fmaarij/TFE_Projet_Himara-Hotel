@@ -24,9 +24,12 @@
                 <div class="col-lg-9 col-12">
                     <!-- ITEM -->
                     @foreach ($rooms as $room)
-                        <div class="room-list-item">
-                            <div class="row">
 
+
+                    @if ($room->Ptoshow == 1 )
+                    <div class="room-list-item">
+                        <div class="row">
+                                {{-- && $room->id == $room->typeofroom->room_id --}}
 
                                 <div class="col-lg-5">
                                     <figure class="gradient-overlay-hover link-icon">
@@ -50,10 +53,21 @@
                                             {{-- @if ($room->typeofroom_id == $room->roomreview->typeofroom_id) --}}
 
 
-{{dd($roomsreviews)}}
+{{-- {{dd($roomsreviews)}} --}}
                                             {{-- {{dd($item->star)}} --}}
-                                            @foreach ($roomsreviews as $item)
-                                                @switch($item->star)
+                                            {{-- {{dd($room->roomreview->star)}} --}}
+                                            {{-- @for ($i=5;$i>=5;$i++) --}}
+                                            {{-- @if ($room->roomreview->star < 5 )
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            @else
+                                            <i class="text-danger" class="fa fa-star" aria-hidden="true"></i>
+                                            @endif
+
+                                            @endfor --}}
+                                            {{-- {{dd($room->roomreview)}} --}}
+                                            {{-- @foreach ($room->roomreview as $item) --}}
+                                            {{-- @if($room->roomreview != null) --}}
+                                                @switch($room->star)
                                                     @case(1)
                                                         <i class="fa fa-star" aria-hidden="true"></i>
                                                     @break
@@ -86,7 +100,8 @@
 
                                                     @default
                                                 @endswitch
-                                            @endforeach
+                                                {{-- @endif --}}
+                                            {{-- @endforeach --}}
 
                                             <a href="room.html#room-reviews">{{ $room->star }} Based on 5 Ratings</a>
                                         </span>
@@ -110,19 +125,25 @@
                                 </div>
                                 <div class="col-lg-2">
                                     <div class="room-price">
+                                        @if ($room->promo ==0)
                                         <span class="price">€{{ $room->price }} / night</span>
+                                        @else
+                                        <s class="price">€ {{ $room->price }}</s>
+                                        <span class="price">€{{ ($room->price)-($room->price*$room->promo/100)}} / night</span>
+                                        @endif
                                         <a href="/{{ $room->id }}/showroom" class="btn btn-sm">view <br> details</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        @endif
                     @endforeach
                     {{-- Paginattion --}}
-                    <div class="d-flex justify-center">
+                    {{-- <div class="d-flex justify-center">
                         <div class="w-50 m-auto">
                             {{ $rooms->links() }}
                         </div>
-                    </div>
+                    </div> --}}
 
                 </div>
                 <div class="col-lg-3 col-12">
