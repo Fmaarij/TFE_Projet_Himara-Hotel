@@ -54,7 +54,7 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
     }
     public function latestnews(){
-        return $this->belongsTo(Latestnews::class);
+        return $this->hasMany(Latestnews::class);
     }
     public function rooms(){
         return $this->belongsTo(Room::class);

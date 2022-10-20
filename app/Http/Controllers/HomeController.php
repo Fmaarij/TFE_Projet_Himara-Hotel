@@ -33,8 +33,10 @@ class HomeController extends Controller
         $gallery = Gallery::all();
         $himaragallery = Himaragallery::all();
         $homepagephotovideos = Homepagephotovideo::all();
-        $himararestaurants =Himararestaurant::all();
-        $latestnews = Latestnew::all();
+        // $himararestaurants =Himararestaurant::all();
+        $himararestaurants =Himararestaurant::paginate(4);
+
+        $latestnews = Latestnew::paginate(3);
         $sliders = Slider::all();
         $roomreviews = Roomreview::all();
 

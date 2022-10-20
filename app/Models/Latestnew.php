@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Latestnew extends Model
 {
     use HasFactory;
+    public function user(){
+        return $this->hasOne(User::class,'latestnews_id','id');
+    }
 }

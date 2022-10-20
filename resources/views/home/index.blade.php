@@ -465,16 +465,21 @@
         data-parallax="scroll" data-speed="0.3" data-mirror-selector=".wrapper" data-z-index="0">
         <div class="container">
             <div class="section-title">
+                {{-- @foreach ($himararestaurants as $resitems )
+                <h4>{{$resitems->title}} {{$resitems->subtitle}}</h4>
+                <p class="section-subtitle">{{$resitems->subpara}}</p>
+                @endforeach --}}
                 <h4>{{$himararestaurants[0]->title}} {{$himararestaurants[0]->subtitle}}</h4>
                 <p class="section-subtitle">{{$himararestaurants[0]->subpara}}</p>
             </div>
             <div class="row">
                 <!-- ITEM -->
+                {{-- {{dd($himararestaurants)}} --}}
                 @foreach ($himararestaurants as $resitem )
-                <div class="col-md-6 col-sm-6 col-6">
+                <div class="col-md-6 col-sm-6 col-6  p-4">
                     <div class="restaurant-menu-item">
-                        <div class="row">
-                            <div class="col-lg-4 col-12">
+                        <div class="row ">
+                            <div class="col-lg-4 col-12 mt-3 ">
                                 <figure>
                                     <img src="{{asset('storage/himararestaurent_images/thumbnail/'.$resitem->img)}}" class="img-fluid " alt="Image">
                                 </figure>
@@ -496,6 +501,11 @@
                 </div>
                 @endforeach
             </div>
+                     {{-- Paginattion --}}
+                     <div class="d-flex justify-center">
+                        <div class="w-50 m-auto">
+                            {{ $himararestaurants->links() }}
+                        </div>
         </div>
     </section>
     <!-- ========== NEWS ==========-->
@@ -521,13 +531,14 @@
                             </h4>
                             <p>{{$news->para}}</p>
                             <div class="post-meta">
+                                {{-- {{dd($news->user->name)}} --}}
                                 <span class="author">
-                                    <a href="#"><img src="images/users/admin.jpg" width="16" alt="Image">
-                                        JANE</a>
+                                    <a href="#"><img src="{{asset('storage/user_images/thumbnail/'.$news->user->img)}}" width="16" alt="Image">
+                                        {{$news->user->name}}</a>
                                 </span>
                                 <span class="date">
                                     <i class="fa fa-clock-o"></i>
-                                    August 13, 2017</span>
+                                    {{$news->user->created_at}}</span>
                                 <span class="comments">
                                     <a href="#">
                                         <i class="fa fa-commenting-o"></i>
@@ -539,6 +550,11 @@
                 </div>
                 @endforeach
             </div>
+                     {{-- Paginattion --}}
+                     <div class="d-flex justify-center">
+                        <div class="w-50 m-auto">
+                            {{ $latestnews->links() }}
+                        </div>
         </div>
     </section>
     <!-- ========== VIDEO ========== -->

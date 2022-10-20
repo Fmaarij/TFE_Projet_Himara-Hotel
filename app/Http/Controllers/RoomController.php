@@ -315,7 +315,7 @@ public function allrooms(){
                         'price'=>$room->price,
                         'promo'=>$room->promo,
                         'description'=>$room->description,
-                        'subject'=>"A Room Has Been Deleted",
+                        'subject'=>"A Room Has Been Deleted/tried to delete",
                         // 'body'=>$request->message,
 
                     ];
