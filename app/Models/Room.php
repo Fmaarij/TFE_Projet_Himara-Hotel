@@ -19,6 +19,9 @@ class Room extends Model {
         'maxguests',
         'city',
         'star',
+        'Ptoshow',
+        'checkin',
+        'checkout',
         'description',
         'price',
         'service',
@@ -32,6 +35,15 @@ class Room extends Model {
     }
     public function roomreview() {
         return $this->hasMany(Roomreview::class);
+    }
+
+    // protected $table = "rooms";
+
+    public function catagor() {
+        return $this->belongsTo(Catagor::class);
+    }
+    public function tags() {
+        return $this->belongsToMany(Tag::class);
     }
 
 }

@@ -2,7 +2,7 @@
 @section('content')
     <!-- ========== PAGE TITLE ========== -->
     <div class="page-title gradient-overlay op6"
-        style="background: url(images/breadcrumb.jpg); background-repeat: no-repeat;
+        style="background: url(/images/breadcrumb.jpg); background-repeat: no-repeat;
      background-size: cover;">
         <div class="container">
             <div class="inner">
@@ -23,7 +23,7 @@
             <div class="row">
                 <div class="col-lg-9 col-12">
                     <!-- ITEM -->
-                    @forelse ($rooms as $room)
+                    @forelse ($catagor as $room)
 
                     @if ($room->Ptoshow == 1 )
                     <div class="room-list-item">
@@ -33,7 +33,7 @@
                                 <div class="col-lg-5">
                                     <figure class="gradient-overlay-hover link-icon">
                                         {{-- <a href="room.html"><img src="{{asset('storage/room/'.$room->img)}}" class="img-fluid" alt="Image"></a> --}}
-                                        <a href="{{ asset('storage/room_images/thumbnail/' . $room->img) }}">
+                                        <a href="{{asset('storage/room_images/thumbnail/' . $room->img) }}">
                                             <img src="{{ asset('storage/room_images/thumbnail/' . $room->img) }}"
                                                 class="img-fluid" alt="Image">
                                             {{-- <img src="{{(!empty($room->img))? url( $room->img):url('roomthumbnail/no_image.jpg')}}"
@@ -142,7 +142,7 @@
                     {{-- Paginattion --}}
                      <div class="d-flex justify-center">
                         <div class="m-auto">
-                            {{ $rooms->appends( ['search' => request()->query('search')] )->links() }}
+                            {{ $catagor->appends( ['search' => request()->query('search')] )->links() }}
                         </div>
                     </div>
 

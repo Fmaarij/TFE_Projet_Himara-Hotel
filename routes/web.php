@@ -99,10 +99,10 @@ Route::PUT('/{id}/valideroomz',[RoomController::class,'roomstovalide']);
 Route::get('/{id}/editroomz',[RoomController::class,'edit']);
 Route::Put('/{id}/updateroomz',[RoomController::class,'update']);
 Route::delete('/{id}/deleteroomz',[RoomController::class,'destroy']);
-Route::get('/single',[RoomController::class,'single'])->name('single');
-Route::get('/double',[RoomController::class,'double'])->name('double');
-Route::get('/delux',[RoomController::class,'delux'])->name('delux');
-Route::get('/family',[RoomController::class,'family'])->name('family');
+// Route::get('/single',[RoomController::class,'single'])->name('single');
+// Route::get('/double',[RoomController::class,'double'])->name('double');
+// Route::get('/delux',[RoomController::class,'delux'])->name('delux');
+// Route::get('/family',[RoomController::class,'family'])->name('family');
 Route::get('/{id}/showroom',[RoomController::class,'show']);
 Route::get('/createroom',[RoomController::class,'create'])->name('createroom');
 Route::post('/storeroom',[RoomController::class,'store']);
@@ -110,6 +110,21 @@ Route::post('/storeroom',[RoomController::class,'store']);
 Route::put('/{id}/updateroom',[RoomController::class,'updated']);
 Route::delete('/{id}/deleteroom',[RoomController::class,'destroy']);
 //End Of ROOM
+
+// SEARCH
+// not used cause it is used above in index room
+// Route::get('/search',[RoomController::class,'search']);
+//END OF SEARCH
+
+// CATEGORY && TAG //not working
+Route::get('room/catagors/{catagor}',[RoomController::class,'catagor'])->name("room.catagor");
+Route::get('room/tags/{tag}',[RoomController::class,'tag'])->name("room.tag");
+// END OF CATEGORY && TAG
+
+// CATEGOR && TAG
+//
+// END OF CATEGOR && TAG
+
 
 //ROOMSERVICE
 Route::get('/roomservices',[RoomserviceController::class,'index'])->name('roomservice');

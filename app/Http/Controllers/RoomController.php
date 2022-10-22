@@ -8,9 +8,12 @@ use App\Http\Requests\UpdateRoomRequest;
 use App\Mail\MailNotify;
 use App\Mail\Mailroomvalidate;
 use App\Models\About;
+use App\Models\Catagor;
+use App\Models\Category;
 use App\Models\Roomreview;
 use App\Models\Roomservice;
 use App\Models\Roomsphoto;
+use App\Models\Tag;
 use App\Models\Typeofroom;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
@@ -32,31 +35,57 @@ class RoomController extends Controller {
     */
 
     public function index() {
-        // $rooms = Room::paginate( 4 );
-        // {
+               // Get the search value from the request
+        $search = request()->input('search');
+        if($search){
+             // Search in the title and body columns from the room table
+             $rooms = Room::where('city', 'LIKE', "%{$search}%")->simplepaginate(3);
+                //  ->orWhere('typeofroom_id', 'LIKE',"%{$search}%")
+                //  ->get();
+        } else {
+            $rooms = Room::simplePaginate(3);
+        }
+        return view ('room.index')
+        ->with('roomsphotos', Roomsphoto::all())
+        ->with('roomsreviews' , Roomreview::all())
+        ->with('catagor' , Catagor::all())
+        ->with('tag' , Tag::all())
+        ->with('rooms', $rooms);
+    }
 
-        // $room = Room::find( 1 );
-        $roomsreviews = Roomreview::all();
-        $roomsphotos = Roomsphoto::all();
-        $rooms = Room::all();
-        return view ( 'room.index', compact( 'rooms','roomsphotos','roomsreviews' ) );
-    }
-    public function single(){
-        $rooms = Room::where('typeofroom_id','=',1)->get();
-        return view ( 'room.single',compact( 'rooms'));
-    }
-    public function double(){
-        $rooms = Room::where('typeofroom_id','=',2)->get();
-        return view ( 'room.double',compact( 'rooms'));
-    }
-    public function delux(){
-        $rooms = Room::where('typeofroom_id','=',4)->get();
-        return view ( 'room.delux',compact( 'rooms'));
-    }
-    public function family(){
-        $rooms = Room::where('typeofroom_id','=',3)->get();
-        return view ( 'room.family',compact( 'rooms'));
-    }
+                    //Category function
+                    public function catagor(Catagor $catagor){
+                        return view('catagor.index')
+                        ->with('catagor', $catagor)
+                        ->with('catagors', Catagor::all())
+                        ->with('catagor', $catagor->catagor()->simplepaginate(3))
+                        ->with('tag' , Tag::all());
+
+                    }
+
+                    //Tag function
+                    public function tag(Tag $tag){
+                        return view('tag.index')
+                        ->with('tag', $tag);
+                        // ->with('tags', $tag->tags()->simplepaginate(1));
+                    }
+
+    // public function single(){
+    //     $rooms = Room::where('typeofroom_id','=',1)->get();
+    //     return view ( 'room.single',compact( 'rooms'));
+    // }
+    // public function double(){
+    //     $rooms = Room::where('typeofroom_id','=',2)->get();
+    //     return view ( 'room.double',compact( 'rooms'));
+    // }
+    // public function delux(){
+    //     $rooms = Room::where('typeofroom_id','=',4)->get();
+    //     return view ( 'room.delux',compact( 'rooms'));
+    // }
+    // public function family(){
+    //     $rooms = Room::where('typeofroom_id','=',3)->get();
+    //     return view ( 'room.family',compact( 'rooms'));
+    // }
 
     /**
     * Show the form for creating a new resource.
@@ -323,4 +352,31 @@ public function allrooms(){
                     return redirect('allrooms');
                 }
 
+                //searche function //not used cause it is used above in index function
+                public function search(Request $request){
+                    // Get the search value from the request
+                    $search = $request->input('search');
+                    // Search in the title and body columns from the room table
+                    $posts = Room::query()
+                        ->where('city', 'LIKE', "%{$search}%")
+                        // ->orWhere('price', 'LIKE', "%{$search}%")
+                        ->orWhere('typeofroom_id', 'LIKE',"%{$search}%")
+                        ->get();
+                    return view('room.search', compact('posts','search'));
+                }
+
+                // //Category function
+                // public function catagor(Catagor $catagor){
+                //     return view('catagor.index')
+                //     ->with('catagor', $catagor)
+                //     ->with('posts', $catagor->posts()->simplepaginate(3))
+                //     ->with('catagors',Catagor::all());
+                // }
+
+                // //Tag function
+                // public function tag(Tag $tag){
+                //     return view('tag.index')
+                //     ->with('tag', $tag)
+                //     ->with('posts', $tag->posts()->simplepaginate(3));
+                // }
             }
