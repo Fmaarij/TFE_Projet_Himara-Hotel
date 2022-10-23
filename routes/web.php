@@ -253,7 +253,12 @@ Route::put('{id}/updatecontactinformation',[ContactinformationController::class,
 Route::delete('{id}/deletecontactinformation',[ContactinformationController::class,'edit'])->middleware(['auth', 'roleadmin']);
 //End Of CONTACTINFORMATION
 
-//BOOKING
-Route::get('/booking',[BookingController::class,'create'])->middleware(['auth', 'roleadmin'])->name('booking');
-Route::post('/storebooking',[BookingController::class,'store'])->middleware(['auth', 'roleadmin']);
+//BOOKING middleware pour user à voir pour ses accèes au modification
+Route::get('/bookings',[BookingController::class,'index'])->middleware(['auth','rolemember'])->name('bookings');
+Route::get('/createbookings',[BookingController::class,'create'])->name('createbookings');
+Route::post('/storebooking',[BookingController::class,'store']);
+Route::get('/{id}/showbookings',[BookingController::class,'show'])->middleware('auth')->name('showbookings');
+Route::get('/{id}/editbookings',[BookingController::class,'edit'])->middleware('auth')->name('editbookings');
+Route::put('/{id}/updatebookings',[BookingController::class,'update'])->middleware('auth')->name('updatebookings');
+Route::delete('/{id}/deletebookings',[BookingController::class,'destroy'])->middleware('auth');
 //End Of BOOKING

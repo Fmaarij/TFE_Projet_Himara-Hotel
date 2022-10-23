@@ -442,7 +442,7 @@
                             <div class="col-lg-4">
                                 <div class="room-grid-item">
                                     <figure class="gradient-overlay-hover link-icon">
-                                        <a href="{{asset('storage/room_images/thumbnail/'.$sim->img)}}">
+                                        <a href="/{{$sim->id}}/showroom">
                                             <img src="{{asset('storage/room_images/thumbnail/'.$sim->img)}}" class="img-fluid" alt="Image">
                                         </a>
                                         <div class="room-services">

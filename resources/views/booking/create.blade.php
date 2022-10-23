@@ -27,31 +27,33 @@
            </div>
            <p class="mb30">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia deleniti fuga recusandae perferendis modi voluptate, ad ratione saepe voluptas nam provident reiciendis velit nulla repellendus illo consequuntur amet similique hic.</p>
            <!-- BOOKING FORM -->
-           <form action ="/storebooking" method="post" enctype="multipart/form-data" class="booking-form-advanced" id="booking-form">
+           <form action ="/storebooking" method="post" enctype="multipart/form-data" class="booking-form-advanced" id="">
             @csrf
              <div class="row">
                <div class="col-md-6">
                  <div class="form-group">
                    <label>Your Name</label>
-                   <input name="booking_name" type="text" class="form-control" placeholder="Your Name">
+                   <input name="booking_name" type="text" class="form-control" value="{{Auth::user()->name}}" readonly="readonly">
                  </div>
                </div>
                <div class="col-md-6">
                  <div class="form-group">
                    <label>Email Address</label>
-                   <input class="form-control" name="booking_email" type="email" placeholder="Your Email Address">
+                   <input class="form-control" name="booking_email" type="email" value="{{Auth::user()->email}}" readonly="readonly">
                  </div>
                </div>
                <div class="col-md-6">
                  <div class="form-group">
                    <label>Phone Number</label>
-                   <input name="booking_phone" type="text" class="form-control" placeholder="Your Phone Number">
+                   <input name="booking_phone" type="text" class="form-control" placeholder="0487675456">
                  </div>
                </div>
                <div class="col-md-6">
                  <div class="form-group">
-                   <label>Country</label>
-                   <select name="booking_country" class="form-control" title="Select Your Country" data-header="Select Your Country" data-live-search="true" data-size="5">
+                   <label>City</label>
+                   <input type="text" class="form-control" title="Select Your Country" data-header="Select Your Country" data-live-search="true" data-size="5" name="booking_country" value="{{Auth::user()->city}}" readonly="readonly">
+
+                   {{-- <select name="booking_country" class="form-control" title="Select Your Country" data-header="Select Your Country" data-live-search="true" data-size="5">
                      <option value="Afganistan">Afghanistan</option>
                      <option value="Albania">Albania</option>
                      <option value="Algeria">Algeria</option>
@@ -299,7 +301,7 @@
                      <option value="Zaire">Zaire</option>
                      <option value="Zambia">Zambia</option>
                      <option value="Zimbabwe">Zimbabwe</option>
-                   </select>
+                   </select> --}}
                  </div>
                </div>
                <div class="col-md-6">
@@ -331,7 +333,7 @@
                          </label>
                          <div class="guests-button">
                            <div class="minus"></div>
-                           <input type="text" name="booking_adults" class="booking-guests" value="0">
+                           <input type="text" name="booking_adult" class="booking-guests" value="0">
                            <div class="plus"></div>
                          </div>
                        </div>
@@ -343,7 +345,7 @@
                          </label>
                          <div class="guests-button">
                            <div class="minus"></div>
-                           <input type="text" name="booking_children" class="booking-guests" value="0">
+                           <input type="text" name="booking_child" class="booking-guests" value="0">
                            <div class="plus"></div>
                          </div>
                        </div>
@@ -351,17 +353,50 @@
                    </div>
                  </div>
                </div>
-               <div class="col-md-12">
+                <div class="col-md-12">
                  <div class="form-group">
-                   <label>Room Type</label>
-                   <select name="booking_roomtype" class="form-control" title="Select Room Type" data-header="Select Room Type">
-                     <option value="Single Room" data-subtext="<span class='badge badge-info'>€89 / night</span>">Single Room
-                     </option>
-                     <option value="Double Room" data-subtext="<span class='badge badge-info'>€129 / night</span>">Double Room</option>
-                     <option value="Deluxe Room" data-subtext="<span class='badge badge-info'>€89 / night</span>">Deluxe Room</option>
+                   <label>Room</label>
+                   <select name="room_id" class="form-control" title="Select A Room " data-header="Select Room Type">
+                       @foreach ($rooms as $room )
+                       @if ($room->checkin ==0 && $room->checkout ==0)
+                       <option value="{{$room->id}}" data-subtext="<span class='badge badge-info'>€
+
+                           {{$room->price}},
+
+                           / night</span>">{{$room->typeofroom->type_name}}
+                           @endif
+                    </option>
+                    @endforeach
                    </select>
                  </div>
                </div>
+               {{-- <div class="col-md-12">
+                 <div class="form-group">
+                   <label>Room Type</label>
+                   <select name="typeofroom_id" class="form-control" title="Select Room Type" data-header="Select Room Type">
+                       @foreach ($typeofroom as $type )
+                    <option value="{{$type->id}}" data-subtext="<span class='badge badge-info'>€
+                        @foreach($type->room as $room)
+                        {{$room->price}},
+                        @endforeach
+                         / night</span>">{{$type->type_name}}
+                    </option>
+                    @endforeach
+                   </select>
+                 </div>
+               </div> --}}
+               {{-- <div class="col-md-12">
+                <div class="form-group">
+                  <label>Room ID</label>
+                  <input class="form-control" name="room_id" type="number" placeholder="Your Email Address">
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>Email Address</label>
+                  <input class="form-control" name="user_id" type="number" placeholder="Your Email Address">
+                </div>
+              </div> --}}
                <div class="col-md-12">
                  <div class="form-group">
                    <label>Your Comments</label>

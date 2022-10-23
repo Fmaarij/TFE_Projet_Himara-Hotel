@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
+
+use App\Models\Booking;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
@@ -42,6 +44,19 @@ class AuthServiceProvider extends ServiceProvider
                 return true;
             }
         });
+  //members gates
+        Gate::define('access-btn-booking', function ($users) {
+            $booking = Booking::where('user_id','=',Auth::user()->id)->get();
+                    //   $booking = Booking::where('user_id','=',Auth::user()->id) && Booking::where('room_id','=',Auth::user()->room_id)->get();
+            // dd($booking->id);
+            foreach($booking as $booc){
+                // dd($booc->id);
+
+            if( Auth::user()->id == $booc->id || (Auth::user()->role_id == 1 )) {
+
+                return true;
+            }
+        } });
         //CRUD buttons
         Gate::define('access-btn-crud', function ($users) {
 
@@ -51,5 +66,7 @@ class AuthServiceProvider extends ServiceProvider
             }
         });
 
+
     }
 }
+// $booking = Booking::where('user_id','=',Auth::user()->id)->get();

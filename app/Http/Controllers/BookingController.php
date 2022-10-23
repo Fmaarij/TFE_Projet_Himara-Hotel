@@ -5,94 +5,151 @@ namespace App\Http\Controllers;
 use App\Models\Booking;
 use App\Http\Requests\StoreBookingRequest;
 use App\Http\Requests\UpdateBookingRequest;
+use App\Models\Room;
+use App\Models\Typeofroom;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class BookingController extends Controller
-{
+class BookingController extends Controller {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
+    * Display a listing of the resource.
+    *
+    * @return \Illuminate\Http\Response
+    */
 
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
+    public function index() {
         $bookings = Booking::all();
-        return view('booking.create', compact('bookings'));
+        return view( 'booking.index', compact( 'bookings' ) );
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreBookingRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
+    * Show the form for creating a new resource.
+    *
+    * @return \Illuminate\Http\Response
+    */
+
+    public function create() {
+        $bookings = Booking::all();
+        $typeofroom = Typeofroom::all();
+        $users = User::all();
+        $rooms = Room::all();
+        // foreach ( $typeofroom as $type ) {
+        //     foreach ( $type->room as $ro ) {
+
+        //         dd( $ro->price );
+        //     }
+        // }
+        return view( 'booking.create', compact( 'bookings', 'typeofroom', 'users', 'rooms' ) );
+    }
+
+    /**
+    * Store a newly created resource in storage.
+    *
+    * @param  \App\Http\Requests\StoreBookingRequest  $request
+    * @return \Illuminate\Http\Response
+    */
+
+    public function store( Request $request ) {
         $bookings = new Booking;
         $bookings->booking_name = $request->booking_name;
         $bookings->booking_email = $request->booking_email;
         $bookings->booking_phone = $request->booking_phone;
-         $bookings->booking_country = $request->booking_country;
-         $bookings->booking_date = $request->booking_date;
-         $bookings->booking_roomtype = $request->booking_roomtype;
-         $bookings->booking_comments = $request->booking_comments;
-         $bookings->save();
-         return redirect()->back();
-
+        $bookings->booking_country = $request->booking_country;
+        $bookings->booking_adult = $request->booking_adult;
+        $bookings->booking_child = $request->booking_child;
+        $bookings->booking_date = $request->booking_date;
+        $bookings->user_id = Auth::user()->id;
+        $bookings->room_id = $request->room_id;
+        //  $bookings->typeofroom_id = $request->typeofroom_id;
+        $bookings->booking_comments = $request->booking_comments;
+        $bookings->save();
+        $dateinout = explode( ' - ', $bookings->booking_date );
+        $datein = $dateinout[ 0 ];
+        $dateout = $dateinout[ 1 ];
+        $room = Room::where( 'id', '=', $bookings->room_id )
+        ->update( [
+            'checkin' => $datein,
+            'checkout' => $dateout
+        ] );
+        return redirect()->back();
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Booking  $booking
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Booking $booking)
-    {
-        //
+    * Display the specified resource.
+    *
+    * @param  \App\Models\Booking  $booking
+    * @return \Illuminate\Http\Response
+    */
+
+    public function show( $id ) {
+        $booking = Booking::find( $id );
+        return view( 'booking.show', compact( 'booking' ) );
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Booking  $booking
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Booking $booking)
-    {
-        //
+    * Show the form for editing the specified resource.
+    *
+    * @param  \App\Models\Booking  $booking
+    * @return \Illuminate\Http\Response
+    */
+
+    public function edit( $id ) {
+        $booking = Booking::find( $id );
+        $typeofroom = Typeofroom::all();
+        $users = User::all();
+        $rooms = Room::all();
+        return view( 'booking.edit', compact( 'booking', 'typeofroom', 'users', 'rooms' ) );
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateBookingRequest  $request
-     * @param  \App\Models\Booking  $booking
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateBookingRequest $request, Booking $booking)
-    {
-        //
+    * Update the specified resource in storage.
+    *
+    * @param  \App\Http\Requests\UpdateBookingRequest  $request
+    * @param  \App\Models\Booking  $booking
+    * @return \Illuminate\Http\Response
+    */
+
+    public function update( Request $request, $id ) {
+        $bookings = Booking::find( $id );
+        $bookings->booking_name = $request->booking_name;
+        $bookings->booking_email = $request->booking_email;
+        $bookings->booking_phone = $request->booking_phone;
+        $bookings->booking_country = $request->booking_country;
+        $bookings->booking_adult = $request->booking_adult;
+        $bookings->booking_child = $request->booking_child;
+        $bookings->booking_date = $request->booking_date;
+        $bookings->user_id = Auth::user()->id;
+        $bookings->room_id = $request->room_id;
+        //  $bookings->typeofroom_id = $request->typeofroom_id;
+        $bookings->booking_comments = $request->booking_comments;
+        $bookings->save();
+        $dateinout = explode( ' - ', $bookings->booking_date );
+        $datein = $dateinout[ 0 ];
+        $dateout = $dateinout[ 1 ];
+        $room = Room::where( 'id', '=', $bookings->room_id )
+        ->update( [
+            'checkin' => $datein,
+            'checkout' => $dateout
+        ] );
+        return redirect()->back();
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Booking  $booking
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Booking $booking)
-    {
-        //
+    * Remove the specified resource from storage.
+    *
+    * @param  \App\Models\Booking  $booking
+    * @return \Illuminate\Http\Response
+    */
+
+    public function destroy( $id ) {
+        $booking = Booking::find( $id );
+        $room = Room::where( 'id', '=', $booking->room_id )
+        ->update( [
+            'checkin' => 0,
+            'checkout' => 0,
+        ] );
+        $booking->delete();
+        return redirect( 'bookings' );
     }
 }

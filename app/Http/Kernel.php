@@ -66,5 +66,6 @@ class Kernel extends HttpKernel
         'roleadmin' => \App\Http\Middleware\Roleverification::class,
         'rolemoderator' => \App\Http\Middleware\Roleverificationmoderator::class,
         'roleeditor' => \App\Http\Middleware\Roleverificationeditor::class,
+        'rolemember' => \App\Http\Middleware\Roleverificationmember::class,
     ];
 }
