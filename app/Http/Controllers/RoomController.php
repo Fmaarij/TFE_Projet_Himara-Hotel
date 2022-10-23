@@ -335,7 +335,9 @@ public function allrooms(){
                     $room = Room::find($id);
                     if($room->Ptoshow ==1){
                         $room->delete();
-                    }return redirect()->back()->with('error','Impossible to delete cause the room has been not validated by admin');
+                    }else{
+                        return redirect()->back()->with('error','Impossible to delete cause the room has been not validated by admin');
+                    }
                     $data = [
                         // 'recipient' => 'member@test.com',
                         'email' => $room->email,

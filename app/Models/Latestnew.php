@@ -8,7 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Latestnew extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'img',
+        'title',
+        'para',
+
+
+    ];
+
     public function user(){
-        return $this->hasOne(User::class,'latestnews_id','id');
+        return $this->hasOne(User::class,'latestnews_id');
     }
 }
+

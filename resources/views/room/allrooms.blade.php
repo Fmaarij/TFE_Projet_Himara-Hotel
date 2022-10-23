@@ -12,7 +12,9 @@
                     <th>Validation</th>
                     <th>Show</th>
                     <th>Delete</th>
+                    @can('accessadmin')
                     <th>Validate the room</th>
+                    @endcan
 
             </thead>
             <tbody>
@@ -39,15 +41,18 @@
                             <button class="btn bg-danger">delete</button>
                             </form>
                         </td>
+                        @can('accessadmin')
+
                         <td>
                             <form action="/{{$roomz->id}}/valideroomz" method="post" enctype="multipart/form-data">
-                            @csrf
-                            @method('PUT')
-                            @if($roomz->Ptoshow ==0)
-                            <button class="btn bg-success">Yes</button>
-                            @endif
+                                @csrf
+                                @method('PUT')
+                                @if($roomz->Ptoshow ==0)
+                                <button class="btn bg-success">Yes</button>
+                                @endif
                             </form>
                         </td>
+                        @endcan
 
                     </tr>
                 @endforeach

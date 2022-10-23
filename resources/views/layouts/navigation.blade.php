@@ -82,6 +82,9 @@
                  <ul class="menu">
                      <li class="menu-item dropdown active">
                          <a href="{{ url('homepage') }}">HOME</a>
+                         {{-- @if (Auth::user()->role_id ==1 ) --}}
+
+                         @can('accessadmin')
                          <ul class="submenu">
                              <li class="menu-item">
                                  <a href="{{ url('allHtitles') }}">All Titles</a>
@@ -133,17 +136,24 @@
                                  <a href="{{ url('createLnews') }}">Add news</a>
                              </li>
                          </ul>
+                         @endcan
+                         {{-- @endif --}}
                      </li>
                      {{-- himarares --}}
 
                      <li class="menu-item dropdown">
                          <a href="{{ url('rooms') }}">Rooms</a>
+
+                         @can('accesseditor')
+
                          <ul class="submenu">
                              <li class="menu-item">
                                  <a href="{{ url('createroom') }}">Add room</a>
                              </li>
                              <li class="menu-item">
+                                @can('accessadmin')
                                  <a href="{{ url('createroomservices') }}">Add R-services</a>
+                                 @endcan
                              </li>
                              {{-- <li class="menu-item">
                                  <a href="#">Room service</a>
@@ -152,12 +162,17 @@
                                 <a href="{{ url('allrooms') }}">All Rooms</a>
                             </li>
                             <li class="menu-item">
+                                @can('accessadmin')
                                 <a href="{{url('roomsnotvalide')}}">Rooms Not Valided</a>
+                                @endcan
                             </li>
                          </ul>
+
+                         @endcan
                      </li>
                      <li class="menu-item dropdown">
                          <a href="{{ url('teams') }}">TEAM</a>
+                         @can('accessadmin')
                          <ul class="submenu">
                              <li class="menu-item">
                                  <a href="{{ url('allmembers') }}">All Members</a>
@@ -165,10 +180,15 @@
                              <li class="menu-item">
                                  <a href="{{ url('createmember') }}">Add a Member</a>
                              </li>
+                             <li class="menu-item">
+                                <a href="{{ url('users') }}">Users</a>
+                            </li>
                          </ul>
+                         @endcan
                      </li>
                      <li class="menu-item dropdown">
                          <a href="{{ url('gallery') }}">GALLERY</a>
+                         @can('accessadmin')
                          <ul class="submenu">
                              <li class="menu-item">
                                  <a href="{{ url('allimg') }}">All Gallery</a>
@@ -190,9 +210,11 @@
                                  <a href="{{ url('createslider') }}">Add a slider</a>
                              </li>
                          </ul>
+                         @endcan
                      </li>
                      <li class="menu-item dropdown">
-                         <a href="{{ url('contact') }}">contact us</a>
+                         <a href="{{ url('contact') }}">contact us</a>.
+                         @can('accessadmin')
                          <ul class="submenu">
                              <li class="menu-item">
                                  <a href="{{ url('messagerecieved') }}">Messages</a>
@@ -201,10 +223,11 @@
                                  <a href="{{ url('editcontactinformation') }}">Edit contact info</a>
                              </li>
                          </ul>
+                         @endcan
                      </li>
-                     <li class="menu-item dropdown">
+                     {{-- <li class="menu-item dropdown">
                         <a href="{{ url('users') }}">Users</a>
-                    </li>
+                    </li> --}}
 
                      @if (Route::has('login'))
                          @auth

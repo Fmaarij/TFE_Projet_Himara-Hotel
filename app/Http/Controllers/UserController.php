@@ -6,6 +6,7 @@ use App\Mail\MailNotify;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Intervention\Image\Facades\Image;
@@ -15,6 +16,7 @@ use Illuminate\Support\Facades\Storage;
 // use App\Mail\MailNotify as MailMailNotify;
 class UserController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -25,6 +27,24 @@ class UserController extends Controller
         $users = User::paginate(3);
         return view('users.index', compact('users' ));
     }
+
+
+    // public function __construct(){
+    //     // $users = User::all();
+    //     if(Auth::user()->role_id==1){
+
+    //         $this->middleware('roleadmin');
+    //     }elseif(Auth::user()->role_id==2){
+
+    //         $this->middleware('rolemoderator')->except(['create','store','show','edit','update','destroy']);
+    //     }
+
+    //     $this->middleware('roleadmin') && $this->middleware('rolemoderator')->only('index');
+// }
+// public function __construct1(){
+//     $this->middleware('roleadmin');
+// }
+
 
     /**
      * Show the form for creating a new resource.

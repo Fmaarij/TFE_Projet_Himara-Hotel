@@ -297,7 +297,7 @@
                 <div class="col-md-4">
                     <div class="room-grid-item">
                         <figure class="gradient-overlay-hover link-icon">
-                            <a href="{{ asset('storage/room_images/' . $room->img) }}">
+                            <a href="/{{$room->id }}/showroom">
                                  <img src="{{ asset('storage/room_images/thumbnail/' . $room->img) }}" class="img-fluid"
                                                 alt="Image">
                             </a>
@@ -534,6 +534,7 @@
                                 {{-- {{dd($news->user->name)}} --}}
                                 <span class="author">
                                     <a href="#"><img src="{{asset('storage/user_images/thumbnail/'.$news->user->img)}}" width="16" alt="Image">
+                                        {{-- {{dd($news->user->img)}} --}}
                                         {{$news->user->name}}</a>
                                 </span>
                                 <span class="date">

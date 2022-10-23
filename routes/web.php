@@ -45,47 +45,47 @@ require __DIR__.'/auth.php';
 
 
 //USER
-Route::get('/users',[UserController::class,'index'])->name('users');
+Route::get('/users',[UserController::class,'index'])->middleware(['auth','rolemoderator'])->name('users');
 // Route::get('/allHtitles',[HomeController::class,'allHtitles'])->name('allHtitles');
-Route::get('/createuser',[UserController::class,'create'])->name('createuser');
-Route::post('/storeuser',[UserController::class,'store']);
-Route::get('/{id}/showuser',[UserController::class,'show'])->name('showuser');
-Route::get('/{id}/edituser',[UserController::class,'edit'])->name('edituser');
-Route::Put('/{id}/updateuser',[UserController::class,'update']);
-Route::delete('/{id}/deleteuser',[UserController::class,'destroy']);
+Route::get('/createuser',[UserController::class,'create'])->middleware(['auth', 'roleadmin'])->middleware(['auth', 'roleadmin'])->name('createuser');
+Route::post('/storeuser',[UserController::class,'store'])->middleware(['auth', 'roleadmin'])->middleware(['auth', 'roleadmin']);
+Route::get('/{id}/showuser',[UserController::class,'show'])->middleware(['auth', 'roleadmin'])->middleware(['auth', 'roleadmin'])->name('showuser');
+Route::get('/{id}/edituser',[UserController::class,'edit'])->middleware(['auth', 'roleadmin'])->middleware(['auth', 'roleadmin'])->name('edituser');
+Route::Put('/{id}/updateuser',[UserController::class,'update'])->middleware(['auth', 'roleadmin'])->middleware(['auth', 'roleadmin']);
+Route::delete('/{id}/deleteuser',[UserController::class,'destroy'])->middleware(['auth', 'roleadmin'])->middleware(['auth', 'roleadmin']);
 //End Of USER
 
 
 //HOME
 Route::get('/homepage',[HomeController::class,'index'])->name('homepage');
 Route::get('/allHtitles',[HomeController::class,'allHtitles'])->name('allHtitles');
-Route::get('/createHtitles',[HomeController::class,'create'])->name('createHtitles');
-Route::post('/storeHtitles',[HomeController::class,'store']);
-Route::get('/{id}/showHtitles',[HomeController::class,'show'])->name('wlcHtitles');
-Route::get('/{id}/editHtitles',[HomeController::class,'edit'])->name('editHtitles');
-Route::Put('/{id}/updateHtitles',[HomeController::class,'update']);
-Route::delete('/{id}/deleteHtitles',[HomeController::class,'destroy']);
+Route::get('/createHtitles',[HomeController::class,'create'])->middleware(['auth', 'roleadmin'])->name('createHtitles');
+Route::post('/storeHtitles',[HomeController::class,'store'])->middleware(['auth', 'roleadmin']);
+Route::get('/{id}/showHtitles',[HomeController::class,'show'])->middleware(['auth', 'roleadmin'])->name('wlcHtitles');
+Route::get('/{id}/editHtitles',[HomeController::class,'edit'])->middleware(['auth', 'roleadmin'])->name('editHtitles');
+Route::Put('/{id}/updateHtitles',[HomeController::class,'update'])->middleware(['auth', 'roleadmin']);
+Route::delete('/{id}/deleteHtitles',[HomeController::class,'destroy'])->middleware(['auth', 'roleadmin']);
 //End Of HOME
 
 //Welcome message
 Route::get('/welcomemsg',[WelcomemsgController::class,'index'])->name('welcomemsg');
-// Route::get('/createwlcmsg',[WelcomemsgController::class,'create'])->name('createwlcmsg');
-Route::post('/storewlcmsg',[WelcomemsgController::class,'store']);
-Route::get('/{id}/showwlcmsg',[WelcomemsgController::class,'show'])->name('wlcomemsg');
-Route::get('/{id}/editwlcmsg',[WelcomemsgController::class,'edit'])->name('editlcomemsg');
-Route::Put('/{id}/updatewlcmsg',[WelcomemsgController::class,'update']);
-Route::delete('/{id}/deletewlcemsg',[WelcomemsgController::class,'destroy']);
+// Route::get('/createwlcmsg',[WelcomemsgController::class,'create'])->middleware(['auth', 'roleadmin'])->middleware(['auth', 'roleadmin'])->name('createwlcmsg');
+Route::post('/storewlcmsg',[WelcomemsgController::class,'store'])->middleware(['auth', 'roleadmin']);
+Route::get('/{id}/showwlcmsg',[WelcomemsgController::class,'show'])->middleware(['auth', 'roleadmin'])->middleware(['auth', 'roleadmin'])->name('wlcomemsg');
+Route::get('/{id}/editwlcmsg',[WelcomemsgController::class,'edit'])->middleware(['auth', 'roleadmin'])->name('editlcomemsg');
+Route::Put('/{id}/updatewlcmsg',[WelcomemsgController::class,'update'])->middleware(['auth', 'roleadmin']);
+Route::delete('/{id}/deletewlcemsg',[WelcomemsgController::class,'destroy'])->middleware(['auth', 'roleadmin']);
 //End Of Welcome message
 
 
 //About Info
 Route::get('/about',[AboutController::class,'index'])->name('about');
-Route::get('/createabout',[AboutController::class,'create'])->name('createabout');
-Route::post('/storeabout',[AboutController::class,'store'])->name('storeabout');
-Route::get('{id}/showabout',[AboutController::class,'show']);
-Route::get('/{id}/editabout',[AboutController::class,'edit'])->name('editabout');
-Route::Put('/{id}/updateabout',[AboutController::class,'update'])->name('updateabout');
-Route::delete('{id}/deleteabout',[AboutController::class,'destroy'])->name('deleteabout');
+Route::get('/createabout',[AboutController::class,'create'])->middleware(['auth', 'roleadmin'])->middleware(['auth', 'roleadmin'])->name('createabout');
+Route::post('/storeabout',[AboutController::class,'store'])->middleware(['auth', 'roleadmin'])->name('storeabout');
+Route::get('{id}/showabout',[AboutController::class,'show'])->middleware(['auth', 'roleadmin'])->middleware(['auth', 'roleadmin']);
+Route::get('/{id}/editabout',[AboutController::class,'edit'])->middleware(['auth', 'roleadmin'])->name('editabout');
+Route::Put('/{id}/updateabout',[AboutController::class,'update'])->middleware(['auth', 'roleadmin'])->name('updateabout');
+Route::delete('{id}/deleteabout',[AboutController::class,'destroy'])->middleware(['auth', 'roleadmin'])->name('deleteabout');
 //End Of About Info
 
 //ROOM
@@ -96,19 +96,19 @@ Route::get('/{id}/showroomz',[RoomController::class,'showroom']);
 Route::get('/roomsnotvalide',[RoomController::class,'roomsnotvalide'])->name('roomsnotvalide');
 Route::PUT('/{id}/valideroomz',[RoomController::class,'roomstovalide']);
 
-Route::get('/{id}/editroomz',[RoomController::class,'edit']);
-Route::Put('/{id}/updateroomz',[RoomController::class,'update']);
-Route::delete('/{id}/deleteroomz',[RoomController::class,'destroy']);
+Route::get('/{id}/editroomz',[RoomController::class,'edit'])->middleware(['auth', 'roleeditor']);
+Route::Put('/{id}/updateroomz',[RoomController::class,'update'])->middleware(['auth', 'roleeditor']);
+Route::delete('/{id}/deleteroomz',[RoomController::class,'destroy'])->middleware(['auth', 'roleeditor']);
 // Route::get('/single',[RoomController::class,'single'])->name('single');
 // Route::get('/double',[RoomController::class,'double'])->name('double');
 // Route::get('/delux',[RoomController::class,'delux'])->name('delux');
 // Route::get('/family',[RoomController::class,'family'])->name('family');
 Route::get('/{id}/showroom',[RoomController::class,'show']);
-Route::get('/createroom',[RoomController::class,'create'])->name('createroom');
-Route::post('/storeroom',[RoomController::class,'store']);
+Route::get('/createroom',[RoomController::class,'create'])->middleware(['auth', 'roleeditor'])->name('createroom');
+Route::post('/storeroom',[RoomController::class,'store'])->middleware(['auth', 'roleeditor']);
 
-Route::put('/{id}/updateroom',[RoomController::class,'updated']);
-Route::delete('/{id}/deleteroom',[RoomController::class,'destroy']);
+// Route::put('/{id}/updateroom',[RoomController::class,'updated']);
+// Route::delete('/{id}/deleteroom',[RoomController::class,'destroy'])->middleware(['auth', 'roleadmin']);
 //End Of ROOM
 
 // SEARCH
@@ -128,132 +128,132 @@ Route::get('room/tags/{tag}',[RoomController::class,'tag'])->name("room.tag");
 
 //ROOMSERVICE
 Route::get('/roomservices',[RoomserviceController::class,'index'])->name('roomservice');
-Route::get('/createroomservices',[RoomserviceController::class,'create'])->name('createroomservices');
-Route::post('/storeroomservice',[RoomserviceController::class,'store']);
+Route::get('/createroomservices',[RoomserviceController::class,'create'])->middleware(['auth', 'roleadmin'])->name('createroomservices');
+Route::post('/storeroomservice',[RoomserviceController::class,'store'])->middleware(['auth', 'roleadmin']);
 // End of ROOMSERVICE
 
 
 //Himara services
 Route::get('/himaraservices',[HimaraserviceController::class,'index'])->name('himaraservices');
-Route::get('/createHservice',[HimaraserviceController::class,'create'])->name('createHservice');
-Route::post('/storeHservice',[HimaraserviceController::class,'store'])->name('storeHservice');
-Route::get('{id}/showHservice',[HimaraserviceController::class,'show']);
-Route::get('/{id}/editHservice',[HimaraserviceController::class,'edit'])->name('editHservice');
-Route::Put('/{id}/updateHservice',[HimaraserviceController::class,'update'])->name('updateHservice');
-Route::delete('{id}/deleteHservice',[HimaraserviceController::class,'destroy'])->name('deleteHservice');
+Route::get('/createHservice',[HimaraserviceController::class,'create'])->middleware(['auth', 'roleadmin'])->name('createHservice');
+Route::post('/storeHservice',[HimaraserviceController::class,'store'])->middleware(['auth', 'roleadmin'])->name('storeHservice');
+Route::get('{id}/showHservice',[HimaraserviceController::class,'show'])->middleware(['auth', 'roleadmin'])->middleware(['auth', 'roleadmin']);
+Route::get('/{id}/editHservice',[HimaraserviceController::class,'edit'])->middleware(['auth', 'roleadmin'])->name('editHservice');
+Route::Put('/{id}/updateHservice',[HimaraserviceController::class,'update'])->middleware(['auth', 'roleadmin'])->name('updateHservice');
+Route::delete('{id}/deleteHservice',[HimaraserviceController::class,'destroy'])->middleware(['auth', 'roleadmin'])->name('deleteHservice');
 //End Of Himara services
 
 //Himara gallery
 Route::get('/himaragallery',[HimaragalleryController::class,'index'])->name('himaragallery');
-Route::get('/createHgal',[HimaragalleryController::class,'create'])->name('createHgal');
-Route::post('/storeHgal',[HimaragalleryController::class,'store'])->name('storeHgal');
-Route::get('{id}/showHgal',[HimaragalleryController::class,'show']);
-Route::get('/{id}/editHgal',[HimaragalleryController::class,'edit'])->name('editHgal');
-Route::Put('/{id}/updateHgal',[HimaragalleryController::class,'update'])->name('updateHgal');
-Route::delete('{id}/deleteHgal',[HimaragalleryController::class,'destroy'])->name('deleteHgal');
+Route::get('/createHgal',[HimaragalleryController::class,'create'])->middleware(['auth', 'roleadmin'])->name('createHgal');
+Route::post('/storeHgal',[HimaragalleryController::class,'store'])->middleware(['auth', 'roleadmin'])->name('storeHgal');
+Route::get('{id}/showHgal',[HimaragalleryController::class,'show'])->middleware(['auth', 'roleadmin'])->middleware(['auth', 'roleadmin']);
+Route::get('/{id}/editHgal',[HimaragalleryController::class,'edit'])->middleware(['auth', 'roleadmin'])->name('editHgal');
+Route::Put('/{id}/updateHgal',[HimaragalleryController::class,'update'])->middleware(['auth', 'roleadmin'])->name('updateHgal');
+Route::delete('{id}/deleteHgal',[HimaragalleryController::class,'destroy'])->middleware(['auth', 'roleadmin'])->name('deleteHgal');
 //End Of Himara gallery
 
 //Himara homepagephotovideo
 Route::get('/himaraPV',[HomepagephotovideoController::class,'index'])->name('himaraPV');
-Route::get('/createPV',[HomepagephotovideoController::class,'create'])->name('createPV');
-Route::post('/storePV',[HomepagephotovideoController::class,'store'])->name('storePV');
-Route::get('{id}/showPV',[HomepagephotovideoController::class,'show']);
-Route::get('/{id}/editPV',[HomepagephotovideoController::class,'edit'])->name('editPV');
-Route::Put('/{id}/updatePV',[HomepagephotovideoController::class,'update'])->name('updatePV');
-Route::delete('{id}/deletePV',[HomepagephotovideoController::class,'destroy'])->name('deletePV');
+Route::get('/createPV',[HomepagephotovideoController::class,'create'])->middleware(['auth', 'roleadmin'])->name('createPV');
+Route::post('/storePV',[HomepagephotovideoController::class,'store'])->middleware(['auth', 'roleadmin'])->name('storePV');
+Route::get('{id}/showPV',[HomepagephotovideoController::class,'show'])->middleware(['auth', 'roleadmin']);
+Route::get('/{id}/editPV',[HomepagephotovideoController::class,'edit'])->middleware(['auth', 'roleadmin'])->name('editPV');
+Route::Put('/{id}/updatePV',[HomepagephotovideoController::class,'update'])->middleware(['auth', 'roleadmin'])->name('updatePV');
+Route::delete('{id}/deletePV',[HomepagephotovideoController::class,'destroy'])->middleware(['auth', 'roleadmin'])->name('deletePV');
 //End Of Himara homepagephotovideo
 
 //himara restaurent
 Route::get('/himarares',[HimararestaurantController::class,'index'])->name('himarares');
-Route::get('/createHres',[HimararestaurantController::class,'create'])->name('createHres');
-Route::post('/storeHres',[HimararestaurantController::class,'store'])->name('storeHres');
-Route::get('{id}/showHres',[HimararestaurantController::class,'show']);
-Route::get('/{id}/editHres',[HimararestaurantController::class,'edit'])->name('editHres');
-Route::Put('/{id}/updateHres',[HimararestaurantController::class,'update'])->name('updateHres');
-Route::delete('{id}/deleteHres',[HimararestaurantController::class,'destroy'])->name('deleteHres');
+Route::get('/createHres',[HimararestaurantController::class,'create'])->middleware(['auth', 'roleadmin'])->name('createHres');
+Route::post('/storeHres',[HimararestaurantController::class,'store'])->middleware(['auth', 'roleadmin'])->name('storeHres');
+Route::get('{id}/showHres',[HimararestaurantController::class,'show'])->middleware(['auth', 'roleadmin']);
+Route::get('/{id}/editHres',[HimararestaurantController::class,'edit'])->middleware(['auth', 'roleadmin'])->name('editHres');
+Route::Put('/{id}/updateHres',[HimararestaurantController::class,'update'])->middleware(['auth', 'roleadmin'])->name('updateHres');
+Route::delete('{id}/deleteHres',[HimararestaurantController::class,'destroy'])->middleware(['auth', 'roleadmin'])->name('deleteHres');
 //End Of himara restaurent
 
 
 //Latest News
 Route::get('/latestnews',[LatestnewController::class,'index'])->name('latestnews');
-Route::get('/createLnews',[LatestnewController::class,'create'])->name('createLnews');
-Route::post('/storeLnews',[LatestnewController::class,'store'])->name('storeLnews');
-Route::get('{id}/showLnews',[LatestnewController::class,'show']);
-Route::get('/{id}/editLnews',[LatestnewController::class,'edit'])->name('editLnews');
-Route::Put('/{id}/updateLnews',[LatestnewController::class,'update'])->name('updateLnews');
-Route::delete('{id}/deleteLnews',[LatestnewController::class,'destroy'])->name('deleteLnews');
+Route::get('/createLnews',[LatestnewController::class,'create'])->middleware(['auth', 'roleadmin'])->name('createLnews');
+Route::post('/storeLnews',[LatestnewController::class,'store'])->middleware(['auth', 'roleadmin'])->name('storeLnews');
+Route::get('{id}/showLnews',[LatestnewController::class,'show'])->middleware(['auth', 'roleadmin']);
+Route::get('/{id}/editLnews',[LatestnewController::class,'edit'])->middleware(['auth', 'roleadmin'])->name('editLnews');
+Route::Put('/{id}/updateLnews',[LatestnewController::class,'update'])->middleware(['auth', 'roleadmin'])->name('updateLnews');
+Route::delete('{id}/deleteLnews',[LatestnewController::class,'destroy'])->middleware(['auth', 'roleadmin'])->name('deleteLnews');
 //End Of Latest News
 
 
 //TEAM
 Route::get('/teams',[TeamController::class,'index'])->name('teams');
 Route::get('/allmembers',[TeamController::class,'allmembers'])->name('allmembers');
-Route::get('/createmember',[TeamController::class,'create'])->name('createmember');
-Route::post('/storemember',[TeamController::class,'store']);
-Route::get('{id}/showmember',[TeamController::class,'show']);
-Route::get('/{id}/editmember',[TeamController::class,'edit'])->name('editmember');
-Route::Put('/{id}/updatemember',[TeamController::class,'update'])->name('updatemember');
-Route::delete('{id}/deletemember',[TeamController::class,'destroy'])->name('deletemember');
+Route::get('/createmember',[TeamController::class,'create'])->middleware(['auth', 'roleadmin'])->name('createmember');
+Route::post('/storemember',[TeamController::class,'store'])->middleware(['auth', 'roleadmin']);
+Route::get('{id}/showmember',[TeamController::class,'show'])->middleware(['auth', 'roleadmin']);
+Route::get('/{id}/editmember',[TeamController::class,'edit'])->middleware(['auth', 'roleadmin'])->name('editmember');
+Route::Put('/{id}/updatemember',[TeamController::class,'update'])->middleware(['auth', 'roleadmin'])->name('updatemember');
+Route::delete('{id}/deletemember',[TeamController::class,'destroy'])->middleware(['auth', 'roleadmin'])->name('deletemember');
 
 // à revoir le samed-07-10-2022
-// Route::get('/{id}/editmember',[TeamController::class,'edit'])->name('editmember');
-// Route::put('{id}/updatemember',[TeamController::class,'update']);
-// Route::delete('{id}/deletemember',[TeamController::class,'destroy']);
+// Route::get('/{id}/editmember',[TeamController::class,'edit'])->middleware(['auth', 'roleadmin'])->name('editmember');
+// Route::put('{id}/updatemember',[TeamController::class,'update'])->middleware(['auth', 'roleadmin']);
+// Route::delete('{id}/deletemember',[TeamController::class,'destroy'])->middleware(['auth', 'roleadmin']);
 //End Of TEAM
 
 //GALLERY
 Route::get('/gallery',[GalleryController::class,'index'])->name('gallery');
 Route::get('/allimg',[GalleryController::class,'allimg'])->name('allimg');
-Route::get('/createimg',[GalleryController::class,'create'])->name('createimg');
-Route::post('/storeimg',[GalleryController::class,'store'])->name('storeimg');
-Route::get('{id}/showimg',[GalleryController::class,'show']);
-Route::get('/{id}/editimg',[GalleryController::class,'edit'])->name('editimg');
-Route::Put('/{id}/updateimg',[GalleryController::class,'update'])->name('updateimg');
-Route::delete('{id}/deleteimg',[GalleryController::class,'destroy'])->name('deleteimg');
+Route::get('/createimg',[GalleryController::class,'create'])->middleware(['auth', 'roleadmin'])->name('createimg');
+Route::post('/storeimg',[GalleryController::class,'store'])->middleware(['auth', 'roleadmin'])->name('storeimg');
+Route::get('{id}/showimg',[GalleryController::class,'show'])->middleware(['auth', 'roleadmin']);
+Route::get('/{id}/editimg',[GalleryController::class,'edit'])->middleware(['auth', 'roleadmin'])->name('editimg');
+Route::Put('/{id}/updateimg',[GalleryController::class,'update'])->middleware(['auth', 'roleadmin'])->name('updateimg');
+Route::delete('{id}/deleteimg',[GalleryController::class,'destroy'])->middleware(['auth', 'roleadmin'])->name('deleteimg');
 //End Of GALLERY
 
 //slider
 Route::get('/slider',[SliderController::class,'index'])->name('slider');
-Route::get('/createslider',[SliderController::class,'create'])->name('createslider');
-Route::post('/storeslider',[SliderController::class,'store'])->name('storeslider');
-Route::get('{id}/showslider',[SliderController::class,'show']);
-Route::get('/{id}/editslider',[SliderController::class,'edit'])->name('editslider');
-Route::Put('/{id}/updateslider',[SliderController::class,'update'])->name('updateslider');
-Route::delete('{id}/deleteslider',[SliderController::class,'destroy'])->name('deleteslider');
+Route::get('/createslider',[SliderController::class,'create'])->middleware(['auth', 'roleadmin'])->name('createslider');
+Route::post('/storeslider',[SliderController::class,'store'])->middleware(['auth', 'roleadmin'])->name('storeslider');
+Route::get('{id}/showslider',[SliderController::class,'show'])->middleware(['auth', 'roleadmin']);
+Route::get('/{id}/editslider',[SliderController::class,'edit'])->middleware(['auth', 'roleadmin'])->name('editslider');
+Route::Put('/{id}/updateslider',[SliderController::class,'update'])->middleware(['auth', 'roleadmin'])->name('updateslider');
+Route::delete('{id}/deleteslider',[SliderController::class,'destroy'])->middleware(['auth', 'roleadmin'])->name('deleteslider');
 //End Of slider
 
 //CATEGORY
 Route::get('/category',[CategoryController::class,'index'])->name('category');
-Route::get('/createcat',[CategoryController::class,'create'])->name('createcat');
-Route::post('/storecat',[CategoryController::class,'store'])->name('storecat');
-Route::get('{id}/showcat',[CategoryController::class,'show']);
-Route::get('/{id}/editcat',[CategoryController::class,'edit'])->name('editcat');
-Route::Put('/{id}/updatecat',[CategoryController::class,'update'])->name('updatecat');
-Route::delete('{id}/deletecat',[CategoryController::class,'destroy'])->name('deletecat');
+Route::get('/createcat',[CategoryController::class,'create'])->middleware(['auth', 'roleadmin'])->name('createcat');
+Route::post('/storecat',[CategoryController::class,'store'])->middleware(['auth', 'roleadmin'])->name('storecat');
+Route::get('{id}/showcat',[CategoryController::class,'show'])->middleware(['auth', 'roleadmin']);
+Route::get('/{id}/editcat',[CategoryController::class,'edit'])->middleware(['auth', 'roleadmin'])->name('editcat');
+Route::Put('/{id}/updatecat',[CategoryController::class,'update'])->middleware(['auth', 'roleadmin'])->name('updatecat');
+Route::delete('{id}/deletecat',[CategoryController::class,'destroy'])->middleware(['auth', 'roleadmin'])->name('deletecat');
 //End Of CATEGORY
 
 
 //CONTACT
 Route::get('/contact',[ContactController::class,'index'])->name('contact');
 Route::get('/messagerecieved',[ContactController::class,'messages'])->name('messagerecieved');
-Route::get('/createcontact',[ContactController::class,'create'])->name('createcontact');
-Route::post('/storecontact',[ContactController::class,'store']);
-Route::get('{id}/showmsg',[ContactController::class,'show']);
-Route::get('/editcontact',[ContactController::class,'edit'])->name('editcontact');
-Route::put('{id}/updatecontact',[ContactController::class,'update']);
-Route::delete('{id}/deletemsg',[ContactController::class,'destroy']);
+Route::get('/createcontact',[ContactController::class,'create'])->middleware(['auth', 'roleadmin'])->name('createcontact');
+Route::post('/storecontact',[ContactController::class,'store'])->middleware(['auth', 'roleadmin']);
+Route::get('{id}/showmsg',[ContactController::class,'show'])->middleware(['auth', 'roleadmin']);
+Route::get('/editcontact',[ContactController::class,'edit'])->middleware(['auth', 'roleadmin'])->name('editcontact');
+Route::put('{id}/updatecontact',[ContactController::class,'update'])->middleware(['auth', 'roleadmin']);
+Route::delete('{id}/deletemsg',[ContactController::class,'destroy'])->middleware(['auth', 'roleadmin']);
 //End Of CONTACT
 
 //CONTACTINFORMATION
 Route::get('/contactinformation',[ContactinformationController::class,'index'])->name('contactinformation'); //not used here it is used in contactcontroller
-Route::get('/createcontactinformation',[ContactinformationController::class,'create'])->name('createcontactinformation');
-Route::post('/storecontactinformation',[ContactinformationController::class,'store']);
-Route::get('/editcontactinformation',[ContactinformationController::class,'edit'])->name('editcontactinformation');
-Route::put('{id}/updatecontactinformation',[ContactinformationController::class,'update']);
-Route::delete('{id}/deletecontactinformation',[ContactinformationController::class,'edit']);
+Route::get('/createcontactinformation',[ContactinformationController::class,'create'])->middleware(['auth', 'roleadmin'])->name('createcontactinformation');
+Route::post('/storecontactinformation',[ContactinformationController::class,'store'])->middleware(['auth', 'roleadmin']);
+Route::get('/editcontactinformation',[ContactinformationController::class,'edit'])->middleware(['auth', 'roleadmin'])->name('editcontactinformation');
+Route::put('{id}/updatecontactinformation',[ContactinformationController::class,'update'])->middleware(['auth', 'roleadmin']);
+Route::delete('{id}/deletecontactinformation',[ContactinformationController::class,'edit'])->middleware(['auth', 'roleadmin']);
 //End Of CONTACTINFORMATION
 
 //BOOKING
-Route::get('/booking',[BookingController::class,'create'])->name('booking');
-Route::post('/storebooking',[BookingController::class,'store']);
+Route::get('/booking',[BookingController::class,'create'])->middleware(['auth', 'roleadmin'])->name('booking');
+Route::post('/storebooking',[BookingController::class,'store'])->middleware(['auth', 'roleadmin']);
 //End Of BOOKING
