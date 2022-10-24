@@ -49,6 +49,7 @@ class DatabaseSeeder extends Seeder
             RoomreviewSeeder::class,
             TagSeeder::class,
             CatagorSeeder::class,
+            RoomtagSeeder::class,
         ]);
     }
 }

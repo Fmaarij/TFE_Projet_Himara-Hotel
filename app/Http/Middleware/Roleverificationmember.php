@@ -22,13 +22,15 @@ class Roleverificationmember
             // $booking = Booking::where('user_id','=',Auth::user()->id) && Booking::where('room_id','=',Auth::user()->room_id)->get();
             // dd(boo)
             //verifier si l'utilisateur est une mebre et à reservé (role_id==4 (member))
-            $bookings = Booking::all();
-            foreach($bookings as $booking){
+            // $bookings = Booking::all();
+            // foreach($bookings as $booking){
                 // dd($booking->user_id === Auth::user()->id );
                 // dd($booking->user_id);
                 // $booking->user_id == Auth::user()->id || Auth::user()->role_id == 1;
 
-            if($booking->user_id === Auth::user()->id || $booking->room_id == Auth::user()->id){
+            // if($booking->user_id === Auth::user()->id || $booking->room_id == Auth::user()->id){
+
+            if(Auth::user()->role_id ==4 || Auth::user()->role_id ==3 || Auth::user()->role_id ==2 || Auth::user()->role_id ==1){
               //si oui, continuer jusqu'à la prochaine requete
               return $next($request);
           }else{
@@ -38,5 +40,5 @@ class Roleverificationmember
 
     }
 }
-}
+// }
 }

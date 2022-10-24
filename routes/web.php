@@ -118,7 +118,9 @@ Route::post('/storeroom',[RoomController::class,'store'])->middleware(['auth', '
 
 // CATEGORY && TAG //not working
 Route::get('room/catagors/{catagor}',[RoomController::class,'catagor'])->name("room.catagor");
-Route::get('room/tags/{tag}',[RoomController::class,'tag'])->name("room.tag");
+Route::get('/searchCat',[RoomController::class,'showcatagor']);
+Route::get('/searchTag',[RoomController::class,'showtag']);
+// Route::get('room/tags/{tag}',[RoomController::class,'tag'])->name("room.tag");
 // END OF CATEGORY && TAG
 
 // CATEGOR && TAG

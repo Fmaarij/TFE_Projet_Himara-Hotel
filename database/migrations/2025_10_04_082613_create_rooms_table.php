@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('img')->nullable();
             $table->foreignId('typeofroom_id')->constrained()->onDelete('cascade');
+            // $table->foreignId('tag_id')->constrained()->onDelete('cascade');
+            // $table->foreignId('tag_id')->references('id')->on('tags');
             $table->string('bed')->nullable();
             $table->string('availablerooms')->default(8);
             $table->string('maxguests')->nullable();

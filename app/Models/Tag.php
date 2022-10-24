@@ -15,7 +15,10 @@ class Tag extends Model
     // public function rooms(){
     //     return $this->belongsToMany(Room::class);
     // }
-        public function catagor(){
-        return $this->belongsToMany(Catagor::class);
+    //     public function catagor(){
+    //     return $this->belongsToMany(Catagor::class);
+    // }
+    public function rooms(){
+        return $this->belongsToMany(Room::class);
     }
 }

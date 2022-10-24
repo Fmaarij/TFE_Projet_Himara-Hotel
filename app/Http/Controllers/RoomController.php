@@ -53,20 +53,41 @@ class RoomController extends Controller {
         ->with('rooms', $rooms);
     }
 
-                    //Category function
-                    public function catagor(Catagor $catagor){
-                        return view('catagor.index')
-                        ->with('catagor', $catagor)
-                        ->with('catagors', Catagor::all())
-                        ->with('catagor', $catagor->catagor()->simplepaginate(3))
-                        ->with('tag' , Tag::all());
+    // public function showCategory(roomcategory $roomcategory){
+    //     $roomcategory = request('roomcategory');
+    //     if(request('roomcategory')){
+    //     $rooms = Room::WhereHas('category', function($query) use($roomcategory){
+    //      return $query->where('nomCategorie', 'like', "$roomcategory");})->get();
+    //     }else{
+    //     return "lol";        }
 
+    //Category function
+        public function showcatagor(Catagor $catagor){
+        $roomcategory = request('roomcategory');
+        // dd($roomcategory);
+        if(request('roomcategory')){
+        $rooms = Room::WhereHas('catagor', function($query) use($roomcategory){
+         return $query->where('id', 'like', "$roomcategory");})->simplepaginate(3);
+        }else{
+        return "lol";
+     }
+     return view('Room.Roomcat', compact('rooms'));
                     }
 
                     //Tag function
-                    public function tag(Tag $tag){
-                        return view('tag.index')
-                        ->with('tag', $tag);
+                    public function showtag(Tag $tag){
+                        $tag = request('tag');
+                        // dd($tag);
+        if(request('tag')){
+        $room_tag = Room::WhereHas('tags', function($query) use($tag){
+            return $query->where('tag_id', 'like', "$tag");})->simplepaginate(3);
+            // dd($tag);
+        }else{
+        return "lol";
+     }
+     return view('Room.Roomtag', compact('room_tag'));
+                        // return view('tag.index')
+                        // ->with('tag', $tag);
                         // ->with('tags', $tag->tags()->simplepaginate(1));
                     }
 

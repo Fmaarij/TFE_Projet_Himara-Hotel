@@ -17,7 +17,8 @@
                 {{-- {{dd($catagor)}} --}}
                 @foreach ($catagor as $cat)
                     <li>
-                        <a href="{{ route('room.catagor', $cat->id) }}">{{ $cat->catgorname }}</a>
+                        {{-- <a href="{{ route('room.catagor', $cat->id) }}">{{ $cat->catgorname }}</a> --}}
+                        <a href="/searchCat?roomcategory={{ $cat->id ?? '' }} ">{{ $cat->catgorname }}</a>
                     </li>
                 @endforeach
                 {{-- <li>
@@ -29,9 +30,9 @@
         <aside class="widget">
             <h4 class="widget-title">Tags</h4>
             <div class="tagcloud">
-                @foreach ($tag as $tag)
-                    <a href="{{route('room.tag',$tag->id)}}">
-                        <span class="tag">{{$tag->tagname}}</span></a>
+                @foreach ($tag as $tagi)
+                    <a href="/searchTag?tag={{ $tagi->id ?? '' }}">
+                        <span class="tag">{{ $tagi->tagname }}</span></a>
                 @endforeach
             </div>
         </aside>
