@@ -54,7 +54,8 @@ class BookingController extends Controller {
 
     public function store( Request $request ) {
         $bookings = new Booking;
-        $bookings->booking_name = $request->booking_name;
+        // $bookings->booking_name = $request->booking_name;
+        $bookings->booking_name = Auth::user()->name;
         $bookings->booking_email = $request->booking_email;
         $bookings->booking_phone = $request->booking_phone;
         $bookings->booking_country = $request->booking_country;

@@ -1,19 +1,11 @@
+<x-guest-layout>
+    <x-auth-card>
+        <x-slot name="logo">
+            <a href="/">
+                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+            </a>
+        </x-slot>
 
-@extends('layouts.app')
-@section('content')
-<div class="w-75 m-auto">
-<div class="col-md-8">
-    <div class="section-title">
-        <h4>Registration</h4>
-        <p class="section-subtitle"></p>
-    </div>
-
-    {{-- msg  --}}
-    @if (session('success'))
-    <strong>
-        {{ session('success') }}
-    </strong>
-@endif
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />
 
@@ -61,6 +53,5 @@
                 </x-primary-button>
             </div>
         </form>
-</div>
-</div>
-@endsection
+    </x-auth-card>
+</x-guest-layout>

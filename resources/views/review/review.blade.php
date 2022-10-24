@@ -14,7 +14,11 @@
     </strong>
 @endif
     <!-- add a room FORM -->
-    <form action="/{{$room->id}}/updateroomz" method="post" enctype="multipart/form-data"
+    @foreach ($room as $rom )
+
+    {{-- {{dd($rom->id)}} --}}
+    @endforeach
+    <form action="/{{$rom->id}}/updatestars" method="post" enctype="multipart/form-data"
         class="contact-form" >
         {{-- <form action="/{{$room->id}}/updateroomz" method="post" enctype="multipart/form-data"
             class="contact-form" > --}}
@@ -22,7 +26,7 @@
         @method('PUT')
         <div class="form-group">
 
-            <select name="star" id="">
+            <select name="star" name="star" id="">
                 <option value="1">1 star</option>
                 <option value="2">2 star</option>
                 <option value="3">3 star</option>
@@ -32,11 +36,11 @@
         </div>
 
         <div class="form-group">
-            <textarea class="form-control" name="description" >Your comment's here</textarea>
+            <textarea class="form-control" name="description" name="feedback" >Your review goes here...</textarea>
         </div>
 
         <div class="form-group">
-            <button class="btn mt30">Send</button>
+            <button type ="submit" class="btn mt30">Send</button>
         </div>
     </form>
 </div>

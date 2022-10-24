@@ -548,27 +548,43 @@
                                 <div id="booking-notification" class="notification"></div>
                                 <h3 class="form-title">BOOK YOUR ROOM</h3>
                                 <div class="inner">
-                                    <form id="booking-form">
+                                    <form action="/storebooking"  method="post" enctype="multipart/form-data">
+                                        @csrf
                                         <!-- EMAIL -->
                                         <div class="form-group">
-                                            <input class="form-control" name="booking-email" type="email"
-                                                placeholder="Your Email Address">
+                                            @auth
+                                            <input class="form-control" name="booking_email" type="email"
+                                            value="{{Auth::user()->email}}" readonly="readonly">
+                                            @endauth
+                                            @guest
+                                            <input class="form-control" name="booking_email" type="email"
+                                            placeholder="Your Email Address">
+                                            @endguest
                                         </div>
                                         <!-- ROOM TYPE -->
                                         <div class="form-group">
-                                            <select class="form-control" name="booking-roomtype" title="Select Room Type"
-                                                data-header="Room Type" disabled="disabled">
-                                                <option value="Single" selected="selected">Single Room</option>
-                                                <option value="Double">Double Room</option>
-                                                <option value="Deluxe">Deluxe Room</option>
-                                            </select>
+                                            <select name="room_id" class="form-control" title="Select A Room "
+                                        >
+                                        @foreach ($roomz as $room)
+                                            @if ($room->checkin == 0 && $room->checkout == 0)
+                                                <option value="{{ $room->id }}"
+                                                    data-subtext="<span class='badge badge-info'>€
+
+                                            {{ $room->price }},
+
+                                            / night</span>">
+                                                    {{ $room->typeofroom->type_name }}
+                                            @endif
+                                            </option>
+                                        @endforeach
+                                    </select>
                                         </div>
                                         <!-- DATE -->
                                         <div class="form-group">
                                             <div class="form_date">
                                                 <input type="text" class="datepicker form-control"
-                                                    name="booking-checkin" placeholder="Slect Arrival & Departure Date"
-                                                    readonly="readonly">
+                                                    name="booking_date" placeholder="Slect Arrival & Departure Date"
+                                                    >
                                             </div>
                                         </div>
                                         <!-- GUESTS -->
@@ -588,7 +604,7 @@
                                                         </label>
                                                         <div class="guests-button">
                                                             <div class="minus"></div>
-                                                            <input type="text" name="booking-adults"
+                                                            <input type="text" name="booking_adult"
                                                                 class="booking-guests" value="0">
                                                             <div class="plus"></div>
                                                         </div>
@@ -604,7 +620,7 @@
                                                         </label>
                                                         <div class="guests-button">
                                                             <div class="minus"></div>
-                                                            <input type="text" name="booking-children"
+                                                            <input type="text" name="booking_child"
                                                                 class="booking-guests" value="0">
                                                             <div class="plus"></div>
                                                         </div>
@@ -613,7 +629,13 @@
                                             </div>
                                         </div>
                                         <!-- BOOKING BUTTON -->
+                                        @auth
                                         <button type="submit" class="btn btn-dark btn-fw mt20 mb20">BOOK A ROOM</button>
+                                        @endauth
+                                        @guest
+                                        <a href="{{ route('login') }}">
+                                            <p class="btn btn">LOG IN</p></a>
+                                            @endguest
                                     </form>
                                 </div>
                             </div>

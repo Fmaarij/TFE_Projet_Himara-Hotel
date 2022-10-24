@@ -56,23 +56,35 @@ class RoomController extends Controller {
 
 
     public function roomreview(){
-        $room = Room::where('id','=',Auth::user()->room_id,)->get();
-        dd($room);
-        return view('review.review',compact($room));
+        $room = Room::where('id','=',Auth::user()->room_id && User::where('id','=',Auth::user()->id))->get();
+        // dd($room);
+        // User::where('id','=',Auth::user()->id)->get()
+        // foreach($room as $rom){
+        //     dd($rom->star);
+        // }
+        return view('review.review',compact('room'));
+    }
+    public function updatestars(Request $request) {
+        // $room = Room::where( 'id', '=', $bookings->room_id )
+        $room = Room::where('id','=',Auth::user()->room_id)
+        ->update( [
+            'star' => $request->star,
+            'description' => $request->description,
+        ] );
+        // dd($room);
+        $roomrev = Roomreview::where('room_id','=',Auth::user()->room_id)
+        ->update( [
+            'star' => $request->star,
+            'feedback' => $request->description,
+        ] );
+        // dd($room);
+        return redirect()->back();
     }
 
-    // public function showCategory(roomcategory $roomcategory){
-    //     $roomcategory = request('roomcategory');
-    //     if(request('roomcategory')){
-    //     $rooms = Room::WhereHas('category', function($query) use($roomcategory){
-    //      return $query->where('nomCategorie', 'like', "$roomcategory");})->get();
-    //     }else{
-    //     return "lol";        }
 
     //Category function
         public function showcatagor(Catagor $catagor){
         $roomcategory = request('roomcategory');
-        // dd($roomcategory);
         if(request('roomcategory')){
         $rooms = Room::WhereHas('catagor', function($query) use($roomcategory){
          return $query->where('id', 'like', "$roomcategory");})->simplepaginate(3);
@@ -99,22 +111,6 @@ class RoomController extends Controller {
                         // ->with('tags', $tag->tags()->simplepaginate(1));
                     }
 
-    // public function single(){
-    //     $rooms = Room::where('typeofroom_id','=',1)->get();
-    //     return view ( 'room.single',compact( 'rooms'));
-    // }
-    // public function double(){
-    //     $rooms = Room::where('typeofroom_id','=',2)->get();
-    //     return view ( 'room.double',compact( 'rooms'));
-    // }
-    // public function delux(){
-    //     $rooms = Room::where('typeofroom_id','=',4)->get();
-    //     return view ( 'room.delux',compact( 'rooms'));
-    // }
-    // public function family(){
-    //     $rooms = Room::where('typeofroom_id','=',3)->get();
-    //     return view ( 'room.family',compact( 'rooms'));
-    // }
 
     /**
     * Show the form for creating a new resource.
@@ -218,7 +214,7 @@ public function allrooms(){
     */
 
     public function show($id) {
-
+        $roomz = Room::all();
         $room= Room::find($id);
         $abouts = About::all();
         $roomservices = Roomservice::all();
@@ -231,7 +227,7 @@ public function allrooms(){
         $similarrooms = Room::where('typeofroom_id','=',$room->typeofroom_id)->take(3)->get();
         // $view->with('roomdispo',Room::orderBy('created_at','asc')->take(5)->get());
         $roomsphotos = Roomsphoto::where('roomtype_id','=',$room->typeofroom->id)->get();
-        return view( 'room.show', compact( 'room','roomsphotos','abouts','roomservices','roomsreviews','avgstar','users','similarrooms') );
+        return view( 'room.show', compact( 'room','roomsphotos','abouts','roomservices','roomsreviews','avgstar','users','similarrooms','roomz') );
                 }
 
                 /**
