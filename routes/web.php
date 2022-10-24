@@ -180,7 +180,7 @@ Route::delete('{id}/deleteHres',[HimararestaurantController::class,'destroy'])->
 Route::get('/latestnews',[LatestnewController::class,'index'])->name('latestnews');
 Route::get('/createLnews',[LatestnewController::class,'create'])->middleware(['auth', 'roleadmin'])->name('createLnews');
 Route::post('/storeLnews',[LatestnewController::class,'store'])->middleware(['auth', 'roleadmin'])->name('storeLnews');
-Route::get('{id}/showLnews',[LatestnewController::class,'show'])->middleware(['auth', 'roleadmin']);
+Route::get('{id}/showLnews',[LatestnewController::class,'show']);
 Route::get('/{id}/editLnews',[LatestnewController::class,'edit'])->middleware(['auth', 'roleadmin'])->name('editLnews');
 Route::Put('/{id}/updateLnews',[LatestnewController::class,'update'])->middleware(['auth', 'roleadmin'])->name('updateLnews');
 Route::delete('{id}/deleteLnews',[LatestnewController::class,'destroy'])->middleware(['auth', 'roleadmin'])->name('deleteLnews');

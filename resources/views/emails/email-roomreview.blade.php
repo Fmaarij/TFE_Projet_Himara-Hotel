@@ -30,7 +30,7 @@
 </head>
 
 <body>
-    <h1>Hello, your review is important for use.</h1>
+    <h1>Hello, your review is important for us.</h1>
     <div class="">
         <button>
             <a href="http://localhost:8000/roomreview">Click here</a>

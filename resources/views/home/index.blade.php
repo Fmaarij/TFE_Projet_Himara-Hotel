@@ -564,7 +564,8 @@
                     <div class="col-md-4">
                         <div class="news-grid-item">
                             <figure class="gradient-overlay-hover link-icon">
-                                <a href="blog-post.html">
+
+                                <a href="{{$news->id}}/showLnews">
                                     <img src="{{ asset('storage/latestnews_images/thumbnail/' . $news->img) }}"
                                         class="img-fluid" alt="Image">
                                 </a>

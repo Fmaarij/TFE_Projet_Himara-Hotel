@@ -11,11 +11,14 @@
                             <p class="card-title">Title : {{ $latestnews->title }}</p>
                             <p class="card-title">Paragraphe : {{ $latestnews->para }}</p>
                         </div>
+                        @can('accessadmin')
+
                         <div class="card-body">
                             <a href="/{{ $latestnews->id }}/editLnews">
                                 <button class="btn btn-warning">Edit</button>
                             </a>
                         </div>
+                        @endcan
                     </div>
                 </div>
                 <div class="card-footer text-muted">Added : {{ $latestnews->created_at }}</div>
