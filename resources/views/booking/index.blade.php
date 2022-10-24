@@ -22,10 +22,14 @@
 
             </thead>
             <tbody>
+                @can('access-btn-booking')
                 @foreach ($bookings as $booking)
-                    @if ($booking->user_id == Auth::user()->id || Auth::user()->role_id == 1)
+                    {{-- @if ($booking->user_id == Auth::user()->id || Auth::user()->role_id == 1) --}}
                         {{-- {{dd($booking->id)}} --}}
                         {{-- {{dd(Auth::user()->id)}} --}}
+
+
+
                         <tr>
                             <td>{{ $booking->user_id }}</td>
                             <td>{{ $booking->booking_phone }}</td>
@@ -66,8 +70,9 @@
                         @endcan --}}
 
                         </tr>
-                    @endif
-                @endforeach
+                        {{-- @endif --}}
+                        @endforeach
+                        @endcan
             </tbody>
         </table>
     </div>

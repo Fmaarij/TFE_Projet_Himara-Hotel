@@ -46,17 +46,20 @@ class AuthServiceProvider extends ServiceProvider
         });
   //members gates
         Gate::define('access-btn-booking', function ($users) {
-            $booking = Booking::where('user_id','=',Auth::user()->id)->get();
-                    //   $booking = Booking::where('user_id','=',Auth::user()->id) && Booking::where('room_id','=',Auth::user()->room_id)->get();
+            // $booking = Booking::where('user_id','=',Auth::user()->id)->get();
+                    //   $booking = Booking::where('user_id','=',Auth::user()->id) || Booking::where('room_id','=',Auth::user()->room_id)->get();
             // dd($booking->id);
-            foreach($booking as $booc){
+            // foreach($booking as $booc){
                 // dd($booc->id);
-
-            if( Auth::user()->id == $booc->id || (Auth::user()->role_id == 1 )) {
+                $bookings = Booking::all();
+                foreach($bookings as $booking){
+                    // if($booking->user_id == Auth::user()->id && $booking->room_id == Auth::user()->room_id){
+                        if($booking->user_id == Auth::user()->id){
 
                 return true;
             }
-        } });
+        }
+     });
         //CRUD buttons
         Gate::define('access-btn-crud', function ($users) {
 

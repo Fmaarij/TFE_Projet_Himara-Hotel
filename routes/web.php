@@ -257,7 +257,7 @@ Route::delete('{id}/deletecontactinformation',[ContactinformationController::cla
 Route::get('/bookings',[BookingController::class,'index'])->middleware(['auth','rolemember'])->name('bookings');
 Route::get('/createbookings',[BookingController::class,'create'])->name('createbookings');
 Route::post('/storebooking',[BookingController::class,'store']);
-Route::get('/{id}/showbookings',[BookingController::class,'show'])->middleware('auth')->name('showbookings');
+Route::get('/{id}/showbookings',[BookingController::class,'show'])->middleware('auth','rolemember')->name('showbookings');
 Route::get('/{id}/editbookings',[BookingController::class,'edit'])->middleware('auth')->name('editbookings');
 Route::put('/{id}/updatebookings',[BookingController::class,'update'])->middleware('auth')->name('updatebookings');
 Route::delete('/{id}/deletebookings',[BookingController::class,'destroy'])->middleware('auth');
