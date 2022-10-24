@@ -28,6 +28,7 @@ class HomeController extends Controller
     {
         $homes = Home::all();
         $abouts = About::all();
+        $roomz = Room::all();
         $rooms=Room::orderBy('id','desc')->take(3)->get();
         $himaraservices = Himaraservice::all();
         $gallery = Gallery::all();
@@ -40,7 +41,7 @@ class HomeController extends Controller
         $sliders = Slider::all();
         $roomreviews = Roomreview::all();
 
-        return view ('home.index',compact('homes','abouts','rooms','himaraservices','gallery','himaragallery','homepagephotovideos','himararestaurants','latestnews','sliders','roomreviews'));
+        return view ('home.index',compact('homes','abouts','rooms','himaraservices','gallery','himaragallery','homepagephotovideos','himararestaurants','latestnews','sliders','roomreviews','roomz'));
     }
     public function allHtitles(){
         $homes = Home::all();

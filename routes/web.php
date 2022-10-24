@@ -264,3 +264,10 @@ Route::get('/{id}/editbookings',[BookingController::class,'edit'])->middleware('
 Route::put('/{id}/updatebookings',[BookingController::class,'update'])->middleware('auth')->name('updatebookings');
 Route::delete('/{id}/deletebookings',[BookingController::class,'destroy'])->middleware('auth');
 //End Of BOOKING
+
+
+//ROOMVIEW
+Route::get('/{id}/createroom',[RoomController::class,'roomreview'])->name('roomreview');
+
+
+//END OF ROOMREVIEW

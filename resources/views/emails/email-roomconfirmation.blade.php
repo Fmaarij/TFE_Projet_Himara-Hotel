@@ -1,4 +1,5 @@
-
+{{-- @extends('layouts.app')
+@section('content') --}}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,21 +17,33 @@
     <div class="p-5">
 <table  class="table table-hover border">
     <tr>
+
         <thead>
-            <th>Name</th>
-            <th>Last Name</th>
-            <th>Age</th>
-            <Th>Email</Th>
+            <th>email</th>
+            <th>city</th>
+            <th>phone</th>
+            <th>guests</th>
+            <th>date</th>
+            <Th>user_id</Th>
+            <Th>room_id</Th>
         </thead>
     </tr>
 
     <tbody>
         <tr>
-            <td class="bg-danger">{{ $data['name'] }}</td>
-            <td>{{ $data['lastname'] }}</td>
-            <td>{{ $data['email'] }}</td>
-            <td>{{ $data['age'] }}</td>
-
+            <td class="bg-danger">{{ $data['booking_email'] }}</td>
+            <td>{{ $data['booking_country'] }}</td>
+            <td>{{ $data['booking_phone'] }}</td>
+            <td>{{ $data['booking_guests'] }}</td>
+            <td>{{ $data['booking_date'] }}</td>
+            <td>{{ $data['user_id'] }}</td>
+            <td>{{ $data['room_id'] }}</td>
+            <td>
+                Hello,
+                    Your room has been confirmed.
+                    Greeting,
+                    Himara Hotel
+            </td>
         </tr>
     </tbody>
 </table>

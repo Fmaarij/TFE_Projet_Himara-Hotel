@@ -18,6 +18,7 @@ use App\Models\Typeofroom;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
@@ -51,6 +52,13 @@ class RoomController extends Controller {
         ->with('catagor' , Catagor::all())
         ->with('tag' , Tag::all())
         ->with('rooms', $rooms);
+    }
+
+
+    public function roomreview(){
+        $room = Room::where('id','=',Auth::user()->room_id,)->get();
+        dd($room);
+        return view('review.review',compact($room));
     }
 
     // public function showCategory(roomcategory $roomcategory){

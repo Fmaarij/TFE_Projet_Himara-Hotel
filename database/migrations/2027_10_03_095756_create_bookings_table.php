@@ -17,16 +17,16 @@ return new class extends Migration
             $table->id();
             $table->string('booking_name');
             $table->string('booking_email');
-            $table->string('booking_phone');
-            $table->string('booking_country');
+            $table->string('booking_phone')->nullable();
+            $table->string('booking_country')->nullable();
             $table->text('booking_date'); //à révoir
-            $table->string('booking_adult');
-            $table->string('booking_child')->default(0);
+            $table->string('booking_adult')->nullable();
+            $table->string('booking_child')->nullable();
             $table->foreignId('room_id')->references('id')->on('rooms');
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             // $table->foreignId('typeofroom_id')->references('id')->on('typeofrooms')->onDelete('cascade');
             // $table->string('booking_roomtype');
-            $table->string('booking_comments');
+            $table->string('booking_comments')->nullable();
             $table->timestamps();
         });
     }

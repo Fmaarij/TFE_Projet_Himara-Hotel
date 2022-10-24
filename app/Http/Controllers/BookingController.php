@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Booking;
 use App\Http\Requests\StoreBookingRequest;
 use App\Http\Requests\UpdateBookingRequest;
+use App\Mail\Roomconfirmation;
 use App\Models\Room;
 use App\Models\Typeofroom;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class BookingController extends Controller {
     /**
@@ -72,6 +74,22 @@ class BookingController extends Controller {
             'checkin' => $datein,
             'checkout' => $dateout
         ] );
+
+        $data = [
+            // 'recipient' => 'member@test.com',
+            'booking_name' => $request->booking_name,
+            'booking_email' => $request->booking_email,
+            'booking_phone'=>$request->booking_phone,
+            'booking_guests'=>$request->booking_adult+$request->booking_child,
+            'booking_country'=>$request->booking_country,
+            'booking_date'=>$request->booking_date,
+            'user_id'=>Auth::user()->id,
+            'room_id'=>$request->room_id,
+            'subject'=>"Room Confirmation",
+            // 'body'=>$request->message,
+
+        ];
+        Mail::to( 'himarahotel@gmail.com' )->send( new Roomconfirmation($data));
         return redirect()->back();
     }
 
