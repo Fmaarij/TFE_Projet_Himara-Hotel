@@ -66,9 +66,17 @@
          <!-- BRAND -->
          <div class="brand">
              <div class="logo">
-                 <a href="index.html">
-                     <img src="/images/logo.svg" alt="Hotel Himara">
+
+                {{-- <img src="{{ asset('storage/about_images/thumbnail/' . $about->img) }}" class="footer-logo"
+                    alt="Hotel Himara"> --}}
+                    {{-- {{dd($aboutuse)}} --}}
+
+                 <a href="{{url('homepage')}}">
+                    @foreach($aboutuse as $about)
+                     <img src="{{ asset('storage/about_images/thumbnail/'.$about->img) }}" alt="Hotel Himara">
+                     @endforeach
                  </a>
+                  {{-- {{dd($aboutuse)}} --}}
              </div>
          </div>
          <!-- MOBILE MENU BUTTON -->

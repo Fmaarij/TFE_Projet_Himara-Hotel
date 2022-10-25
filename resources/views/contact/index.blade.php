@@ -28,8 +28,7 @@
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus sit, fugiat at in assumenda
                         corrupti autem iste eveniet eaque vitae beatae tenetur, voluptatem eius. Numquam.</p>
                     <!-- CONTACT FORM -->
-                    <form action="/storecontact" method="post" enctype="multipart/form-data"
-                        class="contact-form">
+                    <form action="/storecontact" method="post" enctype="multipart/form-data" class="contact-form">
                         @csrf
                         <div class="form-group">
                             <input class="form-control" name="name" placeholder="Name" type="text">
@@ -53,12 +52,52 @@
                 </div>
                 <div class="col-md-4">
                     <div class="sidebar">
-                        <div class="google-map">
+                        {{-- maps à revoir --}}
+                        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+                        <div id="map" class="h-auto google-map">
                             <div class="toggle-streetview" id="openStreetView">
                                 <i class="fa fa-street-view" aria-hidden="true"></i>
                             </div>
                             <div id="map-canvas"></div>
                         </div>
+
+
+                        <script type="text/javascript">
+                            function initMap() {
+                                const myLatLng = {
+                                    lat: 22.2734719,
+                                    lng: 70.7512559
+                                };
+                                const map = new google.maps.Map(document.getElementById("map"), {
+                                    zoom: 5,
+                                    center: myLatLng,
+                                });
+
+                                new google.maps.Marker({
+                                    position: myLatLng,
+                                    map,
+                                    title: "maps",
+                                });
+                            }
+
+                            window.initMap = initMap;
+                        </script>
+
+                        <script type="text/javascript"
+                            src="https://maps.google.com/maps/api/js?key={{ env('GOOGLE_MAP_KEY') }}&callback=initMap"></script>
+
+       {{-- end of maps à revoir --}}
+
+                        {{-- maps de base--}}
+                        {{-- <div class="google-map">
+                            <div class="toggle-streetview" id="openStreetView">
+                                <i class="fa fa-street-view" aria-hidden="true"></i>
+                            </div>
+                            <div id="map-canvas"></div>
+                        </div> --}}
+
+
                         <div class="contact-details mt75">
                             <div class="contact-info">
                                 {{-- contactinformation --}}

@@ -31,17 +31,21 @@ class HomeController extends Controller
         $roomz = Room::all();
         $rooms=Room::orderBy('id','desc')->take(3)->get();
         $himaraservices = Himaraservice::all();
+        $himaraservicetitle = Himaraservice::where('id','=',1)->get();
         $gallery = Gallery::all();
+        $gallerytitle = Gallery::where('id','=',1)->get();
         $himaragallery = Himaragallery::all();
         $homepagephotovideos = Homepagephotovideo::all();
         // $himararestaurants =Himararestaurant::all();
         $himararestaurants =Himararestaurant::paginate(4);
-
+        $himararestauranttitle =  Himararestaurant::where('id','=',1)->get();
+        $homepagephotovideos =  Homepagephotovideo::where('id','=',1)->get();
+        $homepagephotrestau =  Homepagephotovideo::where('id','=',1)->get();
         $latestnews = Latestnew::paginate(3);
         $sliders = Slider::all();
         $roomreviews = Roomreview::all();
 
-        return view ('home.index',compact('homes','abouts','rooms','himaraservices','gallery','himaragallery','homepagephotovideos','himararestaurants','latestnews','sliders','roomreviews','roomz'));
+        return view ('home.index',compact('homes','abouts','rooms','himaraservices','himaraservicetitle','gallery','gallerytitle','himaragallery','homepagephotovideos','himararestaurants','himararestauranttitle','homepagephotovideos','homepagephotrestau','latestnews','sliders','roomreviews','roomz'));
     }
     public function allHtitles(){
         $homes = Home::all();

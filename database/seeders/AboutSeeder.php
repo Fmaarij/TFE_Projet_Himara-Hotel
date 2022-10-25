@@ -20,12 +20,18 @@ class AboutSeeder extends Seeder {
             'title' =>'Hotel Himara.',
             'year' =>  'since 1992',
             'subpara' =>'HIGH QUALITY ACCOMMODATION SERVICES',
-            'para' =>'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus deleniti nulla, hic voluptatibus eum voluptatum libero suscipit nemo voluptates cupiditate, ipsum provident facere modi tempora ducimus enim dicta laborum esse aliquam rem assumenda dolores. Commodi, aperiam, blanditiis! Ipsum iure necessitatibus eaque, fuga. Excepturi facilis libero dicta soluta officiis, sint sit voluptatem, vero doloribus nesciunt suscipit dolores veritatis minus quam atque non autem quasi consequatur quae sequi ex, ipsa facere qui ut recusandae. Quod earum cupiditate quaerat assumenda',
+            'para' =>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus deleniti nulla, hic voluptatibus eum voluptatum libero suscipit nemo voluptates cupiditate, ipsum provident facere modi tempora ducimus enim dicta laborum esse aliquam rem assumenda dolores. Commodi, aperiam, blanditiis! Ipsum iure necessitatibus eaque, fuga. Excepturi facilis libero dicta soluta officiis, sint sit voluptatem, vero doloribus nesciunt suscipit dolores veritatis minus quam atque non autem quasi consequatur quae sequi ex, ipsa facere qui ut recusandae. Quod earum cupiditate quaerat assumenda",
             'imgtitle' =>'Luxury Hotel',
             'imgpara' =>'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad dolorem iste suscipit voluptates architecto nemo.',
-            'img'=>'logo-about.png',
+            'img'=>'logo.jpg',
+            // 'provider'=>[],
+            'provider' =>'[
+                "provider-1.png",
+                "provider-2.png",
+                "provider-3.png",
+                "provider-4.png"
+            ]',
 
-            // 'provider[]'=>'ff','fff',
             'created_at' =>now(),
             'updated_at' => now(),
 

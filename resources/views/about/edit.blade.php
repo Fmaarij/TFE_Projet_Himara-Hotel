@@ -23,7 +23,7 @@
                 <input class="form-control" name="year" value="{{ $abouts->year }}" type="text">
             </div>
             <div class="form-group ">
-                <input class="form-control" name="subpara" placeholder="HIGH QUALITY ACCOMMODATION SERVICES "
+                <input class="form-control" name="subpara" value="{{$abouts->subpara}} "
                     type="text">
             </div>
             <div class="form-group ">

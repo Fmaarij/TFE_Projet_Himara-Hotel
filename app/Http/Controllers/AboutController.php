@@ -65,7 +65,7 @@ class AboutController extends Controller
 
             //Resize image here
             $thumbnailpath = public_path('storage/about_images/thumbnail/'.$filenametostore);
-            $img = Image::make($thumbnailpath)->resize(75, 103, function($constraint) {
+            $img = Image::make($thumbnailpath)->resize(107, 22, function($constraint) {
                 // $constraint->aspectRatio();
             });
             $img->save();
@@ -76,7 +76,7 @@ class AboutController extends Controller
         $abouts->year=$request->year;
         $abouts->subpara=$request->subpara;
         $abouts->para=$request->para;
-        $abouts->provider=json_encode( $request->provider);
+        $abouts->provider=json_encode($request->provider);
         $abouts->imgtitle=$request->imgtitle;
         $abouts->imgpara=$request->imgpara;
         $abouts->save();
@@ -141,7 +141,7 @@ class AboutController extends Controller
 
             //Resize image here
             $thumbnailpath = public_path('storage/about_images/thumbnail/'.$filenametostore);
-            $img = Image::make($thumbnailpath)->resize(75, 103, function($constraint) {
+            $img = Image::make($thumbnailpath)->resize(107, 22, function($constraint) {
                 // $constraint->aspectRatio();
             });
             $img->save();
@@ -167,6 +167,8 @@ class AboutController extends Controller
     public function destroy($id)
     {
         $abouts = About::find($id);
+          Storage::delete('public/about_images/thumbnail/'.$abouts->img);
+            Storage::delete('public/about_images/'.$abouts->img);
         $abouts->delete();
         return redirect('about');
     }

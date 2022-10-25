@@ -82,7 +82,6 @@ class RoomController extends Controller {
         return redirect()->back();
     }
 
-
     //Category function
         public function showcatagor(Catagor $catagor){
         $roomcategory = request('roomcategory');
@@ -90,7 +89,7 @@ class RoomController extends Controller {
         $rooms = Room::WhereHas('catagor', function($query) use($roomcategory){
          return $query->where('id', 'like', "$roomcategory");})->paginate(3);
         }else{
-        return "lol";
+        return "It does not exist!";
      }
      return view('Room.Roomcat', compact('rooms'));
                     }
@@ -104,7 +103,7 @@ class RoomController extends Controller {
             return $query->where('tag_id', 'like', "$tag");})->paginate(3);
             // dd($tag);
         }else{
-        return "lol";
+        return "It does not exist!";
      }
      return view('Room.Roomtag', compact('room_tag'));
                         // return view('tag.index')

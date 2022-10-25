@@ -368,12 +368,18 @@
         </div>
     </section>
     <!-- ========== SERVICES ========== -->
+    @if ($himaraservices != null)
     <section class="services">
         <div class="container">
             <div class="section-title">
-                <h4>{{ $himaraservices[0]->title }} <span
-                        class="text-himara">{{ $himaraservices[0]->coloredpart }}</span></h4>
-                <p class="section-subtitle">{{ $himaraservices[0]->subpara }}</p>
+                {{-- {{dd($himaraservicetitle)}} --}}
+
+                @foreach ($himaraservicetitle as $title )
+                <h4>{{ $title->title }} <span
+                    class="text-himara">{{ $title->coloredpart }}</span></h4>
+
+                    <p class="section-subtitle">{{ $title->subpara }}</p>
+                    @endforeach
             </div>
             <div class="row">
                 <div class="col-lg-7 col-12">
@@ -407,15 +413,19 @@
             </div>
         </div>
     </section>
+    @endif
     <!-- ========== GALLERY ========== -->
+    @if ($gallery != null)
     <section class="gallery">
         <div class="container">
             <div class="section-title">
                 {{-- {{dd($himaragallery)}} --}}
-                <h4>{{ $himaragallery[0]->title }} <span class="text-himara">{{ $himaragallery[0]->coloredpart }}</span>
+                @foreach ($himaragallery as $title )
+                <h4>{{ $title->title }} <span class="text-himara">{{ $title->coloredpart }}</span>
                 </h4>
-                <p class="section-subtitle">Check out our image gallery</p>
-                <a href="{{ url('gallery') }}" class="view-all">{{ $himaragallery[0]->direct }}</a>
+                <p class="section-subtitle">{{$title->subpara}}</p>
+                <a href="{{ url('gallery') }}" class="view-all">{{ $title->direct }}</a>
+                @endforeach
             </div>
             <div class="gallery-owl owl-carousel image-gallery">
                 <!-- ITEM -->
@@ -434,7 +444,9 @@
             </div>
         </div>
     </section>
+    @endif
     <!-- ========== TESTIMONIALS ========== -->
+    @if ($roomreviews != null)
     <section class="testimonials gray">
         <div class="container">
             <div class="section-title">
@@ -501,18 +513,21 @@
             </div>
         </div>
     </section>
+    @endif
     <!-- ========== RESTAURANT ========== -->
+
+    @if ($himararestaurants != null)
     <section class="restaurant image-bg parallax gradient-overlay op5"
         data-src="{{ 'storage/homepagephotovideo/thumbnail/' . $homepagephotovideos[0]->img }}" data-parallax="scroll"
         data-speed="0.3" data-mirror-selector=".wrapper" data-z-index="0">
         <div class="container">
             <div class="section-title">
-                {{-- @foreach ($himararestaurants as $resitems)
+                @foreach ($himararestauranttitle as $resitems)
                 <h4>{{$resitems->title}} {{$resitems->subtitle}}</h4>
                 <p class="section-subtitle">{{$resitems->subpara}}</p>
-                @endforeach --}}
-                <h4>{{ $himararestaurants[0]->title }} {{ $himararestaurants[0]->subtitle }}</h4>
-                <p class="section-subtitle">{{ $himararestaurants[0]->subpara }}</p>
+                @endforeach
+                {{-- <h4>{{ $himararestaurants[0]->title }} {{ $himararestaurants[0]->subtitle }}</h4>
+                <p class="section-subtitle">{{ $himararestaurants[0]->subpara }}</p> --}}
             </div>
             <div class="row">
                 <!-- ITEM -->
@@ -551,7 +566,9 @@
                 </div>
             </div>
     </section>
+    @endif
     <!-- ========== NEWS ==========-->
+    @if ($latestnews != null)
     <section class="news">
         <div class="container">
             <div class="section-title">
@@ -605,26 +622,34 @@
                 </div>
             </div>
     </section>
+    @endif
     <!-- ========== VIDEO ========== -->
-    {{-- {{dd($homepagephotovideos[1]->img)}} --}}
+    {{-- {{dd($homepagephotovideos)}} --}}
+    @if ($homepagephotovideos != null)
+    @foreach ($homepagephotovideos as $item )
     <section class="video np parallax gradient-overlay op6"
-        data-src="{{ asset('storage/homepagephotovideo/thumbnail/' . $homepagephotovideos[1]->img) }}"
+        data-src="{{ asset('storage/homepagephotovideo/thumbnail/' . $item->img) }}"
         data-parallax="scroll" data-speed="0.3" data-mirror-selector=".wrapper" data-z-index="0">
         <div class="inner gradient-overlay">
             <div class="container">
                 <div class="video-popup">
-                    <a class="popup-vimeo" href="{{ $homepagephotovideos[1]->videolink }}">
+                    <a class="popup-vimeo" href="{{ $item->videolink }}">
                         <i class="fa fa-play"></i>
                     </a>
                 </div>
             </div>
         </div>
     </section>
+    @endforeach
+    @endif
 
     <!-- ========== CONTACT V2 ========== -->
+
     <section class="contact-v2 gray">
         <div class="container">
             <div class="row">
+                @if ($contactinfo != null)
+                @foreach ($contactinfo as $info )
                 <div class="col-md-5">
                     <div class="section-title">
                         <h4>GET IN TOUCH</h4>
@@ -632,35 +657,37 @@
                     </div>
                     <ul class="contact-details">
                         <li>
-                            <i class="fa fa-map-marker" aria-hidden="true"></i>
-                            Lorem ipsum dolor, 25, Himara
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>{{$info->adress}}
                         </li>
                         <li>
                             <i class="fa fa-phone" aria-hidden="true"></i>
-                            Phone: +1 888 123 4567
+                            Phone:{{$info->phone}}
                         </li>
                         <li>
                             <i class="fa fa-fax"></i>
-                            Fax: +1 888 123 4567
+                            Fax:{{$info->gsm}}
                         </li>
                         <li>
                             <i class="fa fa-globe"></i>
-                            Web: www.hotelhimara.com
+                            Web:{{$info->website}}
                         </li>
                         <li>
 
                             <i class="fa fa-envelope"></i>
                             Email:
-                            <a href="mailto:info@site.com">contact@hotelhimara.com</a>
+                            <a href="mailto:info@site.com">{{$info->email}}</a>
                         </li>
                     </ul>
                 </div>
+                @endforeach
+                @endif
                 <div class="col-md-7">
                     <div class="section-title">
                         <h4>CONTACT US</h4>
                         <p class="section-subtitle">Say hello</p>
                     </div>
-                    <form id="contact-form" name="contact-form">
+                    <form action="/storecontact" method="post" enctype="multipart/form-data" >
+                        @csrf
                         <div class="form-group">
                             <input class="form-control" name="name" placeholder="Your Name" type="text">
                         </div>

@@ -19,6 +19,7 @@ class HimaraserviceController extends Controller {
 
     public function index() {
         $himaraservices = Himaraservice::all();
+        // dd($himaraservices);
         return view ( 'himaraservice.index', compact( 'himaraservices' ));
     }
 
