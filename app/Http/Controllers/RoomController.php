@@ -40,11 +40,12 @@ class RoomController extends Controller {
         $search = request()->input('search');
         if($search){
              // Search in the title and body columns from the room table
-             $rooms = Room::where('city', 'LIKE', "%{$search}%")->simplepaginate(3);
-                //  ->orWhere('typeofroom_id', 'LIKE',"%{$search}%")
+             $rooms = Room::where('city', 'LIKE', "%{$search}%")
+                 ->Where('checkin','=',0)->paginate(3);
                 //  ->get();
         } else {
-            $rooms = Room::simplePaginate(3);
+
+            $rooms = Room::orderBy('id', 'desc')->paginate(3);
         }
         return view ('room.index')
         ->with('roomsphotos', Roomsphoto::all())
@@ -87,7 +88,7 @@ class RoomController extends Controller {
         $roomcategory = request('roomcategory');
         if(request('roomcategory')){
         $rooms = Room::WhereHas('catagor', function($query) use($roomcategory){
-         return $query->where('id', 'like', "$roomcategory");})->simplepaginate(3);
+         return $query->where('id', 'like', "$roomcategory");})->paginate(3);
         }else{
         return "lol";
      }
@@ -100,7 +101,7 @@ class RoomController extends Controller {
                         // dd($tag);
         if(request('tag')){
         $room_tag = Room::WhereHas('tags', function($query) use($tag){
-            return $query->where('tag_id', 'like', "$tag");})->simplepaginate(3);
+            return $query->where('tag_id', 'like', "$tag");})->paginate(3);
             // dd($tag);
         }else{
         return "lol";
@@ -108,7 +109,7 @@ class RoomController extends Controller {
      return view('Room.Roomtag', compact('room_tag'));
                         // return view('tag.index')
                         // ->with('tag', $tag);
-                        // ->with('tags', $tag->tags()->simplepaginate(1));
+                        // ->with('tags', $tag->tags()->paginate(1));
                     }
 
 
@@ -183,6 +184,7 @@ public function allrooms(){
             $room->price = $request->price;
             $room->promo= $request->promo;
             $room->description = $request->description;
+            $room->description1 = $request->description1;
             $room->service=json_encode( $request->service);
             $room->save();
             $data = [
@@ -328,6 +330,7 @@ public function allrooms(){
                     $room->promo= $request->promo;
                     $room->Ptoshow= $request->Ptoshow;
                     $room->description = $request->description;
+                    $room->description1 = $request->description1;
                     $room->service=json_encode( $request->service);
                     $room->save();
                     $data = [
@@ -378,6 +381,24 @@ public function allrooms(){
                     Mail::to( 'himarahotel@gmail.com' )->send( new Mailroomvalidate($data));
                     return redirect('allrooms');
                 }
+                //Button NO to delet the room
+                public function deleterom( $id ) {
+                    $room = Room::find($id);
+                    $room->delete();
+                    return  redirect()->back();
+                }
+
+                 //hdiing the room hwi is not valiated yet
+                           public function delroomnotvalidated(Request $request,$id){
+                            $roomsi = Room::find($id);
+
+                            $roomsi->Ptoshow= 0;
+
+                            $roomsi->save();
+
+                            return redirect()->back();
+
+                         }
 
                 //searche function //not used cause it is used above in index function
                 public function search(Request $request){
@@ -396,7 +417,7 @@ public function allrooms(){
                 // public function catagor(Catagor $catagor){
                 //     return view('catagor.index')
                 //     ->with('catagor', $catagor)
-                //     ->with('posts', $catagor->posts()->simplepaginate(3))
+                //     ->with('posts', $catagor->posts()->paginate(3))
                 //     ->with('catagors',Catagor::all());
                 // }
 
@@ -404,6 +425,6 @@ public function allrooms(){
                 // public function tag(Tag $tag){
                 //     return view('tag.index')
                 //     ->with('tag', $tag)
-                //     ->with('posts', $tag->posts()->simplepaginate(3));
+                //     ->with('posts', $tag->posts()->paginate(3));
                 // }
             }

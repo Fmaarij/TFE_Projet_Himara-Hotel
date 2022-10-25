@@ -17,10 +17,10 @@ class TeamController extends Controller
      */
     public function index()
     {
-        // $teams = Team::all();
-        $teams=Team::orderBy('id','asc')->take(8)->get();
-        // dd($teams);
-        return view ('team.index',compact('teams'));
+        $housekeeper = Team::all()->where('id', '=', 1);
+        $keeper = [1];
+        $teams = Team::inRandomOrder()->whereNotIn('id', $keeper)->take(7)->get();
+        return view ('team.index',compact('keeper','teams','housekeeper'));
     }
 
     public function allmembers(){

@@ -52,6 +52,15 @@
                                 @endif
                             </form>
                         </td>
+                        <td>
+                            <form action="/{{$roomz->id}}/delroomnotvalidated" method="post" enctype="multipart/form-data">
+                                @csrf
+                                @method('DELETE')
+                                @if($roomz->Ptoshow ==0)
+                                <button class="btn bg-danger">No</button>
+                                @endif
+                            </form>
+                        </td>
                         @endcan
 
                     </tr>

@@ -54,6 +54,9 @@
             <textarea class="form-control" name="description" >{{$room->description}}</textarea>
         </div>
         <div class="form-group">
+            <textarea class="form-control" name="description1" >{{$room->description1}}</textarea>
+        </div>
+        <div class="form-group">
             <input class="form-control" name="price" value="{{$room->price}}" type="text">
         </div>
         <div class="form-group">

@@ -55,14 +55,11 @@
 
                     </div>
 
-                    <p class="dropcap"> {{ $abouts[0]->para }}
-                        {{-- <u>commodo consequat.</u>
-                        Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum
-                        dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit
-                        praesent luptatum zzril delenit... --}}
+                    <p class="dropcap"> {{ $room->description1 }}
+
                     </p>
                     <p>
-                        {{ $abouts[0]->para }}
+                        {{ $room->description1  }}
                     </p>
                     <div class="section-title sm">
                         <h4>ROOM SERVICES</h4>

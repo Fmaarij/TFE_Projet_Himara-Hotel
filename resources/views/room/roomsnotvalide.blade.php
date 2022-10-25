@@ -14,7 +14,9 @@
 
             </thead>
             <tbody>
+
                 @foreach ($rooms as $roomz)
+
                     <tr>
                         <td>{{ $roomz->typeofroom->type_name }}</td>
                         <td>{{ $roomz->city }}</td>
@@ -28,9 +30,17 @@
                             <button class="btn bg-success">Yes</button>
                             </form>
                         </td>
-
+                        <td>
+                            <form action="/{{$roomz->id}}/delroomnotvalidated" method="post" enctype="multipart/form-data">
+                                @csrf
+                                @method('DELETE')
+                                @if($roomz->Ptoshow ==0)
+                                <button class="btn bg-danger">No</button>
+                                @endif
+                            </form>
+                        </td>
                     </tr>
-                @endforeach
+                    @endforeach
             </tbody>
         </table>
 

@@ -10,8 +10,20 @@
                         <div class="card-body">
                             <p class="card-title">City : {{ $room->city }}</p>
                             <p class="card-text">Price : {{ $room->price }}€</p>
-                            <p class="card-text">Reduction : {{ $room->promo }}</p>
-                            <p class="card-text">Validation : {{ $room->Ptoshow }}</p>
+                            <p class="card-text">Reduction : {{ $room->promo }}%</p>
+                            <p class="card-text">Validation :
+                                @if($room->Ptoshow ==1)
+                                Yes
+                                @else
+                                No
+                                @endif
+                            </p>
+                            <p style="
+                            overflow: scroll;
+                            display: -webkit-box;
+                            -webkit-line-clamp: 4; /* number of lines to show */
+                                    line-clamp: 2;
+                            -webkit-box-orient: vertical; text-aligne:left;" class="card-text ">Description : {{ $room->description1 }}</p>
                         </div>
                         <div class="card-body">
                                     <a href="/{{$room->id}}/editroomz">

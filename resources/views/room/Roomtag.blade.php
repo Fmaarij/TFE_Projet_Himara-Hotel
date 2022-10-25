@@ -123,6 +123,7 @@
                         @empty
                             <p>No room found as <strong> {{ request()->query('search') }}</strong>.</p>
                         @endforelse
+                        {{-- @include('partials.sidebar') --}}
                         {{-- Paginattion --}}
                         <div class="d-flex justify-center">
                             <div class="m-auto">

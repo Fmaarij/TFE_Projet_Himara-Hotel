@@ -44,12 +44,17 @@
         <div class="form-group">
             <input class="form-control" name="city" placeholder="Paris" type="text">
         </div>
+
+        {{-- review part --}}
         <div class="form-group">
             <input class="form-control" name="star"  placeholder="stars" type="number">
         </div>
-
         <div class="form-group">
             <textarea class="form-control" name="description" placeholder="Best view ever...." ></textarea>
+        </div>
+        {{-- End of review part --}}
+        <div class="form-group">
+            <textarea class="form-control" name="description1" placeholder="Best view ever...." ></textarea>
         </div>
         <div class="form-group">
             <input class="form-control" name="price" placeholder="$87" type="text">

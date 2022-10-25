@@ -25,7 +25,7 @@
                     <!-- ITEM -->
                     @forelse ($rooms as $room)
 
-                    @if ($room->Ptoshow == 1 )
+                    @if ($room->Ptoshow == 1 && $room->checkin==0 )
                     <div class="room-list-item">
                         <div class="row">
                                 {{-- && $room->id == $room->typeofroom->room_id --}}
@@ -104,7 +104,10 @@
 
                                             <a href="room.html#room-reviews">{{ $room->star }} Based on 5 Ratings</a>
                                         </span>
-                                        <p>{{ $room->description }}.</p>
+                                        {{-- {{substr($myStr, 0, 30)}} --}}
+                                        {{-- <p>{{ substr($room->description1, 0, 40)}}...</p> --}}
+
+                                        <p>{{Str::limit($room->description1,50)}}</p>
                                         <div class="room-services">
                                             <td>
                                                 @php $categories = $room->service ? json_decode($room->service, true) : []; @endphp
@@ -143,6 +146,7 @@
                      <div class="d-flex justify-center">
                         <div class="m-auto">
                             {{ $rooms->appends( ['search' => request()->query('search')] )->links() }}
+                            {{-- {{ $rooms->links() }} --}}
                         </div>
                     </div>
 
