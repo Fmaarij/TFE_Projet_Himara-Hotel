@@ -143,7 +143,7 @@
 
                                         {{-- {{dd($roomserviews)}} --}}
 
-                                        <div class="average"> {{$avgstar}}</div>
+                                        <div class="average"> {{round($avgstar)}}</div>
                                         {{-- @foreach ( $roomserviews as $review ) --}}
                                         <div class="rating">
 {{-- $revoir********************************************************************************* --}}
