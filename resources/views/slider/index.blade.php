@@ -8,6 +8,7 @@
                     <th>Title2</th>
                     <th>Title3</th>
                     <th>Title4</th>
+                    <th>Position</th>
                     <th>image</th>
                     <th>Show</th>
                     <th>Delete</th>
@@ -20,6 +21,7 @@
                         <td class="align-top">{{ $slide->title2}}</td>
                         <td class="align-top">{{ $slide->title3}}</td>
                         <td class="align-top">{{ $slide->title4}}</td>
+                        <td class="align-top">{{ $slide->waar}}</td>
                         <td width="10%" class="rounded">
                             <img class="w-100 rounded-circle"
                                 src="{{ asset('storage/slider_images/thumbnail/' . $slide->img) }}" class="img-fluid"

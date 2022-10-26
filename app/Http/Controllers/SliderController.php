@@ -71,6 +71,7 @@ class SliderController extends Controller {
         $sliders->title2=$request->title2;
         $sliders->title3=$request->title3;
         $sliders->title4=$request->title4;
+        $sliders->waar = $request->waar;
         $sliders->save();
 
         return redirect()->back()->with('success', "Slider added successfully.");
@@ -143,6 +144,33 @@ class SliderController extends Controller {
         $sliders->title2=$request->title2;
         $sliders->title3=$request->title3;
         $sliders->title4=$request->title4;
+        // $oldslid = $sliders->waar;
+        $sliders->waar = $request->waar;
+        // $oldslid->save();
+        // dd($oldslid);
+        // dd($sliders);
+
+
+        // $actualLogo = Photo::where('for','=','slider')->where('is_main','=',1)->get()->first();
+        // $actualLogo->is_main = 0;
+        // $actualLogo->save();
+
+        // $nextLogo = $slider->photos->first();
+        // $nextLogo->is_main = 1;
+        // $nextLogo->save();
+
+
+
+
+        // $sliderfirst=Slider::where('waar','=',$sliders->waar)->get();
+        // $sliderfirst->waar=$request->waar;
+        // $sliderfirst->save();
+        // $slidersother->save();
+        // $otherssliders =$sliders->img;
+        // dd($otherssliders);
+        // $sliderfirst = 'others';
+        // $sliders->save();
+
         $sliders->save();
 
         return redirect()->back()->with('success', "Slider Updated successfully.");

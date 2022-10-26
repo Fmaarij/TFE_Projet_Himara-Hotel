@@ -42,10 +42,16 @@ class HomeController extends Controller
         $homepagephotovideos =  Homepagephotovideo::where('id','=',1)->get();
         $homepagephotrestau =  Homepagephotovideo::where('id','=',1)->get();
         $latestnews = Latestnew::paginate(3);
-        $sliders = Slider::all();
+        // $sliders = Slider::where('waar','=','first')->get();
+        // $slidersothers = Slider::where('waar','=','others')->get();
+        $slidersothers = Slider::orderBy('waar')->get();
+        // dd($slidersothers);
+        // $sliders = Slider::where('waar','=','first')->orderBy('waar');
+
+        // dd($sliders);
         $roomreviews = Roomreview::all();
 
-        return view ('home.index',compact('homes','abouts','rooms','himaraservices','himaraservicetitle','gallery','gallerytitle','himaragallery','homepagephotovideos','himararestaurants','himararestauranttitle','homepagephotovideos','homepagephotrestau','latestnews','sliders','roomreviews','roomz'));
+        return view ('home.index',compact('homes','abouts','rooms','himaraservices','himaraservicetitle','gallery','gallerytitle','himaragallery','homepagephotovideos','himararestaurants','himararestauranttitle','homepagephotovideos','homepagephotrestau','latestnews','slidersothers','roomreviews','roomz'));
     }
     public function allHtitles(){
         $homes = Home::all();

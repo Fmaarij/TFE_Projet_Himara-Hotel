@@ -38,6 +38,17 @@
             <input  class="form-control" name="img"  type="file">
         </div>
 
+        <div class="form-group " >
+            {{-- <input  class="form-control" name="war"  type="text" placeholder=""> --}}
+            <select name="waar" id="">
+                <option value="1">First</option>
+                <option value="2">Others</option>
+                <option value="3">Third</option>
+                {{-- <option value="4">Fourth</option>
+                <option value="3">sixth</option>
+                <option value="4">Fsevourth</option> --}}
+            </select>
+        </div>
           <div class="form-group">
             <button class="btn mt30">Add</button>
         </div>

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('title2')->nullable();
             $table->string('title3')->nullable();
             $table->string('title4')->nullable();
+            $table->string('waar')->default('first');
             $table->timestamps();
         });
     }

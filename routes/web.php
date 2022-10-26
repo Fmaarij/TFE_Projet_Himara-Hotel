@@ -90,8 +90,8 @@ Route::delete('{id}/deleteabout',[AboutController::class,'destroy'])->middleware
 
 //ROOM
 Route::get('/rooms',[RoomController::class,'index'])->name('rooms');
-Route::get('/allrooms',[RoomController::class,'allrooms'])->name('allrooms');
-Route::get('/{id}/showroomz',[RoomController::class,'showroom']);
+Route::get('/allrooms',[RoomController::class,'allrooms'])->middleware(['auth', 'roleeditor'])->name('allrooms');
+Route::get('/{id}/showroomz',[RoomController::class,'showroom'])->middleware(['auth', 'roleeditor']);
 // roomstovalide
 Route::get('/roomsnotvalide',[RoomController::class,'roomsnotvalide'])->name('roomsnotvalide');
 Route::PUT('/{id}/valideroomz',[RoomController::class,'roomstovalide']);
