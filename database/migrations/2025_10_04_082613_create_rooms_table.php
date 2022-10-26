@@ -28,8 +28,8 @@ return new class extends Migration
             $table->text('description1');
             $table->boolean('Ptoshow')->default(0);
             $table->string('promo')->default(0);
-            $table->integer('checkin')->default(0);
-            $table->integer('checkout')->default(0);
+            $table->string('checkin')->default(0);
+            $table->string('checkout')->default(0);
             $table->integer('price');
             $table->json('service')->nullable();
             $table->timestamps();

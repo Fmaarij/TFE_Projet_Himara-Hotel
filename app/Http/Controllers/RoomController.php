@@ -43,6 +43,7 @@ class RoomController extends Controller {
              $rooms = Room::where('city', 'LIKE', "%{$search}%")
                  ->Where('checkin','=',0)->paginate(3);
                 //  ->get();
+
         } else {
 
             $rooms = Room::orderBy('id', 'desc')->paginate(3);
@@ -57,7 +58,7 @@ class RoomController extends Controller {
 
 
     public function roomreview(){
-        $room = Room::where('id','=',Auth::user()->room_id && User::where('id','=',Auth::user()->id))->get();
+        $room = Room::where('id','=',Auth::user()->room_id && Room::where('user_id','=',Auth::user()->id))->get();
         // dd($room);
         // User::where('id','=',Auth::user()->id)->get()
         // foreach($room as $rom){
@@ -68,15 +69,18 @@ class RoomController extends Controller {
     public function updatestars(Request $request) {
         // $room = Room::where( 'id', '=', $bookings->room_id )
         $room = Room::where('id','=',Auth::user()->room_id)
+                        // ->where('id','=',Auth::user()->id)
         ->update( [
             'star' => $request->star,
             'description' => $request->description,
         ] );
         // dd($room);
         $roomrev = Roomreview::where('room_id','=',Auth::user()->room_id)
+                                ->where('id','=',Auth::user()->id)
         ->update( [
             'star' => $request->star,
             'feedback' => $request->description,
+            // 'user_id' =>Auth::user()->id,
         ] );
         // dd($room);
         return redirect()->back();
@@ -222,7 +226,12 @@ public function allrooms(){
         $users = User::find($id);
         // $roomservices = Roomservice::where($room->service, '=','service')->get();
         $roomsreviews = Roomreview::where('room_id','=',$id)->get();
-        $avgstar =Roomreview::avg('star');
+        // dd($roomsreviews);
+        // $avgstar =Roomreview::avg('star');
+        $avgstar =Roomreview::where('room_id',"=",$id)->get()->avg('star');
+        // $avgstar =Roomreview::where('room_id',"=",$id)->get();
+        // $moyen=avg($avgstar->star);
+        // dd($avgstar);
         // $roomstars = Roomreview::where('room_id','=',$id)->get()->count();
         // $roomforrev = Room::all();
         $similarrooms = Room::where('typeofroom_id','=',$room->typeofroom_id)->take(3)->get();

@@ -140,7 +140,7 @@
 
                                         {{-- {{dd($roomserviews)}} --}}
 
-                                        <div class="average"> {{round($avgstar)}}</div>
+                                        <div class="average"> {{$avgstar}}</div>
                                         {{-- @foreach ( $roomserviews as $review ) --}}
                                         <div class="rating">
 {{-- $revoir********************************************************************************* --}}
@@ -354,13 +354,46 @@
                             <figure class="review-author">
                                 <img src="{{asset('storage/user_images/thumbnail/'.$all->users->img)}}" alt="Image">
                             </figure>
-                            <div class="review-contentt">
+                            <div class="review-contentt" >
                                 <div class="rating">
+                                    @switch($all->star)
+                                                    @case(1)
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                    @break
+
+                                                    @case(2)
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                    @break
+
+                                                    @case(3)
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                    @break
+
+                                                    @case(4)
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                    @break
+
+                                                    @case(5)
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                    @break
+
+                                                    @default
+                                                @endswitch
+                                    {{-- <i class="fa fa-star voted" aria-hidden="true"></i>
                                     <i class="fa fa-star voted" aria-hidden="true"></i>
                                     <i class="fa fa-star voted" aria-hidden="true"></i>
                                     <i class="fa fa-star voted" aria-hidden="true"></i>
-                                    <i class="fa fa-star voted" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i> --}}
                                 </div>
                                 <div class="review-info">
                                    {{$all->name}} {{$all->lastname}}  {{$all->created_at}}

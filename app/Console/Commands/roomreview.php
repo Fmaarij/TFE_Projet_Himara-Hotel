@@ -7,6 +7,7 @@ use App\Mail\Roomreview as MailRoomreview;
 use App\Models\Room;
 use App\Models\User;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 class roomreview extends Command
