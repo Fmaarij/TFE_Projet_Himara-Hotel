@@ -58,7 +58,6 @@ class RoomreviewSeeder extends Seeder {
                 'updated_at'=>now(),
             ],
 
-
             [
                 'room_id'=>6,
                 'typeofroom_id' =>1,

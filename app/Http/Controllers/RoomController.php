@@ -226,7 +226,12 @@ public function allrooms(){
         $users = User::find($id);
         // $roomservices = Roomservice::where($room->service, '=','service')->get();
         $roomsreviews = Roomreview::where('room_id','=',$id)->get();
-        // dd($roomsreviews);
+                                    // ->where('star','=','4')->count();
+        $total = Roomreview::where('room_id','=',$id)->sum('star');
+        // $avge = $total*100/$roomsreviews;
+        // $countstars= Roomreview::where('room_id','=',$id)
+        //                         ->where('star','=','4')->count();
+        // dd($countstars);
         // $avgstar =Roomreview::avg('star');
         $avgstar =Roomreview::where('room_id',"=",$id)->get()->avg('star');
         // $avgstar =Roomreview::where('room_id',"=",$id)->get();
@@ -237,7 +242,7 @@ public function allrooms(){
         $similarrooms = Room::where('typeofroom_id','=',$room->typeofroom_id)->take(3)->get();
         // $view->with('roomdispo',Room::orderBy('created_at','asc')->take(5)->get());
         $roomsphotos = Roomsphoto::where('roomtype_id','=',$room->typeofroom->id)->get();
-        return view( 'room.show', compact( 'room','roomsphotos','abouts','roomservices','roomsreviews','avgstar','users','similarrooms','roomz') );
+        return view( 'room.show', compact( 'room','roomsphotos','abouts','roomservices','roomsreviews','avgstar','users','similarrooms','roomz','total') );
                 }
 
                 /**

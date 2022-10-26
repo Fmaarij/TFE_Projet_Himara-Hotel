@@ -140,7 +140,7 @@
 
                                         {{-- {{dd($roomserviews)}} --}}
 
-                                        <div class="average"> {{$avgstar}}</div>
+                                        <div class="average"> {{round($avgstar)}}</div>
                                         {{-- @foreach ( $roomserviews as $review ) --}}
                                         <div class="rating">
 {{-- $revoir********************************************************************************* --}}
@@ -194,18 +194,29 @@
                                     <div class="progress-item">
                                         <div class="row">
 
-                                            @foreach ( $roomsreviews as $review )
+@php
+// $countstars=Roomreview::where('room_id','=',$id)
+                                // ->where('star','=','4')->count();
+$count=count($roomsreviews);
+// $total = Roomreview::where('type', 0)->sum('amount');
+@endphp
+{{-- {{dd($total)}} --}}
+                                            @foreach ( $roomsreviews as $key => $review )
+                                            {{-- @foreach ($teams as $key => $team)
+{{ str_ordinal($key + 1) }}
+@endforeach --}}
+                                            {{-- {{dd(sum($review->star))}} --}}
                                             <div class="col-lg-2 col-sm-2 col-3">
-                                                <div class="progress-stars">{{$review->star}} star</div>
+                                                <div class="progress-stars"> {{$key +1}} star</div>
                                             </div>
                                             <div class="col-lg-9 col-sm-9 col-8">
-                                                @switch($review->star)
-                                                @case(1)
+                                                 {{-- @switch($review->star)
+                                                @case(1) --}}
                                                 <div class="progress">
                                                     <div class="progress-bar" role="progressbar" style="width: 20%"
                                                         aria-valuenow="91" aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
-                                                @break
+                                                {{-- @break
 
                                                 @case(2)
                                                 <div class="progress">
@@ -236,17 +247,17 @@
                                                 @break
 
                                                 @default
-                                            @endswitch
+                                            @endswitch --}}
                                                 {{-- <div class="progress">
                                                     <div class="progress-bar" role="progressbar" style="width: 91%"
                                                         aria-valuenow="91" aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div> --}}
                                             </div>
                                             <div class="col-lg-1 col-sm-1 col-1">
-                                                @switch($review->star)
-                                                @case(1)
+                                                {{-- @switch($review->star)
+                                                @case(1) --}}
                                                 <div class="progress-value">20%</div>
-                                                @break
+                                                {{-- @break
 
                                                 @case(2)
                                                 <div class="progress-value">40%</div>
@@ -265,7 +276,7 @@
                                                 @break
 
                                                 @default
-                                            @endswitch
+                                            @endswitch --}}
                                                 {{-- <div class="progress-value">91%</div> --}}
                                             </div>
                                             @endforeach
