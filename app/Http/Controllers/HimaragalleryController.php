@@ -6,6 +6,7 @@ use App\Models\Himaragallery;
 use App\Http\Requests\StoreHimaragalleryRequest;
 use App\Http\Requests\UpdateHimaragalleryRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class HimaragalleryController extends Controller {
     /**
@@ -88,8 +89,8 @@ class HimaragalleryController extends Controller {
 
     public function update( Request $request, $id ) {
         $himaragallery = Himaragallery::find( $id );
-
-        $himaragallery->title = $request->title;
+        $himaragallery->title = Str::of($request->title)->replaceArray('*', ['<span class="text-himara">','</span>'],$request->title);
+        // $himaragallery->title = $request->title;
         $himaragallery->coloredpart = $request->coloredpart;
         $himaragallery->subpara = $request->subpara;
         $himaragallery->direct = $request->direct;

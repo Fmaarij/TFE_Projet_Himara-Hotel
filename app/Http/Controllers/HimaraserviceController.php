@@ -9,6 +9,7 @@ use App\Models\Roomservice;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Str;
 
 class HimaraserviceController extends Controller {
     /**
@@ -69,7 +70,8 @@ class HimaraserviceController extends Controller {
             $himaraservices->img = $filenametostore;
         }
 
-        $himaraservices->title=$request->title;
+        // $himaraservices->title=$request->title;
+
         $himaraservices->coloredpart=$request->coloredpart;
         $himaraservices->subpara=$request->subpara;
         $himaraservices->imgtitle=$request->imgtitle;
@@ -144,7 +146,8 @@ class HimaraserviceController extends Controller {
             $himaraservices->img = $filenametostore;
         }
 
-        $himaraservices->title=$request->title;
+        // $himaraservices->title=$request->title;
+        $himaraservices->title = Str::of($request->title)->replaceArray('*', ['<span class="text-himara">','</span>'],$request->title);
         $himaraservices->coloredpart=$request->coloredpart;
         $himaraservices->subpara=$request->subpara;
         $himaraservices->imgtitle=$request->imgtitle;

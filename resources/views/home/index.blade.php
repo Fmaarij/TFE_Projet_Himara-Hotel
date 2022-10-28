@@ -240,7 +240,7 @@
                 @foreach ($abouts as $about)
                     <div class="col-lg-8">
                         <div class="section-title">
-                            <h4 class="text-uppercase">{{ $about->title }} <span
+                            <h4 class="text-uppercase">{!!$about->title!!} <span
                                     class="text-himara">{{ $about->year }}</span></h4>
                             <p class="section-subtitle">{{ $about->subpara }}</p>
                         </div>
@@ -250,6 +250,7 @@
                             @php $providers = $about->provider ? json_decode($about->provider, true) : []; @endphp
                             <div class="providers">
                                 <span>Recommended on:</span>
+                                @if($providers != null)
                                 @foreach ($providers as $provid)
                                     <!-- ITEM -->
                                     <div class="item">
@@ -259,6 +260,7 @@
                                         </a>
                                     </div>
                                 @endforeach
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -297,6 +299,7 @@
             </div>
             <div class="row">
                 <!-- ITEM -->
+                @if ($room != null)
                 @foreach ($rooms as $room)
                     <div class="col-md-4">
                         <div class="room-grid-item">
@@ -329,6 +332,7 @@
                         </div>
                     </div>
                 @endforeach
+                @endif
             </div>
         </div>
     </section>
@@ -340,7 +344,7 @@
                 {{-- {{dd($himaraservicetitle)}} --}}
 
                 @foreach ($himaraservicetitle as $title )
-                <h4>{{ $title->title }} <span
+                <h4>{!! $title->title !!} <span
                     class="text-himara">{{ $title->coloredpart }}</span></h4>
 
                     <p class="section-subtitle">{{ $title->subpara }}</p>
@@ -386,7 +390,7 @@
             <div class="section-title">
                 {{-- {{dd($himaragallery)}} --}}
                 @foreach ($himaragallery as $title )
-                <h4>{{ $title->title }} <span class="text-himara">{{ $title->coloredpart }}</span>
+                <h4>{!! $title->title !!} <span class="text-himara">{{ $title->coloredpart }}</span>
                 </h4>
                 <p class="section-subtitle">{{$title->subpara}}</p>
                 <a href="{{ url('gallery') }}" class="view-all">{{ $title->direct }}</a>

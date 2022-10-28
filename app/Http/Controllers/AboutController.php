@@ -9,6 +9,7 @@ use App\Models\Provider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Str;
 class AboutController extends Controller
 {
     /**
@@ -148,7 +149,10 @@ class AboutController extends Controller
             $abouts->img = $filenametostore;
         }
 
-        $abouts->title=$request->title;
+
+        $abouts->title = Str::of($request->title)->replaceArray('*', ['<span class="text-himara">','</span>'],$request->title);
+
+        // $abouts->title=$request->title;
         $abouts->subpara=$request->subpara;
         $abouts->para=$request->para;
         $abouts->provider=json_encode( $request->provider);

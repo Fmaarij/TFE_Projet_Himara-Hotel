@@ -59,7 +59,7 @@
             </div>
             <div class="form-group">
                 <div class="w-25">
-                    <img class="w-100 rounded-circle" src="{{ asset('storage/about_images/thumbnail/' . $abouts->img) }}"
+                    <img class="w-100 rounded" src="{{ asset('storage/about_images/thumbnail/' . $abouts->img) }}"
                         class="img-fluid" alt="Image">
                 </div>
                 <input class="form-control" name="img" type="file">

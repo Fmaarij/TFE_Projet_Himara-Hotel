@@ -56,7 +56,7 @@ class RoomController extends Controller {
         ->with('rooms', $rooms);
     }
 
-
+    //roomreview update
     public function roomreview(){
         $room = Room::where('id','=',Auth::user()->room_id && Room::where('user_id','=',Auth::user()->id))->get();
         // dd($room);

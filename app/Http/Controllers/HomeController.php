@@ -16,6 +16,7 @@ use App\Models\Room;
 use App\Models\Roomreview;
 use App\Models\Slider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class HomeController extends Controller
 {
@@ -117,6 +118,8 @@ class HomeController extends Controller
     public function update(Request $request, $id)
     {
         $homes =Home::find($id);
+
+        // $homes->title = Str::of($request->title)->replaceArray('*', ['<span class="text-himara">','</span>'],$request->title);
         $homes->title = $request->title;
         $homes->subtitle = $request->subtitle;
         $homes->save();

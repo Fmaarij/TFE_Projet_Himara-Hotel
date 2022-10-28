@@ -7,7 +7,8 @@
                 <div class="card-body">
                     <div class="card m-auto" style="width: 35rem;">
                         {{-- @if ($teams->img != null){ --}}
-                            <img class="card-img-top" src="{{asset('storage/about_images/thumbnail/'.$abouts->img)}}" alt="gallerimg">
+
+                            <img class="card-img-top w-25 m-auto"  src="{{asset('storage/about_images/thumbnail/'.$abouts->img)}}" alt="gallerimg">
                         {{-- }@else --}}
                         {{-- <img class="card-img-top" src="storage/team_images/{{$teams->img}}" alt="memebrs picture"> --}}
                         {{-- @endif --}}
