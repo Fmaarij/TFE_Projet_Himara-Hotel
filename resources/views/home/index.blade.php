@@ -8,7 +8,7 @@
                 <!-- SLIDE NR. 1 -->
                 {{-- @foreach ($sliders as $slide) --}}
                 @foreach ($slidersothers as $slide)
-    
+
             {{-- @endforeach --}}
                 {{-- @foreach ($slidersothers as $slide) --}}
                     <li data-transition="crossfade">
@@ -185,7 +185,7 @@
                                                 </label>
                                                 <div class="guests-button">
                                                     <div class="minus"></div>
-                                                    <input type="text" name="booking-adults" class="booking-guests"
+                                                    <input type="text" name="booking_adult" class=""
                                                         value="0">
                                                     <div class="plus"></div>
                                                 </div>
@@ -200,7 +200,7 @@
                                                 </label>
                                                 <div class="guests-button">
                                                     <div class="minus"></div>
-                                                    <input type="text" name="booking-children" class="booking-guests"
+                                                    <input type="text" name="booking_child" class=""
                                                         value="0">
                                                     <div class="plus"></div>
                                                 </div>

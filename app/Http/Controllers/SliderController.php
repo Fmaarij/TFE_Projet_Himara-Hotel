@@ -90,6 +90,12 @@ class SliderController extends Controller {
         return view('slider.show',compact('sliders'));
     }
 
+    // public function oldslider($id){
+
+
+
+    // }
+
     /**
     * Show the form for editing the specified resource.
     *
@@ -139,12 +145,14 @@ class SliderController extends Controller {
             $img->save();
             $sliders->img = $filenametostore;
         }
-
         $sliders->title1=$request->title1;
         $sliders->title2=$request->title2;
         $sliders->title3=$request->title3;
         $sliders->title4=$request->title4;
-        // $oldslid = $sliders->waar;
+        $oldslide = $sliders->waar;
+        // dd($oldslide);
+        $newslide =Slider::where('waar','=',$oldslide)->get();
+        //    dd($newslide);
         $sliders->waar = $request->waar;
         // $oldslid->save();
         // dd($oldslid);

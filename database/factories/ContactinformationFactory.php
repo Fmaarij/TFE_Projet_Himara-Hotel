@@ -18,7 +18,10 @@ class ContactinformationFactory extends Factory
     {
         return [
 
-            'adress'=>$this->faker->address,
+            // 'adress'=>$this->faker->address,
+            'adress'=>"Pl. de la Minoterie 10, 1080 Molenbeek-Saint-Jean",
+            'latitude'=>50.8745298,
+            'longitude'=>4.3352711,
             'email'=>$this->faker->email,
             'gsm'=>$this->faker->numerify('###-###-####'),
             'phone'=>$this->faker->numerify('###-###-####'),

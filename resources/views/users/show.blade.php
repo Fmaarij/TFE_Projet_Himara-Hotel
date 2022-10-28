@@ -18,7 +18,7 @@
     </div>
     <div class="text-center">
         <a href="/{{$users->id}}/edituser">
-            <button>Edit</button>
+            <button  class="btn ">Edit</button>
         </a>
     </div>
   </div>

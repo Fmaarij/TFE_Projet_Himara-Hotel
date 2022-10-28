@@ -45,7 +45,7 @@
                 {{-- <option value="first">First</option>
                 <option value="others">Others</option> --}}
                 <option value="1">First</option>
-                <option value="2">Others</option>
+                <option value="2">second</option>
                 <option value="3">Third</option>
             </select>
         </div>

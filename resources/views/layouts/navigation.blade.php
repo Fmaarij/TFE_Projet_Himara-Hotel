@@ -250,7 +250,13 @@
                                      onclick="event.preventDefault();
                                     this.closest('form').submit();"
                                      class="btn">
-                                     <i class="fa fa-user"></i>
+                                    @guest
+                                    <i class="fa fa-user"></i>
+                                    @endguest
+                                    @auth
+                                      <img style="Width:20px; height:20px;border-radius: 16px;" src="/{{('storage/user_images/thumbnail/' .Auth::user()->img)}}">
+                                    @endauth
+
                                      {{ __('Log Out') }}
                                  </a>
                              </form>

@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('contactinformations', function (Blueprint $table) {
             $table->id();
             $table->string('adress');
+            $table->string('latitude')->nullable();
+            $table->string('longitude')->nullable();
             $table->string('email');
             $table->string('gsm');
             $table->string('phone');

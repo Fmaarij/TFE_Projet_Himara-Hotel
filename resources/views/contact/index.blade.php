@@ -66,8 +66,9 @@
                         <script type="text/javascript">
                             function initMap() {
                                 const myLatLng = {
-                                    lat: 22.2734719,
-                                    lng: 70.7512559
+                                    // Molengeek
+                                    lat: 50.8553546,
+                                    lng: 4.3411923
                                 };
                                 const map = new google.maps.Map(document.getElementById("map"), {
                                     zoom: 5,
@@ -83,9 +84,11 @@
 
                             window.initMap = initMap;
                         </script>
-
+{{--
                         <script type="text/javascript"
-                            src="https://maps.google.com/maps/api/js?key={{ env('GOOGLE_MAP_KEY') }}&callback=initMap"></script>
+                            src="https://maps.google.com/maps/api/js?key={{ env('GOOGLE_MAP_KEY') }}&callback=initMap"></script> --}}
+                            <script type="text/javascript"
+                            src="https://maps.google.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap"></script>
 
        {{-- end of maps à revoir --}}
 

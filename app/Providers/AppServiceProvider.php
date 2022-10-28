@@ -38,8 +38,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with('roomdispo',Room::orderBy('created_at','asc')->take(5)->get());
             $view->with('aboutuse', About::all());
             $view->with('providers', Provider::all());
-            // $view->with('hotelinfo', HotelInfo::all());
-            // $view->with('news', Article::all()->take(4));
+
         });
     }
 }

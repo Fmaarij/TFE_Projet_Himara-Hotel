@@ -4,7 +4,7 @@
 <div class="w-75 m-auto">
 <div class="col-md-8">
     <div class="section-title">
-        <h4>Registration</h4>
+        <h4>Login</h4>
         <p class="section-subtitle"></p>
     </div>
 

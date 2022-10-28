@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<html lang="en">
+{{-- <html lang="en"> --}}
 
 <head>
     <meta charset="utf-8">
@@ -101,7 +101,7 @@
     {{-- Scripts --}}
     <!-- ========== JAVASCRIPT ========== -->
     <script src="/js/jquery.min.js"></script>
-    <script src="/http://maps.google.com/maps/api/js?key=YOUR_API_KEY"></script>
+    <script src="/http://maps.google.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/bootstrap-select.min.js"></script>
     <script src="/js/jquery.mmenu.js"></script>
