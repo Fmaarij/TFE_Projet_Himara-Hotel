@@ -33,6 +33,15 @@
                         <div class="form-group">
                             <input class="form-control" name="name" placeholder="Name" type="text">
                         </div>
+
+                        <div class="form-group">
+                            <input class="form-control" name="latitude" id="latitude" value="{{$contactinformation[0]->latitude}}" type="hidden">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" name="longitude" id="longitude" value="{{$contactinformation[0]->longitude}}" type="hiden">
+                        </div>
+
+
                         <div class="form-group">
                             <input class="form-control" name="email" placeholder="Email" type="email">
                         </div>
@@ -59,16 +68,25 @@
                             <div class="toggle-streetview" id="openStreetView">
                                 <i class="fa fa-street-view" aria-hidden="true"></i>
                             </div>
-                            <div id="map-canvas"></div>
+                            <div id="map-canvas">
+                                <iframe width="600" height="450" style="border:0" loading="lazy" allowfullscreen
+                                    referrerpolicy="no-referrer-when-downgrade"
+                                    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAXYEirsfCi4Ogbv5T1V2NjITBwrjf5sEo
+                                    &q={{preg_replace("/\s+/", '+', $contactinformation[0]->adress)}}">
+                                </iframe>
+                            </div>
                         </div>
 
 
                         <script type="text/javascript">
                             function initMap() {
+
+                                var latit = document.getElementById('latitude');
+                                var longi = document.getElementById('longitude');
                                 const myLatLng = {
                                     // Molengeek
-                                    lat: 50.8553546,
-                                    lng: 4.3411923
+                                    lat= latit;
+                                    lng= long;
                                 };
                                 const map = new google.maps.Map(document.getElementById("map"), {
                                     zoom: 5,
@@ -84,15 +102,18 @@
 
                             window.initMap = initMap;
                         </script>
-{{--
+
                         <script type="text/javascript"
-                            src="https://maps.google.com/maps/api/js?key={{ env('GOOGLE_MAP_KEY') }}&callback=initMap"></script> --}}
-                            <script type="text/javascript"
-                            src="https://maps.google.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap"></script>
+                            src="https://maps.google.com/maps/api/js?key={{ env('GOOGLE_MAP_KEY') }}&callback=initMap"></script>
+                        {{-- <script type="text/javascript"
+                            src="https://maps.google.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap"></script> --}}
 
-       {{-- end of maps à revoir --}}
 
-                        {{-- maps de base--}}
+
+
+                        {{-- end of maps à revoir --}}
+
+                        {{-- maps de base --}}
                         {{-- <div class="google-map">
                             <div class="toggle-streetview" id="openStreetView">
                                 <i class="fa fa-street-view" aria-hidden="true"></i>

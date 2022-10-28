@@ -1142,7 +1142,7 @@ Version:       1.1.0
         } else {
           revapi9 = tpj("#rev-slider-event").show().revolution({
             sliderType: "hero",
-            jsFileLocation: "revolution/js/", 
+            jsFileLocation: "revolution/js/",
             dottedOverlay: "twoxtwo",
             delay: 9000,
             navigation: {},
@@ -2175,7 +2175,7 @@ Version:       1.1.0
         }]
       };
 
-      map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+      map = new google.maps.Map(document.getElementById('map-canvass'), mapOptions);
 
       var contentString =
         '<div id="infowindow_content">' +

@@ -21,9 +21,9 @@ return new class extends Migration
             $table->string('img');
             $table->string('city');
             $table->string('country');
-            $table->foreignId('role_id')->references('id')->on('roles')->onDelete('cascade');
-            $table->foreignId('latestnews_id')->references('id')->on('latestnews')->onDelete('cascade');
-            $table->foreignId('room_id')->references('id')->on('rooms')->nullable()->onDelete('cascade');
+            $table->foreignId('role_id')->default(4)->references('id')->on('roles')->onDelete('cascade');
+            $table->foreignId('latestnews_id')->nullable()->references('id')->on('latestnews');
+            $table->foreignId('room_id')->nullable()->references('id')->on('rooms');
             // $table->foreignId('avatar_id')->constrained();
             // $table->foreignId('article_id')->constrained()->onDelete('cascade');
             $table->string('email')->unique();

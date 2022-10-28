@@ -145,6 +145,21 @@ public function allrooms(){
     */
 
     public function store( Request $request ) {
+        request()->validate([
+            "img" => ["required"],
+            "typeofroom_id" => ["required"],
+            "bed" => ["required",],
+            "availablerooms" => ["required"],
+            "maxguests" => ['required'],
+
+            "city" => ["required"],
+            "star" => ['required'],
+            "price" => ["required"],
+            "promo" => ['required'],
+
+            "description" => ["required"],
+            // "service" => ['required'],
+        ]);
         $room = Room::where('typeofroom_id','=',$request->typeofroom_id)->get()->count();
         // $rooms = Room::find($request->typeofroom_id)->count();
 

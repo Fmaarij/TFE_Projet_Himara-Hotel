@@ -68,7 +68,15 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
+            'lastname' => ['required', 'string', 'max:255'],
+            "city" => ["required"],
+            "country" => ["required",],
+            "age" => ["required"],
+            // "maxguests" => ['required'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            "password" => ["required"],
+            'img'=> ['required'],
+
             // 'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
@@ -98,12 +106,15 @@ class UserController extends Controller
             $img->save();
             $users->img = $filenametostore;
         }
+        // dd($request);
             $users->name = $request->name;
             $users->lastname = $request->lastname;
             $users->city = $request->city;
             $users->country = $request->country;
             $users->age = $request->age;
-            $users->role_id = $request->role_id;
+            // $users->latestnews_id = 1;
+            // $users->role_id = 4;
+            // $users->room_id ='0';
             $users->email = $request->email;
             $users->password= Hash::make($request->password);
         $users->save();
@@ -155,6 +166,21 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // $request->validate([
+        //     'name' => ['required', 'string', 'max:255'],
+        //     'lastname' => ['required', 'string', 'max:255'],
+        //     "city" => ["required"],
+        //     "country" => ["required",],
+        //     "age" => ["required"],
+            // "maxguests" => ['required'],
+            // 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            // "password" => ["required"],
+            // 'img'=> ['required'],
+
+            // 'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        // ]);
+
+
         $users= User::find($id);
         if($request->hasFile('img')) {
             Storage::delete('public/user_images/thumbnail/'.$users->img);
@@ -183,13 +209,17 @@ class UserController extends Controller
             $img->save();
             $users->img = $filenametostore;
         }
+
             $users->name = $request->name;
             $users->lastname = $request->lastname;
+            $users->city = $request->city;
+            $users->country = $request->country;
             $users->age = $request->age;
-            $users->role_id = $request->role_id;
+
             $users->email = $request->email;
             $users->password= Hash::make($request->password);
-        $users->save();
+            $users->role_id = $request->role_id;
+               $users->save();
         $data = [
             // 'recipient' => 'member@test.com',
             'email' => $request->email,

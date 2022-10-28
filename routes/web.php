@@ -48,7 +48,7 @@ require __DIR__.'/auth.php';
 Route::get('/users',[UserController::class,'index'])->middleware(['auth','rolemoderator'])->name('users');
 // Route::get('/allHtitles',[HomeController::class,'allHtitles'])->name('allHtitles');
 Route::get('/createuser',[UserController::class,'create'])->name('createuser');
-Route::post('/storeuser',[UserController::class,'store'])->middleware(['auth', 'roleadmin']);
+Route::post('/storeuser',[UserController::class,'store']);
 Route::get('/{id}/showuser',[UserController::class,'show'])->middleware(['auth', 'roleadmin'])->name('showuser');
 Route::get('/{id}/edituser',[UserController::class,'edit'])->middleware(['auth', 'roleadmin'])->name('edituser');
 Route::Put('/{id}/updateuser',[UserController::class,'update'])->middleware(['auth', 'roleadmin']);

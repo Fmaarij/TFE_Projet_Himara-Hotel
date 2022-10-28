@@ -14,40 +14,51 @@
     </strong>
 @endif
     <!-- add an image FORM -->
+    @include('validation')
     <form action="/storeuser" method="post" enctype="multipart/form-data"
         class="contact-form" >
         @csrf
         <div class="form-group">
-            <input class="form-control" name="name" placeholder="Michel" type="text" >
+            <input class="form-control" value="{{old('name')}}" name="name" placeholder="Michel" type="text" >
         </div>
         <div class="form-group">
-            <input class="form-control" name="lastname" placeholder="James" type="text" >
+            <input class="form-control" value="{{old('lastname')}}" name="lastname" placeholder="James" type="text" >
         </div>
         <div class="form-group">
-            <input class="form-control" name="city" placeholder="Brussels" type="text" >
+            <input class="form-control" value="{{old('city')}}" name="city" placeholder="Brussels" type="text" >
         </div>
         <div class="form-group">
-            <input class="form-control" name="country" placeholder="Belgium" type="text" >
+            <input class="form-control" value="{{old('country')}}" name="country" placeholder="Belgium" type="text" >
         </div>
         <div class="form-group">
-            <input class="form-control" name="age" placeholder="23" type="number" >
+            <input class="form-control" value="{{old('age')}}" name="age" placeholder="23" type="number" >
+        </div>
+        {{-- <div class="form-group">
+            <input class="form-control" value="0" name="room_id" type="hidden" >
         </div>
         <div class="form-group">
-            {{-- <input class="form-control" name="role_id" value="{{$role->id}}" type="hidden" > --}}
-            <select class="form-control" name="role_id" id="">
+            <input class="form-control" value="0" name="latestnews_id" type="hidden" >
+        </div>
+        <div class="form-group"  >
+            <input class="form-control"  name="role_id" value="4" type="hidden" > --}}
+            {{-- <select  type="hidden"  class="form-control" name="role_id" >
                 @foreach ($roles as $role)
-                <option value="{{$role->id}}">{{$role->role}}</option>
+                <option  value="{{$role->id}}">{{$role->role}}</option>
                 @endforeach
-            </select>
+            </select> --}}
+        {{-- </div> --}}
+        {{-- <div class="form-group"  >
+            <input class="form-control"  name="latestnews_id" value="0" type="hidden" >
+
+        </div> --}}
+        <div class="form-group">
+            <input class="form-control" value="{{old('email')}}" name="email" placeholder="James@gmail.com" type="text" >
         </div>
         <div class="form-group">
-            <input class="form-control" name="email" placeholder="James@gmail.com" type="text" >
-        </div>
-        <div class="form-group">
-            <input class="form-control" name="password" placeholder="************" type="text" >
+            <input class="form-control" value="{{old('password')}}" name="password" placeholder="************" type="text" >
         </div>
         <div class="form-group " >
-            <input  class="form-control" name="img"  type="file">
+            <input  class="form-control" value="{{old('img')}}" name="img"  type="file">
         </div>
           <div class="form-group">
             <button class="btn mt30">Add</button>
